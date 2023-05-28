@@ -94,8 +94,8 @@ class AuthProvider extends ChangeNotifier {
 
   Future<String> signInWithPhoneNumber(String phoneNumber, BuildContext context) async {
     try {
-      _isLoading = true;
-      notifyListeners();
+      // _isLoading = true;
+      // notifyListeners();
 
       verificationCompleted(phoneAuthCredential) async {
         await auth.signInWithCredential(phoneAuthCredential);
@@ -126,8 +126,8 @@ class AuthProvider extends ChangeNotifier {
 
       return '';
     } on FirebaseAuthException catch (ex) {
-      _isLoading = false;
-      notifyListeners();
+      // _isLoading = false;
+      // notifyListeners();
       return ex.message ?? 'An Error occured during phone verification.';
     }
   }

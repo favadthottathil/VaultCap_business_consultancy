@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "897644384990-asog6o3qfvkcmlqgsbsua6bio8m33grs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taxverse",
+            "certificate_hash": "7e8be5cd7fd885a1545b127b884cbd8cb83a2774"
+          }
+        },
+        {
           "client_id": "897644384990-g5tj1sqh9pkk2e77edl15h3vov4otdqp.apps.googleusercontent.com",
           "client_type": 3
         }

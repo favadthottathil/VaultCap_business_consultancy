@@ -214,18 +214,18 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                     )
                   ],
                 ),
-                if (authprovider.loading)
-                  const Center(
-                    child: FrostedGlass(
-                      width: double.infinity,
-                      height: double.infinity,
-                      child: Center(
-                        child: SpinKitCircle(
-                          color: blackColor,
-                        ),
-                      ),
-                    ),
-                  ),
+                // if (authprovider.loading)
+                //   const Center(
+                //     child: FrostedGlass(
+                //       width: double.infinity,
+                //       height: double.infinity,
+                //       child: Center(
+                //         child: SpinKitCircle(
+                //           color: blackColor,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
               ],
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
+import 'package:taxverse/view/gst_registraion/gst_1.dart';
 import 'package:taxverse/view/sign_option.dart';
 import 'package:taxverse/view/splash.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(primarySwatch: Colors.blue, splashFactory: InkRipple.splashFactory),
-        home: const Splash(),
+        home: const GstFirstScreen(),
       ),
     );
   }
