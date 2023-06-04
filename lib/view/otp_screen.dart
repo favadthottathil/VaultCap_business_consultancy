@@ -37,18 +37,6 @@ class _OtpScreenState extends State<OtpScreen> {
 
                 return Scaffold(
                   body: SafeArea(
-                    // child: isLoading == true
-                    //     ? const Center(
-                    //         child: FrostedGlass(
-                    //           width: double.infinity,
-                    //           height: double.infinity,
-                    //           child: Center(
-                    //             child: SpinKitCircle(
-                    //               color: blackColor,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       )
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 25),
@@ -113,9 +101,11 @@ class _OtpScreenState extends State<OtpScreen> {
                                     ),
                                   ),
                                   onCompleted: (value) {
-                                    setState(() {
-                                      otpCode = value;
-                                    });
+                                    setState(
+                                      () {
+                                        otpCode = value;
+                                      },
+                                    );
                                   },
                                 ),
                                 const SizedBox(height: 25),
@@ -169,17 +159,17 @@ class _OtpScreenState extends State<OtpScreen> {
                               ],
                             ),
                             if (isLoading)
-                        const Center(
-                          child: FrostedGlass(
-                            width: double.infinity,
-                            height: double.infinity,
-                            child: Center(
-                              child: SpinKitCircle(
-                                color: blackColor,
+                              const Center(
+                                child: FrostedGlass(
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  child: Center(
+                                    child: SpinKitCircle(
+                                      color: blackColor,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
                           ],
                         ),
                       ),
@@ -190,7 +180,7 @@ class _OtpScreenState extends State<OtpScreen> {
         });
   }
 
-  void  verifyOtp(BuildContext context, String userOtp) {
+  void verifyOtp(BuildContext context, String userOtp) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
 
     ap.verifyOtp(

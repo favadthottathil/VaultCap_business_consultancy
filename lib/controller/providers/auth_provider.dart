@@ -94,14 +94,13 @@ class AuthProvider extends ChangeNotifier {
 
   Future<String> signInWithPhoneNumber(String phoneNumber, BuildContext context) async {
     try {
-      // _isLoading = true;
-      // notifyListeners();
-
       verificationCompleted(phoneAuthCredential) async {
         await auth.signInWithCredential(phoneAuthCredential);
       }
 
-      verificationFailed(error) {
+      verificationFailed(FirebaseAuthException error) {
+        log('Error ==================================   $error');
+
         throw Exception(error.message);
       }
 

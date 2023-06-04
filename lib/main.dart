@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/view/gst_registraion/gst_1.dart';
-import 'package:taxverse/view/sign_option.dart';
 import 'package:taxverse/view/splash.dart';
 
 void main() async {
@@ -12,7 +11,14 @@ void main() async {
 
   await Firebase.initializeApp();
 
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
+}
+
+@pragma('vm:entry-point')
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +37,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(primarySwatch: Colors.blue, splashFactory: InkRipple.splashFactory),
-        home: const GstFirstScreen(),
+        home: const Splash(),
       ),
     );
   }

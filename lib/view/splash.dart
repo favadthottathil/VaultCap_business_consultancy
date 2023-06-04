@@ -1,13 +1,42 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taxverse/constants.dart';
+import 'package:taxverse/controller/notificatin_services.dart';
 import 'package:taxverse/view/auth_navigator.dart';
 import 'package:taxverse/view/mainscreens/home_screen.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/sign_option.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   const Splash({super.key});
+
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  NotificationServices notificationServices = NotificationServices();
+
+  @override
+  void initState() {
+    super.initState();
+
+    notificationServices.requestNotificationPermission();
+
+    notificationServices.firebaseInit();
+
+    // notificationServices.isTokenRefresh();
+
+    notificationServices.getDeviceToken().then(
+      (value) {
+        print('device token');
+
+        print(value); 
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

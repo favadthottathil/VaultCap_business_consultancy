@@ -52,4 +52,24 @@ class AppStyle {
     color: blackColor,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle poppinsBoldWhite12 = GoogleFonts.poppins(
+    fontSize: 12,
+    color: whiteColor,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle poppinsBoldWhite20 = GoogleFonts.poppins(
+    fontSize: 20,
+    color: whiteColor,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle poppinsRegular15 = GoogleFonts.poppins(
+    fontSize: 15,
+    color: blackColor,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle poppinsRegular12 = GoogleFonts.poppins(
+    fontSize: 12,
+    color: blackColor,
+    fontWeight: FontWeight.w400,
+  );
 }

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -5,12 +8,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/constants.dart';
+import 'package:taxverse/db/userinfo.dart';
+import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/utils/utils.dart';
 import 'package:taxverse/view/frosted_glass.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/sign_in.dart';
-import 'package:taxverse/view/sign_option.dart';
+import 'package:taxverse/view/user/user_details.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -51,19 +56,50 @@ class _SignUpState extends State<SignUp> {
     if (passConfirmed()) {
       final msg = await provider.signOut(emailcontroller.text, passcontroller.text);
 
-      if (msg == '') return;
+      if (msg == '') {
+        log(userName);
+        userName = namecontroller.text.trim();
+        log(userName);
 
-      // ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        addUserDetails(
+          namecontroller.text.trim(),
+          emailcontroller.text.trim(),
+          passcontroller.text.trim(),
+        );
 
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     content: Text(msg),
-      //   ),
-      // );
+        return;
+      }
+
       showSnackBar(context, msg);
     } else {
       showSnackBar(context, 'PassWord does not match');
     }
+  }
+
+  // add user details
+
+  Future addUserDetails(String name, String email, String password) async {
+    final CollectionReference clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
+
+    // create new document in the 'ClientDetails' collection
+
+    final DocumentReference newClientDocRef = await clientCollection.add({
+      'Name': name,
+      'Email': email,
+      'Password': password,
+    });
+
+    // Retrieve the auto-generatied document Id
+
+    final String clientId = newClientDocRef.id;
+
+    ClientID.clientId = clientId;
+
+    // await FirebaseFirestore.instance.collection('Client Details').add({
+    //   'Name': name,
+    //   'Email': email,
+    //   'Password': password,
+    // });
   }
 
   passConfirmed() {
