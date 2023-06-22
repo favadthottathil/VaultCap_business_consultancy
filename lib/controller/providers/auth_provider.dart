@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/otp_screen.dart';
 import 'package:taxverse/utils/utils.dart';
 import 'package:taxverse/view/sign_option.dart';
@@ -18,6 +19,11 @@ class AuthProvider extends ChangeNotifier {
 
   bool get loading => _isLoading;
 
+  set setLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
   String? _uid;
 
   String get uid => _uid!;
@@ -33,18 +39,28 @@ class AuthProvider extends ChangeNotifier {
         (route) => false);
   }
 
-  Future<String> signIn(String email, String password) async {
+  Future<String> signIn(String email, String password, BuildContext context) async {
     try {
       _isLoading = true;
       notifyListeners();
 
-      await _fb.signInWithEmailAndPassword(
+     await _fb.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
 
-      _isLoading = false;
-      notifyListeners();
+      // _isLoading = false;
+      // notifyListeners();
+
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const BottomNav(),
+          ),
+          (route) => false);
+
+      // _isLoading = false;
+      // notifyListeners();
 
       return Future.value('');
     } on FirebaseAuthException catch (ex) {
@@ -54,15 +70,22 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<String> signOut(String email, String password) async {
+  Future<String> signOut(String email, String password, BuildContext context) async {
     try {
       _isLoading = true;
       notifyListeners();
 
       await _fb.createUserWithEmailAndPassword(email: email.trim(), password: password.trim());
 
-      _isLoading = false;
-      notifyListeners();
+      // _isLoading = false;
+      // notifyListeners();
+
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const BottomNav(),
+          ),
+          (route) => false);
 
       return Future.value('');
     } on FirebaseAuthException catch (ex) {

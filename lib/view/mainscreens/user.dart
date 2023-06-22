@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:taxverse/api/api.dart';
 import 'package:taxverse/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/view/register_phone.dart';
 import 'package:taxverse/view/user/user_details.dart';
 import 'package:taxverse/view/user/user_edit.dart';
 
@@ -51,7 +50,8 @@ class User1 extends StatelessWidget {
                           right: 20,
                         ),
                         child: IconButton(
-                            onPressed: () {
+                            onPressed: () async { 
+                              await APIs.updateActiveStatus(false);
                               context.read<AuthProvider>().logOut(context);
                             },
                             icon: const Icon(

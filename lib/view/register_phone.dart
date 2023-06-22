@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:taxverse/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/utils/utils.dart';
-import 'package:taxverse/view/frosted_glass.dart';
+import 'package:taxverse/view/widgets/frosted_glass.dart';
 
 class RegisterWithPhone extends StatefulWidget {
   const RegisterWithPhone({super.key});

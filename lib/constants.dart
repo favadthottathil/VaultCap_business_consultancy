@@ -19,7 +19,7 @@ const whiteColor = Colors.white;
 
 const blackColor = Colors.black;
 
-const greyColor = Colors.grey;
+var greyColor = blackColor.withOpacity(0.1);
 
 class AppStyle {
   static TextStyle poppinsBold27 = GoogleFonts.poppins(
@@ -34,6 +34,11 @@ class AppStyle {
   );
   static TextStyle poppinsBold16 = GoogleFonts.poppins(
     fontSize: 16,
+    color: blackColor,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle poppinsBold18 = GoogleFonts.poppins(
+    fontSize: 18,
     color: blackColor,
     fontWeight: FontWeight.w700,
   );
@@ -57,6 +62,16 @@ class AppStyle {
     color: whiteColor,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle poppinsBoldWhite18 = GoogleFonts.poppins(
+    fontSize: 18,
+    color: whiteColor,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle poppinsRegulargrey14 = GoogleFonts.poppins(
+    fontSize: 14,
+    color: whiteColor,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle poppinsBoldWhite20 = GoogleFonts.poppins(
     fontSize: 20,
     color: whiteColor,
@@ -73,3 +88,5 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 }
+
+String saveTokenToDatabase = '';

@@ -30,11 +30,16 @@ environment:
 dependencies:
   animated_custom_dropdown: ^1.5.0
   app_settings: ^4.2.0
+  cached_network_image: ^3.2.3
+  carousel_slider: ^4.2.1
   cloud_firestore: ^4.7.1
   country_picker: ^2.0.20
   cupertino_icons: ^1.0.2
   curved_navigation_bar: ^1.0.3
+  easy_pdf_viewer: ^1.0.6
   email_validator: ^2.1.17
+  emoji_picker_flutter: ^1.6.1
+  file_picker: null
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.2
@@ -42,12 +47,15 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_local_notifications: ^14.1.1
+  flutter_neumorphic: ^3.2.0
+  flutter_notification_channel: ^2.0.0
   flutter_spinkit: null
   flutter_svg: null
   google_fonts: null
-  http:
+  http: null
   image_picker: ^0.8.7+5
   intl: ^0.18.1
+  lottie:
   open_mail_app: ^0.4.5
   pinput: ^2.2.31
   provider: ^6.0.5
@@ -88,6 +96,10 @@ flutter:
     - Asset/companyIncorparatin.png
     - Asset/tax.jpg
     - Asset/audit.png
+    - Animations/97240-success.json
+    - Animations/143479-scan-unlock.json
+    - Animations/143951-newsletter.json
+    - Animations/94303-failed.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
