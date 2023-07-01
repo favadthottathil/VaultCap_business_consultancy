@@ -33,7 +33,7 @@ class AuthProvider extends ChangeNotifier {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(
+        MaterialPageRoute( 
           builder: (context) => const SignOption(),
         ),
         (route) => false);
@@ -188,28 +188,5 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  // DATABASE OPERATION
-
-  // Future<bool> checkExistingUser() async {
-  //   DocumentSnapshot snapshot = await _firebaseFireStore.collection("users").doc(_uid).get();
-
-  //   if (snapshot.exists) {
-  //     log('USER EXIST');
-
-  //     return true;
-  //   } else {
-  //     log('NEW USER');
-  //     return false;
-  //   }
-  // }
-
-  // Future<void> updateUser() async {
-  //   dynamic currentUser = _fb.currentUser;
-
-  //   if (currentUser != null) {
-  //     dynamic user = await _firebaseFireStore.collection("users").doc(_uid).get();
-
-  //     currentUser = user;
-  //   }
-  // }
+ 
 }

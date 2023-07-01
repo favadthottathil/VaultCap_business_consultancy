@@ -7,6 +7,9 @@ import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
+import 'package:taxverse/controller/providers/chatroom_provider.dart';
+import 'package:taxverse/controller/providers/gst3Provider.dart';
+import 'package:taxverse/controller/providers/verification_provider.dart';
 import 'package:taxverse/view/gst_registraion/verification_faille.dart';
 import 'package:taxverse/view/gst_registraion/verified_success.dart';
 import 'package:taxverse/view/splash.dart';
@@ -24,15 +27,8 @@ void main() async {
   );
   log('Notification Channel $result');
 
-  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-
   runApp(const MyApp());
 }
-
-// @pragma('vm:entry-point')
-// Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//   await Firebase.initializeApp();
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,6 +37,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<GstThirdScreenProvider>(
+          create: (context) => GstThirdScreenProvider(),
+        ),
+        ChangeNotifierProvider<ChatRoomProvider>(
+          create: (context) => ChatRoomProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VerificationSuccessProvider(),
+        ),
         ChangeNotifierProvider(
           create: (_) => AuthProvider(FirebaseAuth.instance),
         ),

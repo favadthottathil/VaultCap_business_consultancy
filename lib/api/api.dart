@@ -37,4 +37,13 @@ class APIs {
       log('errorrrr === $e');
     }
   }
+
+ static Stream<QuerySnapshot<Map<String, dynamic>>> getClientGstData() {
+    final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+    return FirebaseFirestore.instance.collection('ClientGstInfo').where('Email', isEqualTo: userEmail).snapshots();
+  }
+
+
+
 }

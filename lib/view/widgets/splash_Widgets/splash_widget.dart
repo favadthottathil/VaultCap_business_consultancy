@@ -88,7 +88,7 @@ class GetStartedContainer extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 35),
         width: double.infinity,
-        height: 0.088 * mediaQuery.size.height,
+        height: 0.086 * mediaQuery.size.height,
         decoration: BoxDecoration(
           color: const Color(0xff000000),
           borderRadius: BorderRadius.circular(20),

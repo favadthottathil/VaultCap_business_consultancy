@@ -30,8 +30,11 @@ environment:
 dependencies:
   animated_custom_dropdown: ^1.5.0
   app_settings: ^4.2.0
+  awesome_dialog: null
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
+  casa_vertical_stepper: ^0.0.5
+  circular_profile_avatar: ^2.0.5
   cloud_firestore: ^4.7.1
   country_picker: ^2.0.20
   cupertino_icons: ^1.0.2
@@ -51,14 +54,18 @@ dependencies:
   flutter_notification_channel: ^2.0.0
   flutter_spinkit: null
   flutter_svg: null
+  get: ^4.6.5
   google_fonts: null
   http: null
   image_picker: ^0.8.7+5
   intl: ^0.18.1
-  lottie:
+  lottie: null
   open_mail_app: ^0.4.5
+  percent_indicator: ^4.2.3
   pinput: ^2.2.31
   provider: ^6.0.5
+  rive: ^0.9.1
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -100,6 +107,10 @@ flutter:
     - Animations/143479-scan-unlock.json
     - Animations/143951-newsletter.json
     - Animations/94303-failed.json
+    - Asset/whatsapp.svg
+    - Asset/phone-call-svgrepo-com.svg
+    - Asset/insta.svg
+    - Asset/facebook-logo-meta-2-svgrepo-com.svg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

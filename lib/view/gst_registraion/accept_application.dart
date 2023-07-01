@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taxverse/constants.dart';
+import 'package:taxverse/view/mainscreens/home_screen.dart';
+import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 
 class WaitingScreen extends StatelessWidget {
   const WaitingScreen({super.key});
@@ -8,6 +10,7 @@ class WaitingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -47,24 +50,32 @@ class WaitingScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.1),
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 35),
-                // padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.2),
-                width: double.infinity,
-                height: 0.088 * mediaQuery.size.height,
-                decoration: BoxDecoration(
-                  color: const Color(0xff000000),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Back To Home',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: whiteColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      height: 1.5,
+              child: InkWell(
+                onTap: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNav(),
+                    ),
+                    (route) => false),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+                  // padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.2),
+                  width: double.infinity,
+                  height: 0.088 * mediaQuery.size.height,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff000000),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Back To Home',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: whiteColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        height: 1.5,
+                      ),
                     ),
                   ),
                 ),

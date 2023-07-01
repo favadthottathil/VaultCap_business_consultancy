@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:taxverse/api/api.dart';
 import 'package:taxverse/api/messaging_api.dart';
 import 'package:taxverse/constants.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
@@ -13,7 +14,7 @@ import 'package:taxverse/db/userinfo.dart';
 
 import 'package:taxverse/view/chat/chat_ui.dart';
 import 'package:taxverse/view/gst_registraion/gst_1.dart';
-import 'package:taxverse/view/widgets/notification_screen.dart';
+import 'package:taxverse/view/mainscreens/checkapplication_status.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -116,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      final authprovider = Provider.of<AuthProvider>(context,listen: false);
+      final authprovider = Provider.of<AuthProvider>(context, listen: false);
       authprovider.setLoading = false;
     });
     return SafeArea(
@@ -147,18 +148,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const NotificationScreen(),
-                                  ));
+                            onTap: () async {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const NotificationScreen(),
+                              //   ),
+                              // );
+                              await APIs.updateActiveStatus(false);
+                              context.read<AuthProvider>().logOut(context);
                             },
-                            child: SvgPicture.asset(
-                              'Asset/notification.svg',
-                              height: 40,
-                              width: 40,
-                              // ignore: deprecated_member_use
+                            child: Icon(
+                              Icons.logout,
                               color: Colors.red,
                             ),
                           ),
@@ -216,34 +217,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           )
                         ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 38, left: 25, right: 25),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: TextFormField(
-                        controller: searchController,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                          border: InputBorder.none,
-                          filled: true,
-                          fillColor: blackColor.withOpacity(0.1),
-                          hintText: 'Search Service',
-                          hintStyle: GoogleFonts.poppins(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5,
-                            color: const Color(0xa0000000),
-                          ),
-                          prefix: Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            child: SvgPicture.asset(
-                              'Asset/img_search.svg',
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ),
@@ -309,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const GstFirstScreen(),
+                                              builder: (context) => const CheckStatus(),
                                             ),
                                           );
                                         },

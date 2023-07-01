@@ -149,8 +149,12 @@ class UserData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(left: 10, top: 19),
+      padding: EdgeInsets.only(
+        left: size.width * 0.05,
+        top: 19,
+      ),
       child: Text(
         text,
         overflow: TextOverflow.ellipsis,
@@ -158,7 +162,7 @@ class UserData extends StatelessWidget {
         style: GoogleFonts.poppins(
           color: blackColor,
           fontSize: 15,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
@@ -170,8 +174,9 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 9),
+      padding: EdgeInsets.only(top: size.height * 0.02),
       child: Divider(
         height: 1,
         thickness: 1,

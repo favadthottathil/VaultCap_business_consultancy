@@ -32,6 +32,11 @@ class AppStyle {
     color: blackColor,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle poppinsBoldGreen20 = GoogleFonts.poppins(
+    fontSize: 20,
+    color: Colors.green,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle poppinsBold16 = GoogleFonts.poppins(
     fontSize: 16,
     color: blackColor,
@@ -90,3 +95,5 @@ class AppStyle {
 }
 
 String saveTokenToDatabase = '';
+
+String userNameForGstField = '';

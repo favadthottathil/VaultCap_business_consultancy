@@ -1,16 +1,15 @@
 import 'dart:developer';
-import 'dart:io';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
+import 'package:taxverse/view/dashboard_list.dart';
 import 'package:taxverse/view/mainscreens/home_screen.dart';
 import 'package:taxverse/view/mainscreens/news.dart';
-import 'package:taxverse/view/mainscreens/user.dart';
+import 'package:taxverse/view/mainscreens/user_account.dart';
 import 'package:taxverse/view/sign_option.dart';
 
 class BottomNav extends StatefulWidget {
@@ -23,15 +22,18 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
   int index = 0;
 
-  final screen = [
+  var screen = [
     const HomeScreen(),
+    const DashBoardListTile(),
     const News(),
-    const User1(),
+    UserProfile(),
   ];
 
   @override
   void initState() {
     super.initState();
+
+    // ClientData.clientdata;
 
     APIs.getDocumetID().then((value) {
       WidgetsBinding.instance.addObserver(this);
@@ -78,6 +80,11 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
                 items: const [
                   Icon(
                     Icons.home,
+                    size: 35,
+                    color: whiteColor,
+                  ),
+                  Icon(
+                    Icons.dashboard_outlined,
                     size: 35,
                     color: whiteColor,
                   ),

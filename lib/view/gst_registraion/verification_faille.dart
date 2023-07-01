@@ -46,7 +46,7 @@ class VerificationFailed extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.1),
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 35),
+                margin:  EdgeInsets.symmetric(horizontal: mediaQuery.size.width * 0.1),
                 // padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.2),
                 width: double.infinity,
                 height: 0.088 * mediaQuery.size.height,

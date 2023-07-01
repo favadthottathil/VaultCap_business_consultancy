@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:taxverse/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/db/userinfo.dart';
 import 'package:taxverse/utils/client_id.dart';
@@ -18,7 +19,7 @@ class AuthSignUp {
 
   static Future<void> signUp(AuthProvider provider, TextEditingController emailcontroller, TextEditingController passcontroller, TextEditingController confirmController, TextEditingController namecontroller, BuildContext context) async {
     if (passConfirmed(passcontroller, confirmController)) {
-      final msg = await provider.signOut(emailcontroller.text, passcontroller.text,context);
+      final msg = await provider.signOut(emailcontroller.text, passcontroller.text, context);
 
       if (msg == '') {
         log(userName);
@@ -42,9 +43,12 @@ class AuthSignUp {
   }
 
   static Future addUserDetails(String name, String email, String password) async {
+    userNameForGstField = name;
+
     final CollectionReference clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
 
     // create new document in the 'ClientDetails' collection
+    final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     final DocumentReference newClientDocRef = await clientCollection.add({
       'Name': name,
@@ -52,6 +56,11 @@ class AuthSignUp {
       'Password': password,
       'Status': 'Unavailable',
       'is_online': false,
+      'phone_number': '',
+      'Address': '',
+      'time':time,
+      'place': '',
+      'Isverified': '',
     });
 
     // Retrieve the auto-generatied document Id
@@ -64,7 +73,7 @@ class AuthSignUp {
 
 class AuthSignIn {
   static void signIn(AuthProvider provider, String email, String pass, BuildContext context) async {
-    final msg = await provider.signIn(email, pass,context);
+    final msg = await provider.signIn(email, pass, context);
 
     if (msg == '') return;
 

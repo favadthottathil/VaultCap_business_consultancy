@@ -44,7 +44,7 @@ class SplashContainer extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: [
-          sizedBoxHeight20,
+          SizedBox(height: mediaQuery.size.height * 0.01),
           SizedBox(
             width: double.infinity,
             height: 0.4 * mediaQuery.size.height,
