@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 
 class VerificationFailed extends StatelessWidget {
   const VerificationFailed({super.key});

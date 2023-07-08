@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
-import 'package:taxverse/utils/constand/sizedbox.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'widgets/splash_Widgets/splash_widget.dart';
 
 class Splash extends StatefulWidget {

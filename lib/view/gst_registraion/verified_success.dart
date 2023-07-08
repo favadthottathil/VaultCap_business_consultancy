@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/verification_provider.dart';
 
 class VerifiedSuccess extends StatelessWidget {

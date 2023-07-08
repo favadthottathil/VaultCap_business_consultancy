@@ -8,20 +8,15 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/chatroom_provider.dart';
 import 'package:taxverse/view/widgets/chat_widgets.dart';
 
-class ChatRoom extends StatefulWidget {
-  const ChatRoom({
+class ChatRoom extends StatelessWidget {
+   ChatRoom({
     super.key,
   });
 
-  @override
-  State<ChatRoom> createState() => _ChatRoomState();
-}
-
-class _ChatRoomState extends State<ChatRoom> {
   String adminMessageToken = '';
 
   final TextEditingController _message = TextEditingController();
@@ -30,24 +25,14 @@ class _ChatRoomState extends State<ChatRoom> {
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  String currentUserId = '';
+  
 
   // getAdminId() async {
-  //   User? user = auth.currentUser;
-
-  //   if (user != null) {
-  //     currentUserId = user.email!;
-  //   }
-  // }
-
-  @override
-  void initState() {
-    super.initState();
-    curentUserEmail;
-  }
-
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      curentUserEmail;
+    });
     final size = MediaQuery.of(context).size;
     return Consumer<ChatRoomProvider>(builder: (context, provider, child) {
       return GestureDetector(

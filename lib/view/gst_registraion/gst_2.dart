@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/view/gst_registraion/gst_3.dart';
-import 'package:taxverse/view/widgets/services/gst_2_widgets.dart';
+import 'package:taxverse/view/widgets/services/gst_second_widgets.dart';
 
 class GstSecondScreen extends StatefulWidget {
   const GstSecondScreen({
@@ -95,7 +95,7 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const GstThirdScreen(),
+          builder: (context) =>  GstThirdScreen(),
         ),
       );
     }

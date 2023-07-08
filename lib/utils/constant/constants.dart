@@ -6,9 +6,7 @@ class ImageConstant {
 
   static String imgArrowleft2 = 'Asset/img_arrowleft2.svg';
 
-  static String dp = 'Asset/dp.png';
-
-  static String dpEdit = 'Asset/add_dp.svg';
+  
 
   static String taxverseLogo = 'Asset/TAXVERSE LOGO-1.png';
 
@@ -37,6 +35,11 @@ class AppStyle {
     color: Colors.green,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle poppinsBoldGreen12 = GoogleFonts.poppins(
+    fontSize: 12,
+    color: Colors.green,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle poppinsBold16 = GoogleFonts.poppins(
     fontSize: 16,
     color: blackColor,
@@ -55,6 +58,11 @@ class AppStyle {
   static TextStyle poppinsBold12 = GoogleFonts.poppins(
     fontSize: 12,
     color: blackColor,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle poppinsBoldRed12 = GoogleFonts.poppins(
+    fontSize: 12,
+    color: Colors.red,
     fontWeight: FontWeight.w700,
   );
   static TextStyle poppinsRegular16 = GoogleFonts.poppins(

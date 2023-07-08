@@ -1,19 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/widgets/breaking_news_card.dart';
 import 'package:taxverse/view/widgets/news_list_tile.dart';
 
-class News extends StatefulWidget {
-  const News({super.key});
+class News extends StatelessWidget {
+  News({super.key});
 
-  @override
-  State<News> createState() => _NewsState();
-}
+  final newsData = FirebaseFirestore.instance
+      .collection('news')
+      .orderBy(
+        'time',
+        descending: true,
+      )
+      .snapshots();
 
-class _NewsState extends State<News> {
-  final newsData = FirebaseFirestore.instance.collection('news').snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,7 @@ class _NewsState extends State<News> {
         stream: newsData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
-            var news = snapshot.data!.docs;
+            var news = snapshot.data?.docs ?? [];
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -48,7 +50,9 @@ class _NewsState extends State<News> {
                     const SizedBox(height: 20),
                     CarouselSlider.builder(
                       itemCount: news.length,
-                      itemBuilder: (context, index, realIndex) => BreakingNewsCard(news: news[index]),
+                      itemBuilder: (context, index, realIndex) => BreakingNewsCard(
+                        news: news[index],
+                      ),
                       options: CarouselOptions(
                         aspectRatio: 16 / 9,
                         enableInfiniteScroll: false,

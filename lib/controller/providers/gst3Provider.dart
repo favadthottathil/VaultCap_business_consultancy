@@ -6,11 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/widgets/services/gst_3_widgets.dart';
+import 'package:taxverse/view/widgets/services/gst_third_widgets.dart';
 
 class GstThirdScreenProvider extends ChangeNotifier {
   final CollectionReference gstClientInformaion = FirebaseFirestore.instance.collection('ClientGstInfo');
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  int gstDocumentCount = 0;
 
   Map<String, DocumentUploadData> documentUploadDataMap = {
     'PassportSizePhoto': DocumentUploadData(),
@@ -54,6 +56,9 @@ class GstThirdScreenProvider extends ChangeNotifier {
       gstClientInformaion.doc(ClientInformation.gstId).update({
         fieldName: downloadLink,
       });
+
+      gstDocumentCount = gstDocumentCount + 1;
+      notifyListeners();
 
       if (documentUploadData != null) {
         documentUploadData.showLoading = false;
@@ -103,9 +108,13 @@ class GstThirdScreenProvider extends ChangeNotifier {
     if (querySnapshot1.docs.isNotEmpty) {
       await querySnapshot1.docs.first.reference.update({
         'statuspercentage': 0,
-        'verifystatus': 0,
+        'verifystatus': 3,
         'isRegistrationCompleted': false,
         'showprogress': false,
+        'gst_number': '',
+        'gstcertificate': '',
+        'application_verified': false,
+        'application_status': '',
       });
 
       log('profile updated');

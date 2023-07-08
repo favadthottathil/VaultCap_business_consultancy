@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/api/api_const.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/view/Appoinments/timeslot.dart';
 import 'package:taxverse/view/chat/chat_ui.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 
 class VerificationSuccessProvider extends ChangeNotifier {
-
   final CollectionReference appointmentsCollection = FirebaseFirestore.instance.collection('appointments');
 
   DateTime? picked;
@@ -28,15 +28,21 @@ class VerificationSuccessProvider extends ChangeNotifier {
     TimeSlot(time: '12:00 AM', isTaken: false),
   ];
 
-  bookAppoinment() async {
+  bookAppoinment(String serviceName) async {
     if (selectedDate.isNotEmpty && selectedTime.isNotEmpty) {
+      // final email = FirebaseAuth.instance.currentUser?.email ?? 'no email';
+
       try {
         await FirebaseFirestore.instance.collection('appointments').add({
           'date': selectedDate,
           'time': selectedTime,
           'username': userDisplayName,
-          'clientId': ClientInformation.clientId,
-          'gstId': ClientInformation.gstId,
+          // 'clientId': ClientInformation.clientId,
+          // 'gstId': ClientInformation.gstId,
+          'name' : currentUserName,
+
+          'gst Service' : serviceName,
+          // 'id': email,                   
         });
       } catch (e) {
         log('failed to Appoinment $e');
@@ -157,7 +163,7 @@ class VerificationSuccessProvider extends ChangeNotifier {
                 const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
-                    bookAppoinment();
+                    bookAppoinment('GST Registration');
 
                     updateVerifiedStatus();
 
@@ -223,7 +229,7 @@ class VerificationSuccessProvider extends ChangeNotifier {
                                   onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const ChatRoom(),
+                                      builder: (context) => ChatRoom(),
                                     ),
                                   ),
                                   child: Text(
@@ -272,5 +278,4 @@ class VerificationSuccessProvider extends ChangeNotifier {
       });
     }
   }
-  
 }

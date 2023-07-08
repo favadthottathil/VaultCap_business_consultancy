@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});

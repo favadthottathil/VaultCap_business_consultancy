@@ -1,8 +1,8 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/gst3Provider.dart';
 import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/widgets/services/gst_3_widgets.dart';
+import 'package:taxverse/view/widgets/services/gst_third_widgets.dart';
 import 'package:provider/provider.dart';
 
 class GstThirdScreen extends StatelessWidget {
@@ -86,7 +86,16 @@ class GstThirdScreen extends StatelessWidget {
                               documentUploadData: provider.documentUploadDataMap['BUILDING TAX RECEIPT']!,
                             ),
                             SizedBox(height: mediaQuery.size.height * 0.03),
-                            gst3BackAndForward(context: context, onpressed: provider.addUserVerified())
+                            if (provider.gstDocumentCount == 6)
+                              gst3BackAndForward(
+                                context: context,
+                                onpressed: provider.addUserVerified(),
+                              )
+                            else
+                              Text(
+                                'upload all documents to continue.....',
+                                style: AppStyle.poppinsBoldRed12,
+                              ),
                           ],
                         );
                       }),

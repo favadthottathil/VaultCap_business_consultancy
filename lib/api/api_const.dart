@@ -8,4 +8,8 @@ FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
 FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
+var currentUserName = '';
+
 final curentUserEmail = firebaseAuth.currentUser!.email;
+
+

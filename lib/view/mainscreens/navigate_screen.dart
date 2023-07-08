@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/view/dashboard_list.dart';
 import 'package:taxverse/view/mainscreens/home_screen.dart';
@@ -23,9 +23,9 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
   int index = 0;
 
   var screen = [
-    const HomeScreen(),
+    HomeScreen(),
     const DashBoardListTile(),
-    const News(),
+    News(),
     UserProfile(),
   ];
 
@@ -45,10 +45,8 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      log('resumed');
       APIs.updateActiveStatus(true);
     } else {
-      log('paused');
       APIs.updateActiveStatus(false);
     }
     super.didChangeAppLifecycleState(state);

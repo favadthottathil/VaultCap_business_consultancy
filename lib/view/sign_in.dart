@@ -1,7 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/utils/constand/sizedbox.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/view/reset_pass.dart';
 import 'widgets/signInwidgets/sign_widgets.dart';

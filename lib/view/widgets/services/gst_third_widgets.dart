@@ -1,79 +1,77 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/gst_registraion/accept_application.dart';
-import 'package:taxverse/view/gst_registraion/gst_3.dart';
 
 class DocumentUploadData {
   bool showLoading = false;
   bool isImageUploaded = false;
 }
 
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
 gst3BackAndForward({required BuildContext context, required Future onpressed}) {
   final size = MediaQuery.of(context).size;
   return Padding(
     padding: EdgeInsets.only(right: size.width * 0.04),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        InkWell(
-          onTap: () => Navigator.pop(context),
-          child: Text(
-            'Back',
-            style: AppStyle.poppinsBold16,
+    child: Align(
+      alignment: Alignment.centerRight,
+      child: NeumorphicButton(
+        onPressed: () {
+          AwesomeDialog(
+            context: context,
+            dialogType: DialogType.warning,
+            animType: AnimType.scale,
+            showCloseIcon: true,
+            title: 'Confirm',
+            desc: 'Do you Do really want to confirm',
+            btnOkColor: Colors.green,
+            btnOkText: 'Yes',
+            buttonsTextStyle: AppStyle.poppinsBold16,
+            dismissOnBackKeyPress: true,
+            titleTextStyle: AppStyle.poppinsBold18,
+            descTextStyle: AppStyle.poppinsBold16,
+            transitionAnimationDuration: const Duration(milliseconds: 500),
+            btnOkOnPress: () {
+              onpressed;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const WaitingScreen(),
+                ),
+              );
+            },
+            buttonsBorderRadius: BorderRadius.circular(20),
+          ).show();
+        },
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: const NeumorphicBoxShape.circle(),
+          depth: 8,
+          lightSource: LightSource.topLeft,
+          color: blackColor.withOpacity(0.1),
+        ),
+        child: Container(
+          height: size.height * 0.09,
+          width: size.height * 0.09,
+          decoration: const BoxDecoration(shape: BoxShape.circle, color: blackColor),
+          child: const Icon(
+            Icons.arrow_forward_sharp,
+            color: whiteColor,
+            size: 40,
           ),
         ),
-        NeumorphicButton(
-          onPressed: () {
-            AwesomeDialog(
-              context: context,
-              dialogType: DialogType.warning,
-              animType: AnimType.scale,
-              showCloseIcon: true,
-              title: 'Confirm',
-              desc: 'Do you Do really want to confirm',
-              btnOkColor: Colors.green,
-              btnOkText: 'Yes',
-              buttonsTextStyle: AppStyle.poppinsBold16,
-              dismissOnBackKeyPress: true,
-              titleTextStyle: AppStyle.poppinsBold18,
-              descTextStyle: AppStyle.poppinsBold16,
-              transitionAnimationDuration: const Duration(milliseconds: 500),
-              btnOkOnPress: () {
-                onpressed;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const WaitingScreen(),
-                  ),
-                );
-              },
-              buttonsBorderRadius: BorderRadius.circular(20),
-            ).show();
-          },
-          style: NeumorphicStyle(
-            shape: NeumorphicShape.concave,
-            boxShape: const NeumorphicBoxShape.circle(),
-            depth: 8,
-            lightSource: LightSource.topLeft,
-            color: blackColor.withOpacity(0.1),
-          ),
-          child: Container(
-            height: size.height * 0.09,
-            width: size.height * 0.09,
-            decoration: const BoxDecoration(shape: BoxShape.circle, color: blackColor),
-            child: const Icon(
-              Icons.arrow_forward_sharp,
-              color: whiteColor,
-              size: 40,
-            ),
-          ),
-        ),
-      ],
+      ),
     ),
   );
 }
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
 class Gst3Head extends StatelessWidget {
   const Gst3Head({
@@ -100,6 +98,10 @@ class Gst3Head extends StatelessWidget {
     );
   }
 }
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
 class DocumentUpload extends StatelessWidget {
   const DocumentUpload({
@@ -163,3 +165,9 @@ class DocumentUpload extends StatelessWidget {
     );
   }
 }
+
+
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 

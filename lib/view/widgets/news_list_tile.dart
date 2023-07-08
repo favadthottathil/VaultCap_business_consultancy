@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/news_details.dart';
 
 class NewsListTile extends StatelessWidget {
@@ -34,18 +34,21 @@ class NewsListTile extends StatelessWidget {
           children: [
             Flexible(
               flex: 3,
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 width: 100,
-                child: CachedNetworkImage(
-                  imageUrl: news['image'],
-                  placeholder: (context, url) => const Center(
-                    child: SpinKitThreeBounce(
-                      color: blackColor,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: CachedNetworkImage(
+                    imageUrl: news['image'],
+                    placeholder: (context, url) => const Center(
+                      child: SpinKitThreeBounce(
+                        color: blackColor,
+                      ),
                     ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
+                    fit: BoxFit.fill,
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
-                  fit: BoxFit.fill,
                 ),
               ),
             ),

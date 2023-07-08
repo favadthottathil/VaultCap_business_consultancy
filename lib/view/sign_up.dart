@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/auth.dart';
-import 'package:taxverse/constants.dart';
-import 'package:taxverse/utils/constand/sizedbox.dart';
+import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'widgets/signUp_widgets/signup_widgets.dart';
 

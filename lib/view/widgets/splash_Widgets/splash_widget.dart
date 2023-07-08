@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 
 class SplashWidgets {
+
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
+
   static SizedBox splashTextContainer2(MediaQueryData mediaQuery) {
     return SizedBox(
       width: 0.9 * mediaQuery.size.width,
@@ -14,6 +21,10 @@ class SplashWidgets {
       ),
     );
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
   static Container splashTextContainer(MediaQueryData mediaQuery) {
     return Container(
@@ -27,6 +38,10 @@ class SplashWidgets {
       ),
     );
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
   static Stack stackLogoAndImage(MediaQueryData mediaQuery) {
     return Stack(
@@ -64,6 +79,10 @@ class SplashWidgets {
       ],
     );
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 }
 
 class GetStartedContainer extends StatelessWidget {
@@ -109,3 +128,8 @@ class GetStartedContainer extends StatelessWidget {
     );
   }
 }
+
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 

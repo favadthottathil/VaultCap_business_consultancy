@@ -1,7 +1,9 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:taxverse/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/controller/providers/datetimeprovider.dart';
 import 'package:taxverse/view/gst_registraion/gst_2.dart';
-import 'package:taxverse/view/widgets/services/gst_1%20_widgets.dart';
+import 'package:taxverse/view/widgets/services/gst_first_widgets.dart';
 
 class GstFirstScreen extends StatefulWidget {
   const GstFirstScreen({super.key});
@@ -16,7 +18,7 @@ class _GstFirstScreenState extends State<GstFirstScreen> {
   final businessNameController = TextEditingController();
 
   final businessStartDate = TextEditingController();
-
+  
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -43,6 +45,17 @@ class _GstFirstScreenState extends State<GstFirstScreen> {
         ),
       );
     }
+  }
+
+  Future<DateTime?> dateAndTime() async {
+    DateTime? pickdate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1950),
+      lastDate: DateTime(2023),
+    );
+
+    return pickdate;
   }
 
   @override
@@ -75,15 +88,24 @@ class _GstFirstScreenState extends State<GstFirstScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Gst1TextField(businessNameController: businessNameController, size: size, hintText: 'Business Name'),
+                        Gst1TextField(
+                          businessNameController: businessNameController,
+                          size: size,
+                          hintText: 'Business Name',
+                          icon: Icons.person,
+                        ),
                         SizedBox(height: size.height * 0.03),
                         customDrop(controller: businessTypeController),
                         Gst1TextField(
                           businessNameController: businessStartDate,
                           size: size,
-                          hintText: 'Business StartDate',
+                          icon: Icons.calendar_today_rounded,
+                          hintText: 'Select Date',
                           marginTop: size.height * 0.025,
                           keybordType: TextInputType.datetime,
+                          dateTime: () {
+                            Provider.of<DateTimeProvider>(context, listen: false).setDateAndTime(context, businessStartDate);
+                          },
                         ),
                         SizedBox(height: size.height * 0.06),
                         NextAndPreviousButton(

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/news_details.dart';
 
 class BreakingNewsCard extends StatelessWidget {
@@ -22,9 +22,11 @@ class BreakingNewsCard extends StatelessWidget {
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: blackColor,
           borderRadius: BorderRadius.circular(30),
-          image: DecorationImage(image: NetworkImage(news['image']), fit: BoxFit.cover),
+          image: DecorationImage(
+            image: NetworkImage(news['image']),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Container(
           decoration: BoxDecoration(

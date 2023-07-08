@@ -1,14 +1,19 @@
-import 'dart:async';
-
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/sign_in.dart';
 import 'package:taxverse/view/widgets/frosted_glass.dart';
 
 class SignUpWigets {
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
+
+
   static InkWell alreadyhaveAccount(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -42,6 +47,11 @@ class SignUpWigets {
     );
   }
 
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
   static Container signUpbutton(MediaQueryData mediaQuery) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 35),
@@ -66,6 +76,10 @@ class SignUpWigets {
     );
   }
 
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
   static SizedBox signUpLogo() {
     return SizedBox(
       width: double.infinity,
@@ -78,6 +92,10 @@ class SignUpWigets {
       ),
     );
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
   static Center loadingScreen() {
     // Timer(const Duration(seconds: 10), () {});
@@ -94,6 +112,10 @@ class SignUpWigets {
     );
   }
 
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
   static String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
       return 'Email is required';
@@ -103,6 +125,12 @@ class SignUpWigets {
     }
     return null;
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
+
 }
 
 class CustomTextFieldforRegister extends StatelessWidget {
@@ -147,3 +175,8 @@ class CustomTextFieldforRegister extends StatelessWidget {
     );
   }
 }
+
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 

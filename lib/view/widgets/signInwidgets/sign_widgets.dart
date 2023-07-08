@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taxverse/api/auth.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/view/sign_up.dart';
 
 class SignInWidgets {
+
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
+
+
   static InkWell goToSignUp(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -35,6 +43,11 @@ class SignInWidgets {
       ),
     );
   }
+
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
   static InkWell signInButton(
     AuthProvider authprovider,
@@ -66,6 +79,11 @@ class SignInWidgets {
     );
   }
 
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
   static Text forgetPassword() {
     return Text(
       'Forgot Password',
@@ -73,6 +91,10 @@ class SignInWidgets {
       style: AppStyle.poppinsBold18,
     );
   }
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 
   static SizedBox signInImage(MediaQueryData mediaQuery) {
     return SizedBox(
@@ -85,6 +107,10 @@ class SignInWidgets {
     );
   }
 
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
   static Text signInText() {
     return Text(
       'Welcome Back!',
@@ -92,4 +118,9 @@ class SignInWidgets {
       style: AppStyle.poppinsBold20,
     );
   }
+
+
+  // <<---------------------------------------------------------->>
+
+  //                       Next widget 
 }

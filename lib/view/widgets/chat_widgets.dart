@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/messaging_api.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/chatroom_provider.dart';
 import 'package:taxverse/utils/date_util.dart';
 
@@ -174,6 +174,10 @@ class MessageCard extends StatelessWidget {
   }
 }
 
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
 _buildTickIcon(String read) {
   if (read.isNotEmpty) {
     return const Icon(
@@ -189,34 +193,11 @@ _buildTickIcon(String read) {
   }
 }
 
-// class _OptionItme extends StatelessWidget {
-//   final Icon icon;
+// <<---------------------------------------------------------->>
 
-//   final String name;
+  //                       Next widget 
 
-//   final VoidCallback onTap;
 
-//   const _OptionItme({required this.icon, required this.name, required this.onTap});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return InkWell(
-//       onTap: onTap,
-//       child: Padding(
-//         padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
-//         child: Row(
-//           children: [
-//             icon,
-//             Text(
-//               '    $name',
-//               style: AppStyle.poppinsBold12,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 Widget chatInput({
   required TextEditingController message,
@@ -323,3 +304,8 @@ Widget chatInput({
     }),
   );
 }
+
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 

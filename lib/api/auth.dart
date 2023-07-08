@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/db/userinfo.dart';
 import 'package:taxverse/utils/client_id.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/utils/utils.dart';
 
 class AuthSignUp {
@@ -17,14 +15,19 @@ class AuthSignUp {
     }
   }
 
-  static Future<void> signUp(AuthProvider provider, TextEditingController emailcontroller, TextEditingController passcontroller, TextEditingController confirmController, TextEditingController namecontroller, BuildContext context) async {
+  static Future<void> signUp(
+    AuthProvider provider,
+    TextEditingController emailcontroller,
+    TextEditingController passcontroller,
+    TextEditingController confirmController,
+    TextEditingController namecontroller,
+    BuildContext context,
+  ) async {
     if (passConfirmed(passcontroller, confirmController)) {
       final msg = await provider.signOut(emailcontroller.text, passcontroller.text, context);
 
       if (msg == '') {
-        log(userName);
         userName = namecontroller.text.trim();
-        log(userName);
 
         addUserDetails(
           namecontroller.text.trim(),
@@ -58,7 +61,7 @@ class AuthSignUp {
       'is_online': false,
       'phone_number': '',
       'Address': '',
-      'time':time,
+      'time': time,
       'place': '',
       'Isverified': '',
     });
@@ -77,12 +80,6 @@ class AuthSignIn {
 
     if (msg == '') return;
 
-    // ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   SnackBar(
-    //     content: Text(msg),
-    //   ),
-    // );
     showSnackBar(context, 'Authenfication Failed');
   }
 }

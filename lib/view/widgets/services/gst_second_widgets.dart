@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 
 
 
@@ -58,6 +58,10 @@ class Gst2textField extends StatelessWidget {
   }
 }
 
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 
+
 class Gst2Heading extends StatelessWidget {
   const Gst2Heading({
     super.key,
@@ -82,3 +86,7 @@ class Gst2Heading extends StatelessWidget {
     );
   }
 }
+
+// <<---------------------------------------------------------->>
+
+  //                       Next widget 

@@ -3,53 +3,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:taxverse/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:taxverse/controller/providers/dashboard_provider.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'widgets/dashboardWidgets/dashboard_widgets.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key, required this.data});
+// ignore: must_be_immutable
+class Dashboard extends StatelessWidget {
+  Dashboard({super.key, required this.data});
 
   final QueryDocumentSnapshot<Map<String, dynamic>> data;
 
-  @override
-  State<Dashboard> createState() => _DashboardState();
-}
+  String? downloadError;
 
-class _DashboardState extends State<Dashboard> {
-  int currentStep = 1;
-
-  int temp = 1;
-
-  bool statusUpdated = false;
-
-  bool isAdmin = true;
-
-  countinueStep() {
-    if (currentStep < temp) {
-      setState(() {
-        currentStep = currentStep + 1;
-      });
-    }
-  }
-
-  cancelStep() {
-    if (currentStep > 0) {
-      setState(() {
-        currentStep = currentStep - 1;
-      });
-    }
-  }
-
-  onStepTapped(int value) {
-    log('onstepTapped Temp  $temp');
-    log('onStepTapped value $value');
-    if (value <= temp) {
-      setState(() {
-        currentStep = value;
-        log(currentStep.toString());
-      });
-    }
-  }
+  // bool statusUpdated = false;
+  // double? _progress;
 
   Widget controlsBuilder(context, details) {
     return Row(
@@ -62,33 +31,57 @@ class _DashboardState extends State<Dashboard> {
   Stream<QuerySnapshot<Map<String, dynamic>>> clientData() {
     final userEmail = FirebaseAuth.instance.currentUser!.email;
 
-    return FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: userEmail).limit(1).snapshots();
+    return FirebaseFirestore.instance
+        .collection('ClientDetails')
+        .where(
+          'Email',
+          isEqualTo: userEmail,
+        )
+        .limit(1)
+        .snapshots();
   }
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<DashBoardProvider>(context, listen: false).checkPermission();
+    });
+
+    var temp = Provider.of<DashBoardProvider>(context, listen: false).temp;
+
+    var currentStep = Provider.of<DashBoardProvider>(context, listen: false).currentStep;
+
     final size = MediaQuery.of(context).size;
 
-    final statusPercentage = widget.data['statuspercentage'];
+    final statusPercentage = data['statuspercentage'];
 
-    currentStep = widget.data['verifystatus'];
-    temp = currentStep;
+    temp = data['verifystatus'];
+    if (temp > 2) {
+      currentStep = 2;
+    } else {
+      currentStep = temp;
+    }
 
     return StreamBuilder(
-        stream: clientData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final data = snapshot.data?.docs ?? [];
+      stream: clientData(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          // final clientdata = snapshot.data?.docs ?? [];
 
-            final verified = data[0]['Isverified'];
-            bool isRegistrationCompleted = widget.data['isRegistrationCompleted'];
-            bool showProgress = widget.data['showprogress'];
+          // final verified = clientdata[0]['Isverified'];
+          var verified = data['application_status'];
+          bool isRegistrationCompleted = data['isRegistrationCompleted'];
+          bool showProgress = data['showprogress'];
 
-            log('$isRegistrationCompleted');
+          final gstNumber = data['gst_number'];
+          final gstdoc = data['gstcertificate'];
 
-            return Scaffold(
-              body: SafeArea(
-                child: Padding(
+          log('$isRegistrationCompleted');
+
+          return Scaffold(
+            body: SafeArea(
+              child: Consumer<DashBoardProvider>(builder: (context, provider, child) {
+                return Padding(
                   padding: EdgeInsets.only(left: size.width * 0.07),
                   child: SingleChildScrollView(
                     child: Column(
@@ -130,26 +123,32 @@ class _DashboardState extends State<Dashboard> {
                         Stepper(
                           physics: const BouncingScrollPhysics(),
                           currentStep: currentStep,
-                          onStepTapped: onStepTapped,
+                          onStepTapped: provider.onStepTapped,
                           controlsBuilder: controlsBuilder,
                           steps: [
                             Step(
-                              title: const Text('Checking Information'),
-                              content: const Text('We are Checking Your Information'),
-                              isActive: temp >= 0,
-                              state: temp >= 0 ? StepState.complete : StepState.indexed,
+                              title: Text('Checking Information', style: AppStyle.poppinsBold12),
+                              content: temp >= 0 && temp <= 2 ? Text('We are Checking Your Information', style: AppStyle.poppinsBoldGreen12) : const SizedBox(),
+                              isActive: temp >= 0 && temp <= 2,
+                              state: temp >= 0 && temp <= 2 ? StepState.complete : StepState.indexed,
                             ),
                             Step(
-                              title: const Text('Checking Documents'),
-                              content: const Text('We are Checking Your Document '),
-                              isActive: temp >= 1,
-                              state: temp >= 1 ? StepState.complete : StepState.indexed,
+                              title: Text('Checking Documents', style: AppStyle.poppinsBold12),
+                              content: temp >= 1 && temp <= 2 ? Text('We are Checking Your Document ', style: AppStyle.poppinsBoldGreen12) : const SizedBox(),
+                              isActive: temp >= 1 && temp <= 2,
+                              state: temp >= 1 && temp <= 2 ? StepState.complete : StepState.indexed,
                             ),
                             Step(
-                              title: const Text('Application Status'),
-                              content: verified == 'verified' ? const Text('Application Accepted') : const Text('Application Rejected'),
-                              isActive: temp >= 2,
-                              state: temp >= 2 ? StepState.complete : StepState.indexed,
+                              title: Text('Application Status', style: AppStyle.poppinsBold12),
+                              content: temp >= 2 && temp <= 2
+                                  ? verified == 'true'
+                                      ? Text('Application Accepted', style: AppStyle.poppinsBoldGreen12)
+                                      : verified == 'false'
+                                          ? Text('Application Rejected', style: AppStyle.poppinsBoldGreen12)
+                                          : Text('updating status....', style: AppStyle.poppinsBoldGreen12)
+                                  : const SizedBox(),
+                              isActive: temp >= 2 && temp <= 2,
+                              state: temp >= 2 && temp <= 2 ? StepState.complete : StepState.indexed,
                             )
                           ],
                         ),
@@ -178,48 +177,30 @@ class _DashboardState extends State<Dashboard> {
                           height: size.height * 0.02,
                         ),
                         if (isRegistrationCompleted == true)
-                          Padding(
-                            padding: EdgeInsets.only(right: size.width * 0.08, bottom: size.height * 0.05),
-                            child: Container(
-                              height: size.height * 0.2,
-                              width: size.width,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                children: [
-                                  SizedBox(height: size.height * 0.025),
-                                  Text(
-                                    'Registration Completed!!!',
-                                    style: AppStyle.poppinsBoldGreen20,
+                          provider.isPermission
+                              ? showgstInfoToClient(size, gstNumber, provider, gstdoc)
+                              : Center(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      provider.checkPermission();
+                                    },
+                                    child: Text(
+                                      'Request Permission',
+                                      style: AppStyle.poppinsBold12,
+                                    ),
                                   ),
-                                  SizedBox(height: size.height * 0.02),
-                                  Text(
-                                    'GST NO :     879458854JHERRHJ',
-                                    style: AppStyle.poppinsRegular15,
-                                  ),
-                                  SizedBox(height: size.height * 0.01),
-                                  // MaterialButton(
-                                  //   onPressed: () {},
-                                  //   child: Text(
-                                  //     'Download GST Certificate',
-                                  //     style: AppStyle.poppinsRegular15,
-                                  //   ),
-                                  // )
-                                ],
-                              ),
-                            ),
-                          )
+                                )
                       ],
                     ),
                   ),
-                ),
-              ),
-            );
-          } else {
-            return const SpinKitCircle(color: blackColor);
-          }
-        });
+                );
+              }),
+            ),
+          );
+        } else {
+          return const SpinKitCircle(color: blackColor);
+        }
+      },
+    );
   }
 }

@@ -10,16 +10,15 @@ class APIs {
 
   static String documentId = '';
 
-  static Future getDocumetID()async {
+  static Future getDocumetID() async {
     User? user = auth.currentUser;
 
     if (user != null) {
       String userEmail = user.email!;
 
-     await firestore.collection('ClientDetails').where('Email', isEqualTo: userEmail).get().then((snapshot) {
+      await firestore.collection('ClientDetails').where('Email', isEqualTo: userEmail).get().then((snapshot) {
         for (var doc in snapshot.docs) {
           documentId = doc.id;
-          print(documentId);
         }
       });
     }
@@ -36,14 +35,18 @@ class APIs {
     } catch (e) {
       log('errorrrr === $e');
     }
+    return null;
   }
 
- static Stream<QuerySnapshot<Map<String, dynamic>>> getClientGstData() {
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getClientGstData() {
     final userEmail = FirebaseAuth.instance.currentUser!.email;
 
-    return FirebaseFirestore.instance.collection('ClientGstInfo').where('Email', isEqualTo: userEmail).snapshots();
+    return FirebaseFirestore.instance
+        .collection('ClientGstInfo')
+        .where(
+          'Email',
+          isEqualTo: userEmail,
+        )
+        .snapshots();
   }
-
-
-
 }

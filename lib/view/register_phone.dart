@@ -1,12 +1,13 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import 'package:taxverse/constants.dart';
+import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/utils/utils.dart';
+import 'package:taxverse/view/widgets/frosted_glass.dart';
 
 class RegisterWithPhone extends StatefulWidget {
   const RegisterWithPhone({super.key});
@@ -212,18 +213,18 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                     )
                   ],
                 ),
-                // if (authprovider.loading)
-                //   const Center(
-                //     child: FrostedGlass(
-                //       width: double.infinity,
-                //       height: double.infinity,
-                //       child: Center(
-                //         child: SpinKitCircle(
-                //           color: blackColor,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
+                if (authprovider.loading)
+                  const Center(
+                    child: FrostedGlass(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Center(
+                        child: SpinKitCircle(
+                          color: blackColor,
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
