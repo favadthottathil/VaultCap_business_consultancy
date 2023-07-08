@@ -52,6 +52,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_file_downloader: ^1.1.2
+  flutter_launcher_icons: ^0.13.1
   flutter_local_notifications: ^14.1.1
   flutter_neumorphic: ^3.2.0
   flutter_notification_channel: ^2.0.0
@@ -77,6 +78,12 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "Asset/TAXVERSE LOGO-1.png"
+  min_sdk_android: 21    
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

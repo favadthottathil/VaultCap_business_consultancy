@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/api/messaging_api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
@@ -18,10 +17,9 @@ class HomeScreen extends StatelessWidget {
   // @override
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    final size = MediaQuery.of(context).size;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       MessagingAPI.getFirebaseMessagingToken();
-
-      
 
       notificationServices.firebaseInit();
 
@@ -46,10 +44,13 @@ class HomeScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  textAndLogout(context),
-                  startingNewbusinessWidget(context),
+                  textAndLogout(context, size),
+                  startingNewbusinessWidget(context, size),
                   Padding(
-                    padding: const EdgeInsets.only(top: 26, right: 100),
+                    padding: EdgeInsets.only(
+                      top: size.height * 0.03,
+                      right: size.width * 0.3,
+                    ),
                     child: Text(
                       'Explore Our Services',
                       overflow: TextOverflow.ellipsis,
@@ -57,8 +58,8 @@ class HomeScreen extends StatelessWidget {
                       style: AppStyle.poppinsBold24,
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  mainScreenGridView(),
+                  SizedBox(height: size.height * 0.02),
+                  mainScreenGridView(size),
                 ],
               ),
             ),

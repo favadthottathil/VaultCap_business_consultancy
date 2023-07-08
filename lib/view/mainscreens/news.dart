@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/widgets/breaking_news_card.dart';
 import 'package:taxverse/view/widgets/news_list_tile.dart';
@@ -18,17 +19,15 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Text(
-            'News',
-            style: AppStyle.poppinsBold24,
-          ),
+        title: Text(
+          'News',
+          style: AppStyle.poppinsBold24,
         ),
       ),
       body: StreamBuilder(
@@ -38,7 +37,7 @@ class News extends StatelessWidget {
             var news = snapshot.data?.docs ?? [];
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(size.height * 0.02),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +46,7 @@ class News extends StatelessWidget {
                       'Breaking news',
                       style: AppStyle.poppinsBold27,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: size.height * 0.025),
                     CarouselSlider.builder(
                       itemCount: news.length,
                       itemBuilder: (context, index, realIndex) => BreakingNewsCard(
@@ -59,7 +58,7 @@ class News extends StatelessWidget {
                         enlargeCenterPage: true,
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: size.height * 0.045),
                     Text(
                       'Recent News',
                       style: AppStyle.poppinsBold27,
@@ -69,7 +68,7 @@ class News extends StatelessWidget {
                       primary: false,
                       itemCount: news.length,
                       itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
                         child: NewsListTile(news: news[index]),
                       ),
                     )
@@ -82,7 +81,7 @@ class News extends StatelessWidget {
               content: Text('error ${snapshot.error}'),
             );
           } else {
-            return const CircularProgressIndicator();
+            return const SpinKitCircle(color: blackColor);
           }
         },
       ),

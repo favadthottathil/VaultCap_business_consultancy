@@ -10,6 +10,7 @@ class BreakingNewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -19,7 +20,7 @@ class BreakingNewsCard extends StatelessWidget {
             ));
       },
       child: Container(
-        height: 60,
+        height: size.height * 0.08,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -36,7 +37,7 @@ class BreakingNewsCard extends StatelessWidget {
               blackColor
             ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(size.height * 0.04),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,

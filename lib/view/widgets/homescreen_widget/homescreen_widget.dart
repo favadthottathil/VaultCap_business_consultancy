@@ -31,13 +31,13 @@ List name2 = [
 
 //                       Next widget
 
-ListView mainScreenGridView() {
+ListView mainScreenGridView(Size size) {
   return ListView.separated(
       shrinkWrap: true,
       primary: false,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: size.height * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -61,7 +61,7 @@ ListView mainScreenGridView() {
                         child: Image.asset(
                           imgLIst1[index],
                           fit: BoxFit.cover,
-                          height: 120,
+                          height: size.height * 0.15,
                           width: double.infinity,
                         ),
                       ),
@@ -78,7 +78,7 @@ ListView mainScreenGridView() {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: size.height * 0.02),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -89,9 +89,9 @@ ListView mainScreenGridView() {
                           );
                         },
                         child: Container(
-                          height: 25,
-                          width: 65,
-                          margin: const EdgeInsets.only(left: 45),
+                          height: size.height * 0.03,
+                          width: size.height * 0.09,
+                          margin: EdgeInsets.only(left: size.width * 0.12),
                           decoration: BoxDecoration(
                             color: blackColor,
                             borderRadius: BorderRadius.circular(5),
@@ -128,7 +128,7 @@ ListView mainScreenGridView() {
                       ClipRRect(
                         child: Image.asset(
                           imgLIst2[index],
-                          height: 120,
+                          height: size.height * 0.15,
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),
@@ -146,7 +146,7 @@ ListView mainScreenGridView() {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: size.height * 0.02),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -157,9 +157,9 @@ ListView mainScreenGridView() {
                           );
                         },
                         child: Container(
-                          height: 25,
-                          width: 65,
-                          margin: const EdgeInsets.only(left: 45),
+                          height: size.height * 0.03,
+                          width: size.height * 0.09,
+                          margin: EdgeInsets.only(left: size.width * 0.12),
                           decoration: BoxDecoration(
                             color: blackColor,
                             borderRadius: BorderRadius.circular(5),
@@ -182,7 +182,7 @@ ListView mainScreenGridView() {
         );
       },
       separatorBuilder: (context, index) {
-        return const SizedBox(height: 10);
+        return SizedBox(height: size.height * 0.01);
       },
       itemCount: 2);
 }
@@ -191,7 +191,7 @@ ListView mainScreenGridView() {
 
 //                       Next widget
 
-InkWell startingNewbusinessWidget(BuildContext context) {
+InkWell startingNewbusinessWidget(BuildContext context, Size size) {
   return InkWell(
     onTap: () {
       Navigator.push(
@@ -201,9 +201,9 @@ InkWell startingNewbusinessWidget(BuildContext context) {
           ));
     },
     child: Container(
-      height: 149,
-      width: 336,
-      margin: const EdgeInsets.only(top: 25, left: 25),
+      height: size.height * 0.2,
+      width: size.width,
+      margin: EdgeInsets.only(top: size.height * 0.01, left: size.width * 0.07),
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
@@ -218,13 +218,14 @@ InkWell startingNewbusinessWidget(BuildContext context) {
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 17),
+              padding: EdgeInsets.only(left: size.width * 0.04),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 140,
+                    // color: Colors.amber,
+                    width: size.width * 0.37,
                     child: Text(
                       'Starting New Business',
                       textAlign: TextAlign.left,
@@ -251,14 +252,17 @@ InkWell startingNewbusinessWidget(BuildContext context) {
 
 //                       Next widget
 
-Padding textAndLogout(BuildContext context) {
+Padding textAndLogout(BuildContext context, Size size) {
   return Padding(
-    padding: const EdgeInsets.only(left: 15),
+    padding: EdgeInsets.only(left: size.width * 0.04),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 30, bottom: 28),
+          padding: EdgeInsets.only(
+            top: size.height * 0.03,
+            bottom: size.height * 0.03,
+          ),
           child: Text(
             'Welcome...',
             overflow: TextOverflow.ellipsis,
@@ -267,7 +271,7 @@ Padding textAndLogout(BuildContext context) {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: EdgeInsets.only(right: size.width * 0.03),
           child: InkWell(
             onTap: () async {
               await APIs.updateActiveStatus(false);

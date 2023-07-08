@@ -12,6 +12,7 @@ class NewsListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -24,7 +25,7 @@ class NewsListTile extends StatelessWidget {
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(12),
-        height: 130,
+        height: size.height * 0.15,
         decoration: BoxDecoration(
           color: blackColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(26),
@@ -35,8 +36,8 @@ class NewsListTile extends StatelessWidget {
             Flexible(
               flex: 3,
               child: SizedBox(
-                height: 100,
-                width: 100,
+                height: size.height * 0.15,
+                width: size.height * 0.15,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: CachedNetworkImage(

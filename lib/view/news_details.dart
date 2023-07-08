@@ -11,6 +11,7 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: whiteColor,
@@ -18,10 +19,17 @@ class DetailsScreen extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: blackColor,
         ),
+        leading: MaterialButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: EdgeInsets.all(size.height * 0.02),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +43,7 @@ class DetailsScreen extends StatelessWidget {
                 news['auther'],
                 style: AppStyle.poppinsBold12,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: size.height * 0.03),
               // Image.network(
               //   news['image'],
               //   fit: BoxFit.cover,
@@ -49,7 +57,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: size.height * 0.04),
               Text(
                 news['description'],
                 style: AppStyle.poppinsBold16,
