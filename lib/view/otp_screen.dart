@@ -27,7 +27,7 @@ class OtpScreen extends StatelessWidget {
           return StreamBuilder<User?>(
               stream: context.watch<AuthProvider>().stream(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) return const BottomNav();
+                if (snapshot.hasData) return const BottomNav(guest: false);
 
                 return Scaffold(
                   body: Consumer<OtpScreenProvider>(builder: (context, provider, child) {
@@ -183,7 +183,7 @@ class OtpScreen extends StatelessWidget {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const BottomNav(),
+              builder: (context) => const BottomNav(guest: false),
             ),
             (route) => false);
       },

@@ -8,7 +8,7 @@ import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/view/widgets/useraccount_e/useraccount_widget.dart';
 
 class UserProfile extends StatelessWidget {
-   UserProfile({Key? key}) : super(key: key);
+  UserProfile({Key? key}) : super(key: key);
 
   final nameController = TextEditingController();
 
@@ -37,7 +37,7 @@ class UserProfile extends StatelessWidget {
                   slivers: [
                     SliverPersistentHeader(
                       pinned: true,
-                      delegate: MySliverAppBar(expandedHeight: size.height * 0.27, user: userdata),
+                      delegate: MySliverAppBar(expandedHeight: size.height * 0.23, user: userdata),
                     ),
                     Consumer<UserAccountProvider>(builder: (context, provider, child) {
                       return SliverList(

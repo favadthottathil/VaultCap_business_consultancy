@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ImageConstant {
   static String imgArrowleft = 'Asset/img_arrowleft.svg';
 
   static String imgArrowleft2 = 'Asset/img_arrowleft2.svg';
-
-  
 
   static String taxverseLogo = 'Asset/TAXVERSE LOGO-1.png';
 
@@ -45,6 +44,11 @@ class AppStyle {
     color: blackColor,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle poppinsBold16Green = GoogleFonts.poppins(
+    fontSize: 16,
+    color: Colors.green,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle poppinsBold18 = GoogleFonts.poppins(
     fontSize: 18,
     color: blackColor,
@@ -60,6 +64,11 @@ class AppStyle {
     color: blackColor,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle poppinsBold14 = GoogleFonts.poppins(
+    fontSize: 14,
+    color: blackColor,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle poppinsBoldRed12 = GoogleFonts.poppins(
     fontSize: 12,
     color: Colors.red,
@@ -68,6 +77,12 @@ class AppStyle {
   static TextStyle poppinsRegular16 = GoogleFonts.poppins(
     fontSize: 16,
     color: blackColor,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle poppinsRegular16lineSpace1 = GoogleFonts.poppins(
+    fontSize: 16,
+    color: blackColor,
+    letterSpacing: 1,
     fontWeight: FontWeight.w400,
   );
   static TextStyle poppinsBoldWhite12 = GoogleFonts.poppins(

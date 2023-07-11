@@ -13,7 +13,7 @@
 
 
    <application
-        android:label="taxverse"
+        android:label="Taxverse"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

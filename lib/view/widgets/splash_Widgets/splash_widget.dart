@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 
 class SplashWidgets {
-
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
-
-  static SizedBox splashTextContainer2(MediaQueryData mediaQuery) {
-    return SizedBox(
-      width: 0.9 * mediaQuery.size.width,
-      height: 0.24 * mediaQuery.size.height,
+  static splashTextContainer2(MediaQueryData mediaQuery) {
+    return Container(
+      // color: Colors.amber,
+      width: 0.8 * mediaQuery.size.width,
+      // height: 0.24 * mediaQuery.size.height,
       child: Text(
         'Welcome to our business consultancy application, where we specialize in unleashing the full potential  of your business. Our team of experts is dedicated to providing the best-in-class consultancy services tailored to your unique needs. From strategic planning to growth strategies, we are here to guide you towards success',
         textAlign: TextAlign.left,
-        style: AppStyle.poppinsRegular15,
+        style: AppStyle.poppinsRegular16lineSpace1,
       ),
     );
   }
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Container splashTextContainer(MediaQueryData mediaQuery) {
     return Container(
@@ -41,7 +40,7 @@ class SplashWidgets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Stack stackLogoAndImage(MediaQueryData mediaQuery) {
     return Stack(
@@ -51,19 +50,15 @@ class SplashWidgets {
           child: Align(
             child: SizedBox(
               width: 0.6 * mediaQuery.size.width,
-              height: 0.19 * mediaQuery.size.height,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(7),
-                child: Image.asset(
-                  'Asset/TAXVERSE LOGO-1.png',
-                  fit: BoxFit.cover,
-                ),
+              height: 0.18 * mediaQuery.size.height,
+              child: Image.asset(
+                'Asset/TAXVERSE LOGO-1.png',
+                fit: BoxFit.cover,
               ),
             ),
           ),
         ),
         Positioned(
-          left: 0,
           top: 0.13 * mediaQuery.size.height,
           child: SizedBox(
             width: mediaQuery.size.width,
@@ -71,7 +66,7 @@ class SplashWidgets {
             child: Image.asset(
               'Asset/splash.png',
               width: mediaQuery.size.width,
-              height: 0.40 * mediaQuery.size.height,
+              height: 0.4 * mediaQuery.size.height,
               fit: BoxFit.contain,
             ),
           ),
@@ -82,7 +77,7 @@ class SplashWidgets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 }
 
 class GetStartedContainer extends StatelessWidget {
@@ -100,12 +95,12 @@ class GetStartedContainer extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const BottomNav(),
+            builder: (context) => const BottomNav(guest: false),
           ),
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 35),
+        margin: EdgeInsets.symmetric(horizontal: 35.w),
         width: double.infinity,
         height: 0.086 * mediaQuery.size.height,
         decoration: BoxDecoration(
@@ -129,7 +124,6 @@ class GetStartedContainer extends StatelessWidget {
   }
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

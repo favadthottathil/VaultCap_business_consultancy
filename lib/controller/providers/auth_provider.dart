@@ -33,7 +33,7 @@ class AuthProvider extends ChangeNotifier {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute( 
+        MaterialPageRoute(
           builder: (context) => const SignOption(),
         ),
         (route) => false);
@@ -44,7 +44,7 @@ class AuthProvider extends ChangeNotifier {
       _isLoading = true;
       notifyListeners();
 
-     await _fb.signInWithEmailAndPassword(
+      await _fb.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
@@ -55,7 +55,7 @@ class AuthProvider extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const BottomNav(),
+            builder: (context) => const BottomNav(guest: false),
           ),
           (route) => false);
 
@@ -80,10 +80,11 @@ class AuthProvider extends ChangeNotifier {
       // _isLoading = false;
       // notifyListeners();
 
+      // ignore: use_build_context_synchronously
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const BottomNav(),
+            builder: (context) => const BottomNav(guest: false),
           ),
           (route) => false);
 
@@ -117,17 +118,23 @@ class AuthProvider extends ChangeNotifier {
 
   Future<String> signInWithPhoneNumber(String phoneNumber, BuildContext context) async {
     try {
+      _isLoading = true;
+      notifyListeners();
+
       verificationCompleted(phoneAuthCredential) async {
         await auth.signInWithCredential(phoneAuthCredential);
+        
       }
 
       verificationFailed(FirebaseAuthException error) {
         log('Error ==================================   $error');
+        
 
-        throw Exception(error.message);
+        return 'Error To send OTP';
       }
 
       codeSent(verificationId, forceResendingToken) {
+       
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -148,8 +155,8 @@ class AuthProvider extends ChangeNotifier {
 
       return '';
     } on FirebaseAuthException catch (ex) {
-      // _isLoading = false;
-      // notifyListeners();
+      _isLoading = false;
+      notifyListeners();
       return ex.message ?? 'An Error occured during phone verification.';
     }
   }
@@ -187,6 +194,4 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
- 
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class FrostedGlass extends StatelessWidget {
-  const FrostedGlass({Key? key, required this.width, required this.height, required this.child})
-      : super(key: key);
+  const FrostedGlass({Key? key, required this.width, required this.height, required this.child}) : super(key: key);
 
   final double width;
   final double height;
@@ -21,7 +20,9 @@ class FrostedGlass extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.2),
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.white.withOpacity(0.13)),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.13),
+            ),
             gradient: LinearGradient(
               colors: [
                 Colors.white.withOpacity(0.15),

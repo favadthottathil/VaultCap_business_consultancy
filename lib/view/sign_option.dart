@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/register_phone.dart';
 import 'package:taxverse/view/sign_up.dart';
 import 'package:taxverse/view/sign_in.dart';
@@ -11,34 +12,38 @@ class SignOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: whiteColor,
         body: Container(
           width: double.maxFinite,
-          padding: const EdgeInsets.only(
-            left: 43,
-            right: 34,
+          padding: EdgeInsets.only(
+            left: size.width * 0.09,
+            right: size.width * 0.08,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(
+                height: size.height * 0.1,
+              ),
               CustomImage(
                 radius: BorderRadius.circular(7),
                 imagePath: ImageConstant.taxverseLogo,
-                height: 100,
-                width: 250,
+                height: size.height * 0.1,
+                width: size.width * 0.6,
               ),
               Container(
-                margin: const EdgeInsets.only(top: 15),
+                margin: EdgeInsets.only(top: size.height * 0.01),
                 child: SvgPicture.asset(
                   ImageConstant.chooseSignImg,
-                  height: 277,
-                  width: 324,
+                  height: size.height * 0.2,
+                  width: size.width * 0.5,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 62),
+                padding: EdgeInsets.only(top: size.height * 0.08),
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
@@ -64,7 +69,7 @@ class SignOption extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
+              GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -74,21 +79,21 @@ class SignOption extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  width: 315,
-                  height: 60,
+                  width: size.width * 0.7,
+                  height: size.height * 0.07,
                   margin: const EdgeInsets.only(top: 50),
-                  padding: const EdgeInsets.only(
-                    left: 30,
-                    top: 19,
-                    right: 76,
-                    bottom: 19,
+                  padding: EdgeInsets.only(
+                    left: size.width * 0.07,
+                    top: size.height * 0.02,
+                    // right: size.width * 0.7,
+                    // bottom: size.,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: blackColor,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 50),
+                    padding: EdgeInsets.only(left: size.width * 0.1),
                     child: Text(
                       'Sign up with email',
                       style: GoogleFonts.poppins(
@@ -109,9 +114,9 @@ class SignOption extends StatelessWidget {
                       ));
                 },
                 child: Container(
-                  width: 315,
-                  height: 60,
-                  margin: const EdgeInsets.only(top: 30, bottom: 5),
+                  width: size.width * 0.7,
+                  height: size.height * 0.07,
+                  margin: EdgeInsets.only(top: size.height * 0.04),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: whiteColor,
@@ -129,6 +134,35 @@ class SignOption extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: size.height * 0.06),
+              GestureDetector(
+                onTap: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNav(guest: true),
+                    ),
+                    (route) => false),
+                child: Container(
+                  width: size.width * 0.4,
+                  height: size.height * 0.04,
+                  // margin: EdgeInsets.only(top: size.height * 0.04),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: blackColor,
+                    border: Border.all(
+                      color: blackColor,
+                      width: 1,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'sign up with phone',
+                      textAlign: TextAlign.left,
+                      style: AppStyle.poppinsBoldWhite12,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

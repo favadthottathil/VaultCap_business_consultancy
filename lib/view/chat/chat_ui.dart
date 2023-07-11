@@ -10,10 +10,11 @@ import 'package:provider/provider.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/chatroom_provider.dart';
+import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/widgets/chat_widgets.dart';
 
 class ChatRoom extends StatelessWidget {
-   ChatRoom({
+  ChatRoom({
     super.key,
   });
 
@@ -24,8 +25,6 @@ class ChatRoom extends StatelessWidget {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   FirebaseAuth auth = FirebaseAuth.instance;
-
-  
 
   // getAdminId() async {
   @override
@@ -50,6 +49,17 @@ class ChatRoom extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: blackColor,
+              leading: GestureDetector(
+                onTap: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNav(guest: false),
+                    ),
+                    (route) => false),
+                child: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                ),
+              ),
               title: StreamBuilder(
                 stream: firestore.collection('admins').snapshots(),
                 builder: (context, snapshot) {

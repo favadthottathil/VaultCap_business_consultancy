@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +16,33 @@ import 'widgets/settingsWidgets/settings_widgets.dart';
 class Settingss extends StatelessWidget {
   const Settingss({super.key});
 
-  deleteUser(BuildContext context) async {
-    FirebaseAuth.instance.currentUser!.delete();
-    await APIs.updateActiveStatus(false);
-    context.read<AuthProvider>().logOut(context);
+  deleteUser(BuildContext context) {
+    log('delete user');
+
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.warning,
+      animType: AnimType.scale,
+      showCloseIcon: true,
+      title: 'Delete Account',
+      desc: 'Do You want to Delete this account',
+      btnOkColor: Colors.green,
+      btnOkText: 'Yes',
+      btnCancelText: 'Cancel',
+      btnCancelOnPress: () {},
+      btnCancelColor: Colors.red,
+      buttonsTextStyle: AppStyle.poppinsBold16,
+      dismissOnBackKeyPress: true,
+      titleTextStyle: AppStyle.poppinsBold16Green,
+      descTextStyle: AppStyle.poppinsBold16,
+      transitionAnimationDuration: const Duration(milliseconds: 500),
+      btnOkOnPress: () async {
+        FirebaseAuth.instance.currentUser!.delete();
+        await APIs.updateActiveStatus(false);
+        context.read<AuthProvider>().logOut(context);
+      },
+      buttonsBorderRadius: BorderRadius.circular(20),
+    ).show();
   }
 
   feedback() async {
@@ -26,7 +53,6 @@ class Settingss extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final names = [
       'Notifications',
       'Feedback',
@@ -58,9 +84,13 @@ class Settingss extends StatelessWidget {
     ];
 
     List<void Function()?> onpressed = [
-      null,
-      feedback,
-      deleteUser(context),
+      () {},
+      () {
+        feedback();
+      },
+      () {
+        deleteUser(context);
+      },
       () {
         Navigator.push(
           context,
@@ -95,15 +125,13 @@ class Settingss extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: ListTile(
+                onTap: onpressed[index],
                 leading: icons[index],
                 title: Text(
                   names[index],
                   style: AppStyle.poppinsBold16,
                 ),
-                trailing: InkWell(
-                  onTap: onpressed[index],
-                  child: trailing[index],
-                ),
+                trailing: trailing[index],
               ),
             );
           },

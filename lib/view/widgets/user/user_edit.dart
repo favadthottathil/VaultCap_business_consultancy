@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +49,7 @@ class UserDetialsHead extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class UserEditTextfield extends StatefulWidget {
   UserEditTextfield({
@@ -85,17 +86,24 @@ class UserEditTextfield extends StatefulWidget {
 class _UserEditTextfieldState extends State<UserEditTextfield> {
   final _formkey = GlobalKey<FormState>();
 
-  validateEmail() {
+  validateEmail(UserAccountProvider provider) {
     if (_formkey.currentState!.validate()) {
       updateName();
+      provider.setShowEditFalse(widget.mapName);
     }
   }
 
   @override
+  void initState() {
+    super.initState();
+    log(' favadfadf ${widget.userExisitingData}');
+    widget.controller = TextEditingController(text: widget.userExisitingData);
+    log(widget.controller.text);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      widget.controller = TextEditingController(text: widget.userExisitingData);
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
     final size = MediaQuery.of(context).size;
     return Consumer<UserAccountProvider>(builder: (context, provider, child) {
       return Form(
@@ -142,9 +150,9 @@ class _UserEditTextfieldState extends State<UserEditTextfield> {
               SizedBox(width: size.width * 0.02),
               InkWell(
                 onTap: () {
-                  validateEmail();
+                  validateEmail(provider);
 
-                  provider.setShowEditFalse(widget.mapName);
+                  
                 },
                 child: const Icon(
                   Icons.check,
@@ -166,6 +174,8 @@ class _UserEditTextfieldState extends State<UserEditTextfield> {
         )
         .get();
 
+    log(' to controller  ${widget.controller.text}');
+
     if (querySnapshot.docs.isNotEmpty) {
       await querySnapshot.docs.first.reference.update({
         widget.filedName: widget.controller.text.trim(),
@@ -175,7 +185,6 @@ class _UserEditTextfieldState extends State<UserEditTextfield> {
   }
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

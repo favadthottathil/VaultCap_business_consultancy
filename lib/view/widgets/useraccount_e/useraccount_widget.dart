@@ -101,16 +101,18 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                   // backgroundColor: Colors.transparent,
                   // borderColor: blackColor,
                   borderWidth: 1,
-                  child: CachedNetworkImage(
-                    imageUrl: user['userProfileImage'],
-                    placeholder: (context, url) => const Center(
-                      child: SpinKitThreeBounce(
-                        color: blackColor,
-                      ),
-                    ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
-                    fit: BoxFit.fill,
-                  ),
+                  child: user['userProfileImage'] == ''
+                      ? Image.asset('Asset/profileAvather.png')
+                      : CachedNetworkImage(
+                          imageUrl: user['userProfileImage'],
+                          placeholder: (context, url) => const Center(
+                            child: SpinKitThreeBounce(
+                              color: blackColor,
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
+                          fit: BoxFit.fill,
+                        ),
                 ),
               ),
             ),
@@ -155,24 +157,26 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                           // backgroundColor: Colors.transparent,
                           // borderColor: blackColor,
                           borderWidth: 4,
-                          child: CachedNetworkImage(
-                            imageUrl: user['userProfileImage'],
-                            placeholder: (context, url) => const Center(
-                              child: SpinKitThreeBounce(
-                                color: blackColor,
-                              ),
-                            ),
-                            errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
-                            fit: BoxFit.fill,
-                          ),
+                          child: user['userProfileImage'] == ''
+                              ? Image.asset('Asset/profileAvather.png')
+                              : CachedNetworkImage(
+                                  imageUrl: user['userProfileImage'],
+                                  placeholder: (context, url) => const Center(
+                                    child: SpinKitThreeBounce(
+                                      color: blackColor,
+                                    ),
+                                  ),
+                                  errorWidget: (context, url, error) => const Icon(Icons.error, size: 40),
+                                  fit: BoxFit.fill,
+                                ),
                         ),
                       ),
                     ),
                   ],
                 ),
                 Positioned(
-                  top: 55,
-                  left: 85,
+                  top: size.height * 0.04,
+                  left: size.width * 0.23,
                   child: InkWell(
                     onTap: () {
                       pickFile();
@@ -181,7 +185,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                       child: SvgPicture.asset(
                         'Asset/add_dp.svg',
                         // ignore: deprecated_member_use
-                        color: Colors.red,
+                        color: blackColor,
                       ),
                     ),
                   ),
@@ -195,6 +199,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
           top: size.width * 0.045,
           child: InkWell(
             onTap: () {
+              log('message');
               Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -218,10 +223,9 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 SliverChildListDelegate sliverChildListDelegate(
   Size size,
@@ -430,7 +434,6 @@ SliverChildListDelegate sliverChildListDelegate(
   );
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

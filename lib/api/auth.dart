@@ -64,6 +64,7 @@ class AuthSignUp {
       'time': time,
       'place': '',
       'Isverified': '',
+      'userProfileImage': '',
     });
 
     // Retrieve the auto-generatied document Id

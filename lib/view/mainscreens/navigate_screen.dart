@@ -12,7 +12,9 @@ import 'package:taxverse/view/mainscreens/user_account.dart';
 import 'package:taxverse/view/sign_option.dart';
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+  const BottomNav({super.key, required this.guest});
+
+  final bool guest;
 
   @override
   State<BottomNav> createState() => _BottomNavState();
@@ -59,7 +61,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
     return StreamBuilder<User?>(
         stream: context.watch<AuthProvider>().stream(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return const SignOption();
+          if (!snapshot.hasData && !widget.guest) return const SignOption();
 
           return SafeArea(
             top: false,

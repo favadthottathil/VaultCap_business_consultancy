@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: size.height * 0.02),
-                  mainScreenGridView(size),
+                  mainScreenGridView(size, context),
                 ],
               ),
             ),

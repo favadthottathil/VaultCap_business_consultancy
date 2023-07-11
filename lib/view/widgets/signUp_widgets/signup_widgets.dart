@@ -7,12 +7,9 @@ import 'package:taxverse/view/sign_in.dart';
 import 'package:taxverse/view/widgets/frosted_glass.dart';
 
 class SignUpWigets {
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
-
-
+  //                       Next widget
 
   static InkWell alreadyhaveAccount(BuildContext context) {
     return InkWell(
@@ -47,10 +44,9 @@ class SignUpWigets {
     );
   }
 
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Container signUpbutton(MediaQueryData mediaQuery) {
     return Container(
@@ -78,7 +74,7 @@ class SignUpWigets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static SizedBox signUpLogo() {
     return SizedBox(
@@ -95,7 +91,7 @@ class SignUpWigets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Center loadingScreen() {
     // Timer(const Duration(seconds: 10), () {});
@@ -114,7 +110,7 @@ class SignUpWigets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
@@ -128,9 +124,7 @@ class SignUpWigets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
-
-
+  //                       Next widget
 }
 
 class CustomTextFieldforRegister extends StatelessWidget {
@@ -141,6 +135,7 @@ class CustomTextFieldforRegister extends StatelessWidget {
     required this.hintText,
     this.autovalidateMode,
     this.validator,
+    this.obscureText = false,
   });
 
   final MediaQueryData mediaQuery;
@@ -152,6 +147,8 @@ class CustomTextFieldforRegister extends StatelessWidget {
 
   final String hintText;
 
+  final bool obscureText;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -161,6 +158,7 @@ class CustomTextFieldforRegister extends StatelessWidget {
         child: TextFormField(
           controller: namecontroller,
           autovalidateMode: autovalidateMode,
+          obscureText: obscureText,
           validator: validator,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: mediaQuery.size.height * 0.03, horizontal: mediaQuery.size.width * 0.04),
@@ -176,7 +174,6 @@ class CustomTextFieldforRegister extends StatelessWidget {
   }
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

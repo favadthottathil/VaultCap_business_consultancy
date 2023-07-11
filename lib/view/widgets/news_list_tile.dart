@@ -60,9 +60,10 @@ class NewsListTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    flex: 2,
+                    flex: 1,
                     child: Text(
                       news['newsHeading'],
+                      overflow: TextOverflow.clip,
                       style: AppStyle.poppinsBold16,
                     ),
                   ),
@@ -70,7 +71,7 @@ class NewsListTile extends StatelessWidget {
                   Flexible(
                     child: Text(
                       news['description'],
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.fade,
                       style: AppStyle.poppinsBold12,
                     ),
                   )

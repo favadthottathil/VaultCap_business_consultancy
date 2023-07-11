@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/view/chat/chat_ui.dart';
+import 'package:taxverse/view/chat_interface.dart';
 import 'package:taxverse/view/gst_registraion/gst_1.dart';
 import 'package:taxverse/view/mainscreens/checkapplication_status.dart';
+import 'package:taxverse/view/unavailablescreen.dart';
 
 List imgLIst1 = [
   'Asset/gst-returns.jpg',
@@ -31,7 +32,52 @@ List name2 = [
 
 //                       Next widget
 
-ListView mainScreenGridView(Size size) {
+ListView mainScreenGridView(Size size, BuildContext context) {
+  List onTap1 = [
+    () {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CheckStatus(),
+          ),
+        );
+      });
+    },
+    () {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UnAvailableScreen(),
+          ),
+        );
+      });
+    },
+  ];
+  List onTap2 = [
+    () {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UnAvailableScreen(),
+          ),
+        );
+      });
+    },
+    () {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UnAvailableScreen(),
+          ),
+        );
+      });
+    },
+  ];
+
   return ListView.separated(
       shrinkWrap: true,
       primary: false,
@@ -80,14 +126,7 @@ ListView mainScreenGridView(Size size) {
                       ),
                       SizedBox(height: size.height * 0.02),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CheckStatus(),
-                            ),
-                          );
-                        },
+                        onTap: onTap1[index],
                         child: Container(
                           height: size.height * 0.03,
                           width: size.height * 0.09,
@@ -148,14 +187,7 @@ ListView mainScreenGridView(Size size) {
                       ),
                       SizedBox(height: size.height * 0.02),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const GstFirstScreen(),
-                            ),
-                          );
-                        },
+                        onTap: onTap2[index],
                         child: Container(
                           height: size.height * 0.03,
                           width: size.height * 0.09,
@@ -197,13 +229,13 @@ InkWell startingNewbusinessWidget(BuildContext context, Size size) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ChatRoom(),
+            builder: (context) => ConnectWithUsPage(),
           ));
     },
     child: Container(
       height: size.height * 0.2,
-      width: size.width,
-      margin: EdgeInsets.only(top: size.height * 0.01, left: size.width * 0.07),
+      width: double.maxFinite,
+      margin: EdgeInsets.only(top: size.height * 0.01, left: size.width * 0.1),
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
@@ -211,8 +243,8 @@ InkWell startingNewbusinessWidget(BuildContext context, Size size) {
             borderRadius: BorderRadius.circular(20),
             child: Image.asset(
               'Asset/home_1.png',
-              height: 149,
-              width: 336,
+              height: size.height * 0.2,
+              width: size.width * 0.8,
             ),
           ),
           Align(
@@ -223,20 +255,26 @@ InkWell startingNewbusinessWidget(BuildContext context, Size size) {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    // color: Colors.amber,
-                    width: size.width * 0.37,
-                    child: Text(
-                      'Starting New Business',
-                      textAlign: TextAlign.left,
-                      style: AppStyle.poppinsBold20,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: SizedBox(
+                      // color: Colors.amber,
+                      width: size.width * 0.37,
+                      child: Text(
+                        'Starting New Business',
+                        textAlign: TextAlign.left,
+                        style: AppStyle.poppinsBold20,
+                      ),
                     ),
                   ),
-                  Text(
-                    'Connect with us >',
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.left,
-                    style: AppStyle.poppinsBold16,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Connect with us >',
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                      style: AppStyle.poppinsBold16,
+                    ),
                   )
                 ],
               ),

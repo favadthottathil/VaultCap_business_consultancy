@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'widgets/splash_Widgets/splash_widget.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({super.key});
+class Splash extends StatelessWidget {
+  Splash({super.key});
 
-  @override
-  State<Splash> createState() => _SplashState();
-}
-
-class _SplashState extends State<Splash> {
   NotificationServices notificationServices = NotificationServices();
 
   @override
@@ -46,16 +40,17 @@ class SplashContainer extends StatelessWidget {
         children: [
           SizedBox(height: mediaQuery.size.height * 0.01),
           SizedBox(
-            width: double.infinity,
             height: 0.4 * mediaQuery.size.height,
             child: SplashWidgets.stackLogoAndImage(mediaQuery),
           ),
           SizedBox(height: 0.03 * mediaQuery.size.height),
           SplashWidgets.splashTextContainer(mediaQuery),
-          sizedBoxHeight20,
+          SizedBox(
+            height: mediaQuery.size.height * 0.05,
+          ),
           SplashWidgets.splashTextContainer2(mediaQuery),
-          Container(
-            height: 0.05 * mediaQuery.size.height,
+          SizedBox(
+            height: 0.08 * mediaQuery.size.height,
           ),
           GetStartedContainer(mediaQuery: mediaQuery),
         ],

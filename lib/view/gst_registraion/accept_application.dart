@@ -53,7 +53,7 @@ class WaitingScreen extends StatelessWidget {
                 onTap: () => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BottomNav(),
+                      builder: (context) => const BottomNav(guest: false),
                     ),
                     (route) => false),
                 child: Container(

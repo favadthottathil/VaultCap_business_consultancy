@@ -157,14 +157,11 @@ class Dashboard extends StatelessWidget {
                         ),
                         if (showProgress == true)
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: size.width * 0.05),
-                                child: Text(
-                                  'Your Application Process Underway',
-                                  style: AppStyle.poppinsBold16,
-                                ),
+                              Text(
+                                'Your Application Process Underway',
+                                style: AppStyle.poppinsBold16,
                               ),
                               SizedBox(height: size.width * 0.02),
                               const SpinKitCircle(
@@ -177,19 +174,20 @@ class Dashboard extends StatelessWidget {
                           height: size.height * 0.02,
                         ),
                         if (isRegistrationCompleted == true)
-                          provider.isPermission
-                              ? showgstInfoToClient(size, gstNumber, provider, gstdoc)
-                              : Center(
-                                  child: TextButton(
-                                    onPressed: () {
-                                      provider.checkPermission();
-                                    },
-                                    child: Text(
-                                      'Request Permission',
-                                      style: AppStyle.poppinsBold12,
-                                    ),
-                                  ),
-                                )
+                          // provider.isPermission
+                          //     ?
+                          showgstInfoToClient(size, gstNumber, provider, gstdoc)
+                        // : Center(
+                        //     child: TextButton(
+                        //       onPressed: () {
+                        //         provider.checkPermission();
+                        //       },
+                        //       child: Text(
+                        //         'Request Permission',
+                        //         style: AppStyle.poppinsBold12,
+                        //       ),
+                        //     ),
+                        //   )
                       ],
                     ),
                   ),
