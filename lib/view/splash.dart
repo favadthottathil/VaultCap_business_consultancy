@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
 import 'widgets/splash_Widgets/splash_widget.dart';
 
@@ -9,16 +10,11 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final mediaQuery = MediaQuery.of(context);
-
-        return SafeArea(
-          child: Scaffold(
-            body: SplashContainer(mediaQuery: mediaQuery),
-          ),
-        );
-      },
+    final mediaQuery = MediaQuery.of(context);
+    return SafeArea(
+      child: Scaffold(
+        body: SplashContainer(mediaQuery: mediaQuery),
+      ),
     );
   }
 }
@@ -33,26 +29,25 @@ class SplashContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.infinity,
-      width: double.infinity,
+    return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: mediaQuery.size.height * 0.01),
+          // SizedBox(height: .h),
           SizedBox(
-            height: 0.4 * mediaQuery.size.height,
+            height: 40.h,
             child: SplashWidgets.stackLogoAndImage(mediaQuery),
           ),
-          SizedBox(height: 0.03 * mediaQuery.size.height),
+          SizedBox(height: 2.h),
           SplashWidgets.splashTextContainer(mediaQuery),
           SizedBox(
-            height: mediaQuery.size.height * 0.05,
+            height: 3.h,
           ),
           SplashWidgets.splashTextContainer2(mediaQuery),
           SizedBox(
-            height: 0.08 * mediaQuery.size.height,
+            height: 4.h,
           ),
           GetStartedContainer(mediaQuery: mediaQuery),
+          SizedBox(height: 2.h)
         ],
       ),
     );

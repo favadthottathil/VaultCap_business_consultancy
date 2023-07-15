@@ -1,6 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
+import 'package:taxverse/controller/providers/gst3Provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/gst_registraion/accept_application.dart';
 
@@ -11,10 +13,11 @@ class DocumentUploadData {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 gst3BackAndForward({required BuildContext context, required Future onpressed}) {
   final size = MediaQuery.of(context).size;
+  final provider = context.watch<GstThirdScreenProvider>();
   return Padding(
     padding: EdgeInsets.only(right: size.width * 0.04),
     child: Align(
@@ -37,6 +40,14 @@ gst3BackAndForward({required BuildContext context, required Future onpressed}) {
             transitionAnimationDuration: const Duration(milliseconds: 500),
             btnOkOnPress: () {
               onpressed;
+
+              provider.setAllboolToFalse('PassportSizePhoto');
+              provider.setAllboolToFalse('PANCARD');
+              provider.setAllboolToFalse('AADHAARCARD');
+              provider.setAllboolToFalse('Electricity bill');
+              provider.setAllboolToFalse('RENT AGREEMENT');
+              provider.setAllboolToFalse('BUILDING TAX RECEIPT');
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -71,7 +82,7 @@ gst3BackAndForward({required BuildContext context, required Future onpressed}) {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class Gst3Head extends StatelessWidget {
   const Gst3Head({
@@ -101,7 +112,7 @@ class Gst3Head extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class DocumentUpload extends StatelessWidget {
   const DocumentUpload({
@@ -166,8 +177,6 @@ class DocumentUpload extends StatelessWidget {
   }
 }
 
-
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

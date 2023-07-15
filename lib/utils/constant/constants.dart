@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ImageConstant {
@@ -113,6 +112,11 @@ class AppStyle {
   static TextStyle poppinsRegular12 = GoogleFonts.poppins(
     fontSize: 12,
     color: blackColor,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle poppinsRegular12Red = GoogleFonts.poppins(
+    fontSize: 12,
+    color: Colors.red,
     fontWeight: FontWeight.w400,
   );
 }

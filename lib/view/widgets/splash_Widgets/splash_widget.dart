@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 
@@ -9,14 +11,19 @@ class SplashWidgets {
   //                       Next widget
 
   static splashTextContainer2(MediaQueryData mediaQuery) {
-    return Container(
+    return SizedBox(
       // color: Colors.amber,
-      width: 0.8 * mediaQuery.size.width,
+      width: 80.w,
       // height: 0.24 * mediaQuery.size.height,
       child: Text(
         'Welcome to our business consultancy application, where we specialize in unleashing the full potential  of your business. Our team of experts is dedicated to providing the best-in-class consultancy services tailored to your unique needs. From strategic planning to growth strategies, we are here to guide you towards success',
         textAlign: TextAlign.left,
-        style: AppStyle.poppinsRegular16lineSpace1,
+        style: GoogleFonts.poppins(
+          fontSize: 12.sp,
+          color: blackColor,
+          letterSpacing: 1,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }
@@ -25,15 +32,17 @@ class SplashWidgets {
 
   //                       Next widget
 
-  static Container splashTextContainer(MediaQueryData mediaQuery) {
-    return Container(
-      constraints: BoxConstraints(
-        maxWidth: 0.72 * mediaQuery.size.width,
-      ),
+  static splashTextContainer(MediaQueryData mediaQuery) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 2.h),
       child: Text(
         'Unleash the power of your business with expert consultancy.',
         textAlign: TextAlign.center,
-        style: AppStyle.poppinsBold16,
+        style: GoogleFonts.poppins(
+          fontSize: 13.sp,
+          color: blackColor,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }
@@ -46,11 +55,11 @@ class SplashWidgets {
     return Stack(
       children: [
         Positioned(
-          left: 0.22 * mediaQuery.size.width,
+          left: 20.w,
           child: Align(
             child: SizedBox(
-              width: 0.6 * mediaQuery.size.width,
-              height: 0.18 * mediaQuery.size.height,
+              width: 60.w,
+              height: 15.h,
               child: Image.asset(
                 'Asset/TAXVERSE LOGO-1.png',
                 fit: BoxFit.cover,
@@ -59,14 +68,14 @@ class SplashWidgets {
           ),
         ),
         Positioned(
-          top: 0.13 * mediaQuery.size.height,
+          top: 12.h,
           child: SizedBox(
             width: mediaQuery.size.width,
-            height: 0.27 * mediaQuery.size.height,
+            height: 27.h,
             child: Image.asset(
               'Asset/splash.png',
               width: mediaQuery.size.width,
-              height: 0.4 * mediaQuery.size.height,
+              height: 4.h,
               fit: BoxFit.contain,
             ),
           ),
@@ -100,9 +109,9 @@ class GetStartedContainer extends StatelessWidget {
         );
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 35.w),
+        margin: EdgeInsets.symmetric(horizontal: 5.h),
         width: double.infinity,
-        height: 0.086 * mediaQuery.size.height,
+        height: 8.h,
         decoration: BoxDecoration(
           color: const Color(0xff000000),
           borderRadius: BorderRadius.circular(20),

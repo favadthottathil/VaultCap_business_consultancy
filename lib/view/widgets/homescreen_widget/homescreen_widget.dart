@@ -1,8 +1,10 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
+import 'package:taxverse/view/appoinmetshedule.dart';
 import 'package:taxverse/view/chat_interface.dart';
 import 'package:taxverse/view/gst_registraion/gst_1.dart';
 import 'package:taxverse/view/mainscreens/checkapplication_status.dart';
@@ -35,14 +37,16 @@ List name2 = [
 ListView mainScreenGridView(Size size, BuildContext context) {
   List onTap1 = [
     () {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CheckStatus(),
-          ),
-        );
-      });
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CheckStatus(),
+            ),
+          );
+        },
+      );
     },
     () {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -312,8 +316,29 @@ Padding textAndLogout(BuildContext context, Size size) {
           padding: EdgeInsets.only(right: size.width * 0.03),
           child: InkWell(
             onTap: () async {
-              await APIs.updateActiveStatus(false);
-              context.read<AuthProvider>().logOut(context);
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.warning,
+                animType: AnimType.scale,
+                showCloseIcon: true,
+                title: 'LogOut Account',
+                desc: 'Do You want to LogOut this account',
+                btnOkColor: Colors.green,
+                btnOkText: 'Yes',
+                btnCancelText: 'Cancel',
+                btnCancelOnPress: () {},
+                btnCancelColor: Colors.red,
+                buttonsTextStyle: AppStyle.poppinsBold16,
+                dismissOnBackKeyPress: true,
+                titleTextStyle: AppStyle.poppinsBold16Green,
+                descTextStyle: AppStyle.poppinsBold16,
+                transitionAnimationDuration: const Duration(milliseconds: 500),
+                btnOkOnPress: () async {
+                  await APIs.updateActiveStatus(false);
+                  context.read<AuthProvider>().logOut(context);
+                },
+                buttonsBorderRadius: BorderRadius.circular(20),
+              ).show();
             },
             child: const Icon(
               Icons.logout,

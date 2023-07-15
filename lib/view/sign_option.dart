@@ -156,7 +156,7 @@ class SignOption extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'sign up with phone',
+                      'Guest',
                       textAlign: TextAlign.left,
                       style: AppStyle.poppinsBoldWhite12,
                     ),

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/view/gst_registraion/gst_3.dart';
@@ -55,10 +56,31 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
     try {
       final userEmail = FirebaseAuth.instance.currentUser!.email;
 
+      log(userEmail!);
+
+      Query query = firestore.collection('ClientDetails').where(
+            'Email',
+            isEqualTo: userEmail,
+          );
+
+      Future<QuerySnapshot<Object?>> futureData = query.get();
+
+      QuerySnapshot<Object?> data = await futureData;
+
+      if (data.docs.isNotEmpty) {
+        String fieldName = data.docs[0].get('Name');
+
+        clientUserName = fieldName;
+        // Use the value of the 'name' field
+        log(clientUserName!);
+      } else {
+        // Handle the case when the snapshot is empty
+        log('No documents found.');
+      }
+
       final time = DateTime.now().millisecondsSinceEpoch.toString();
 
       final DocumentReference doc = await gstClientInformaion.add({
-        'name':userNameForGstField,
         'BusinessName': businessName,
         'BusinesssType': businessType,
         'BusinessStartDate': businessStartDate,
@@ -68,7 +90,7 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
         'ServiceName': 'GST Registration',
         'time': time,
         'Email': userEmail,
-        'status': 'not accepted',
+        'name': clientUserName,
       });
 
       ClientInformation.gstId = doc.id;
@@ -95,7 +117,7 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>  GstThirdScreen(),
+          builder: (context) => const GstThirdScreen(),
         ),
       );
     }

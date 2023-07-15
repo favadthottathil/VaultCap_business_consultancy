@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/verification_provider.dart';
+import 'package:taxverse/view/appoinmetshedule.dart';
 
 class VerifiedSuccess extends StatelessWidget {
   const VerifiedSuccess({super.key});
@@ -49,7 +50,13 @@ class VerifiedSuccess extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.1),
                 child: GestureDetector(
-                  onTap: () => provider.showBottomSheet(context, mediaQuery),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AppoinmentShedule(),
+                        ));
+                  },
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 35),
                     // padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.2),

@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -41,7 +41,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   easy_pdf_viewer: ^1.0.6
   email_validator: ^2.1.17
-  emoji_picker_flutter: ^1.6.1
+  emoji_picker_flutter: ^1.6.1 
   file_picker: null
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.0
@@ -54,7 +54,6 @@ dependencies:
   flutter_local_notifications: ^14.1.1
   flutter_neumorphic: ^3.2.0
   flutter_notification_channel: ^2.0.0
-  flutter_screenutil:
   flutter_spinkit: null
   flutter_svg: null
   google_fonts: null
@@ -71,6 +70,7 @@ dependencies:
   play_integrity_flutter: ^0.0.1
   provider: ^6.0.5
   rive: ^0.9.1
+  sizer: ^2.0.15
   url_launcher: ^6.1.11
 
 dev_dependencies:
@@ -124,6 +124,7 @@ flutter:
     - Asset/insta.svg
     - Asset/facebook-logo-meta-2-svgrepo-com.svg
     - Asset/profileAvather.png
+    - Asset/booking.svg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

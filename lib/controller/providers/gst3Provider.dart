@@ -70,6 +70,18 @@ class GstThirdScreenProvider extends ChangeNotifier {
     }
   }
 
+  setAllboolToFalse(String fieldName) {
+    final documentUploadData = documentUploadDataMap[fieldName];
+
+    if (documentUploadData != null) {
+      documentUploadData.showLoading = false;
+      documentUploadData.isImageUploaded = false;
+      notifyListeners();
+    }
+
+    gstDocumentCount = 0;
+  }
+
   Future<String> uploadPdf(String fileName, File file) async {
     final reference = FirebaseStorage.instance.ref().child("pdfs/$fileName");
     final uploadTask = reference.putFile(file);

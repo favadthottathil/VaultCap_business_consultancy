@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sizer/sizer.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/client_id.dart';
@@ -32,17 +33,18 @@ class VerificationSuccessProvider extends ChangeNotifier {
     if (selectedDate.isNotEmpty && selectedTime.isNotEmpty) {
       // final email = FirebaseAuth.instance.currentUser?.email ?? 'no email';
 
+      // log(ClientInformation.clientId);
+
       try {
         await FirebaseFirestore.instance.collection('appointments').add({
           'date': selectedDate,
           'time': selectedTime,
-          'username': userDisplayName,
           // 'clientId': ClientInformation.clientId,
-          // 'gstId': ClientInformation.gstId,
-          'name' : currentUserName,
+          'gstId': ClientInformation.gstId,
+          'name': currentUserName,
 
-          'gst Service' : serviceName,
-          // 'id': email,                   
+          'gst Service': serviceName,
+          'id': curentUserEmail,
         });
       } catch (e) {
         log('failed to Appoinment $e');
@@ -172,7 +174,7 @@ class VerificationSuccessProvider extends ChangeNotifier {
                       builder: (context) {
                         return AlertDialog(
                           content: SizedBox(
-                            height: 300,
+                            height: 35.h,
                             width: double.infinity,
                             child: Column(
                               children: [
