@@ -176,7 +176,7 @@ class MessageCard extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 _buildTickIcon(String read) {
   if (read.isNotEmpty) {
@@ -195,9 +195,7 @@ _buildTickIcon(String read) {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
-
-
+//                       Next widget
 
 Widget chatInput({
   required TextEditingController message,
@@ -276,18 +274,16 @@ Widget chatInput({
           ),
           MaterialButton(
             onPressed: () {
-              final _message = message.text.trim();
+              final messages = message.text.trim();
 
               final userName = FirebaseAuth.instance.currentUser!.displayName;
-              
 
-              if (_message.isNotEmpty) {
-                provider.sendMessage(_message);
+              if (messages.isNotEmpty) {
+                provider.sendMessage(messages);
+                provider.isMessageTrue();
                 message.clear();
 
-                // User? user = FirebaseAuth.instance.currentUser;
-
-                MessagingAPI.sendPushNotification(adminMessageToken, _message, userName!);
+                MessagingAPI.sendPushNotification(adminMessageToken, messages, userName!);
               }
             },
             shape: const CircleBorder(),
@@ -305,7 +301,6 @@ Widget chatInput({
   );
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

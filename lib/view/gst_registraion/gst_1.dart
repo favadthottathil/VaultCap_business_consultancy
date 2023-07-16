@@ -18,7 +18,7 @@ class _GstFirstScreenState extends State<GstFirstScreen> {
   final businessNameController = TextEditingController();
 
   final businessStartDate = TextEditingController();
-  
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -103,6 +103,7 @@ class _GstFirstScreenState extends State<GstFirstScreen> {
                           hintText: 'Select Date',
                           marginTop: size.height * 0.025,
                           keybordType: TextInputType.datetime,
+                          readOnly: true,
                           dateTime: () {
                             Provider.of<DateTimeProvider>(context, listen: false).setDateAndTime(context, businessStartDate);
                           },

@@ -7,6 +7,7 @@ import 'package:taxverse/controller/providers/useraccount_provider.dart';
 import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/view/widgets/useraccount_e/useraccount_widget.dart';
 
+// ignore: must_be_immutable
 class UserProfile extends StatelessWidget {
   UserProfile({Key? key}) : super(key: key);
 

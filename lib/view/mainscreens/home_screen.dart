@@ -7,6 +7,7 @@ import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/controller/providers/homescreen_provider.dart';
 import 'package:taxverse/view/widgets/homescreen_widget/homescreen_widget.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 

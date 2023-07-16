@@ -3,6 +3,7 @@ import 'package:sizer/sizer.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
 import 'widgets/splash_Widgets/splash_widget.dart';
 
+// ignore: must_be_immutable
 class Splash extends StatelessWidget {
   Splash({super.key});
 

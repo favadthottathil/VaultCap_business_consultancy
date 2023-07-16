@@ -5,14 +5,17 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/chatroom_provider.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/widgets/chat_widgets.dart';
 
+// ignore: must_be_immutable
 class ChatRoom extends StatelessWidget {
   ChatRoom({
     super.key,
@@ -141,24 +144,72 @@ class ChatRoom extends StatelessWidget {
                         );
                       }
 
-                      return ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        // shrinkWrap: true,
-                        itemCount: messages.length,
-                        reverse: true,
-                        itemBuilder: (context, index) {
-                          final message = messages[index].data();
-                          final docId = messages[index].id;
-                          // updateMessageReadStatus(docId);
-                          final isSendMessage = (message as Map<String, dynamic>)['sender'] == 'admin';
-                          return MessageCard(
-                            message: message,
-                            isSender: isSendMessage,
-                            updateRead: provider.updateMessageReadStatus,
-                            docId: docId,
-                          );
-                        },
-                      );
+                      return StreamBuilder(
+                          stream: firestore
+                              .collection('ClientDetails')
+                              .where(
+                                'Email',
+                                isEqualTo: curentUserEmail,
+                              )
+                              .snapshots(),
+                          builder: (context, snapshot1) {
+                            final clients = snapshot1.data?.docs;
+                            final isMessage = clients?[0]['isMessage'] ?? [];
+                            if (snapshot1.hasError) {
+                              return Center(
+                                child: Text(
+                                  'Error : ${snapshot1.error}',
+                                  style: AppStyle.poppinsBold24,
+                                ),
+                              );
+                            }
+
+                            if (snapshot1.connectionState == ConnectionState.waiting) {
+                              return const SpinKitCircle(
+                                color: Colors.black,
+                              );
+                            }
+                            return isMessage == false
+                                ? Center(
+                                    child: SizedBox(
+                                      // color: Colors.amber,
+                                      width: 100.w,
+                                      height: 23.h,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SvgPicture.asset('Asset/chat-svgrepo-com.svg', height: 15.h),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 4.w),
+                                            child: Text(
+                                              'Welcome to our chat! Feel free to ask any questions you have',
+                                              style: AppStyle.poppinsBold18,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : ListView.builder(
+                                    physics: const BouncingScrollPhysics(),
+                                    // shrinkWrap: true,
+                                    itemCount: messages.length,
+                                    reverse: true,
+                                    itemBuilder: (context, index) {
+                                      final message = messages[index].data();
+                                      final docId = messages[index].id;
+                                      // updateMessageReadStatus(docId);
+                                      final isSendMessage = (message as Map<String, dynamic>)['sender'] == 'admin';
+                                      return MessageCard(
+                                        message: message,
+                                        isSender: isSendMessage,
+                                        updateRead: provider.updateMessageReadStatus,
+                                        docId: docId,
+                                      );
+                                    },
+                                  );
+                          });
                       //  else {
                       //   return const Center(
                       //     child: Text('error'),

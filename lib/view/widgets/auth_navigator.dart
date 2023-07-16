@@ -23,7 +23,7 @@ class AuthNav extends StatelessWidget {
         }
 
         if (user == null) {
-          return  RegisterWithPhone();
+          return  const RegisterWithPhone();
         } else {
           return const BottomNav(guest: false);
         }

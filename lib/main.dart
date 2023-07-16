@@ -11,7 +11,7 @@ import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/controller/providers/chatroom_provider.dart';
 import 'package:taxverse/controller/providers/dashboard_provider.dart';
 import 'package:taxverse/controller/providers/datetimeprovider.dart';
-import 'package:taxverse/controller/providers/gst3Provider.dart';
+import 'package:taxverse/controller/providers/gst_3_provider.dart';
 import 'package:taxverse/controller/providers/homescreen_provider.dart';
 import 'package:taxverse/controller/providers/otpscreen_provider.dart';
 import 'package:taxverse/controller/providers/register_phone_provider.dart';

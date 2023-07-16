@@ -53,7 +53,7 @@ class VerificationFailed extends StatelessWidget {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BottomNav(guest: false),
+                        builder: (context) => const BottomNav(guest: false),
                       ),
                       (route) => false);
 

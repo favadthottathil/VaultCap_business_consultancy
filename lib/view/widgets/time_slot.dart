@@ -7,7 +7,7 @@ import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/Appoinments/timeslot.dart';
 
 class TimeSlotAppoinment extends StatefulWidget {
-  TimeSlotAppoinment({Key? key}) : super(key: key);
+  const TimeSlotAppoinment({Key? key}) : super(key: key);
 
   @override
   State<TimeSlotAppoinment> createState() => _TimeSlotAppoinmentState();

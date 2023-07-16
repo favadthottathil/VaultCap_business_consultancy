@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
 
 class HomeScreenProvider extends ChangeNotifier {
   tokenToDatabase(String token) async {
@@ -36,8 +34,7 @@ class HomeScreenProvider extends ChangeNotifier {
           var userData = querySnapshot.docs.first.data() as Map<String, dynamic>;
           currentUserName = userData['Name'];
 
-          print(' uuuussser   $currentUserName'); // or use the value as needed
-          // or use the value as needed
+          
         }
       });
     } catch (e) {

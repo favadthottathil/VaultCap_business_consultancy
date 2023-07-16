@@ -110,7 +110,7 @@ class SignOption extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  RegisterWithPhone(),
+                        builder: (context) =>  const RegisterWithPhone(),
                       ));
                 },
                 child: Container(

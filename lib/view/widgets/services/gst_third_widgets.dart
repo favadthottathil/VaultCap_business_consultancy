@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/controller/providers/gst3Provider.dart';
+import 'package:taxverse/controller/providers/gst_3_provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/gst_registraion/accept_application.dart';
 
@@ -136,23 +136,19 @@ class DocumentUpload extends StatelessWidget {
         Container(
           color: whiteColor,
           width: size.width * 0.6,
-          child: Expanded(
-            child: Text(
-              name,
-              style: AppStyle.poppinsBold18,
-            ),
+          child: Text(
+            name,
+            style: AppStyle.poppinsBold18,
           ),
         ),
         Container(
           color: whiteColor,
-          child: Expanded(
-            child: TextButton(
-                onPressed: ontap,
-                child: const Icon(
-                  Icons.upload,
-                  color: blackColor,
-                )),
-          ),
+          child: TextButton(
+              onPressed: ontap,
+              child: const Icon(
+                Icons.upload,
+                color: blackColor,
+              )),
         ),
         documentUploadData.showLoading
             ? const Padding(

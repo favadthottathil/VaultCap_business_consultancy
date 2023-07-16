@@ -112,7 +112,7 @@ class NotificationServices {
         },
       );
     } else {
-      print('failed');
+      
     }
   }
 

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -17,6 +18,24 @@ class ChatRoomProvider extends ChangeNotifier {
     _showEmoji = !_showEmoji;
 
     notifyListeners();
+  }
+
+  isMessageTrue() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('ClientDetails')
+        .where(
+          'Email',
+          isEqualTo: curentUserEmail,
+        )
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      await querySnapshot.docs.first.reference.update({
+        'isMessage': true,
+      });
+
+      log('profile updated');
+    }
   }
 
   void sendMessage(String message) {

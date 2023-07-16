@@ -30,10 +30,9 @@ class Gst1MainHead extends StatelessWidget {
   }
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class Gst1TextField extends StatelessWidget {
   const Gst1TextField({
@@ -45,6 +44,7 @@ class Gst1TextField extends StatelessWidget {
     this.keybordType,
     this.icon,
     this.dateTime,
+    this.readOnly = false,
   });
 
   final TextEditingController businessNameController;
@@ -55,6 +55,8 @@ class Gst1TextField extends StatelessWidget {
   final IconData? icon;
   final Function()? dateTime;
 
+  final bool readOnly;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,6 +64,7 @@ class Gst1TextField extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: TextFormField(
+          readOnly: readOnly,
           style: GoogleFonts.poppins(
             fontSize: 15,
             fontWeight: FontWeight.w600,
@@ -79,7 +82,6 @@ class Gst1TextField extends StatelessWidget {
             hintText: hintText,
             hintStyle: AppStyle.poppinsRegular15,
           ),
-          onTap: dateTime,
           validator: (value) {
             if (value!.isEmpty) {
               return "This field can't be empty";
@@ -91,16 +93,16 @@ class Gst1TextField extends StatelessWidget {
 
             return null;
           },
+          onTap: dateTime,
         ),
       ),
     );
   }
 }
 
-
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class Gst1subHeading extends StatelessWidget {
   const Gst1subHeading({
@@ -131,9 +133,7 @@ class Gst1subHeading extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
-
-
+//                       Next widget
 
 class NextAndPreviousButton extends StatelessWidget {
   const NextAndPreviousButton({
@@ -191,7 +191,7 @@ class NextAndPreviousButton extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 CustomDropdown customDrop({required TextEditingController controller}) {
   return CustomDropdown(
@@ -213,4 +213,4 @@ CustomDropdown customDrop({required TextEditingController controller}) {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

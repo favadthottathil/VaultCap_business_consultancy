@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +32,7 @@ class _AppoinmentSheduleState extends State<AppoinmentShedule> {
     log(selectedDate);
 
     if (selectedDate.isNotEmpty && selectedTime.isNotEmpty) {
-      final email = FirebaseAuth.instance.currentUser?.email ?? 'no email';
+      // final email = FirebaseAuth.instance.currentUser?.email ?? 'no email';
 
       log(ClientInformation.clientId);
 
