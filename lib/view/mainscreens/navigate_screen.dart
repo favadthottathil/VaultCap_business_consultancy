@@ -74,7 +74,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
                 onTap: (index) {
                   setState(() {
                     this.index = index;
-                  });
+                  }); 
                 },
                 items: const [
                   Icon(
