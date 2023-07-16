@@ -91,6 +91,7 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
         'time': time,
         'Email': userEmail,
         'name': clientUserName,
+        'acceptbutton': false,
       });
 
       ClientInformation.gstId = doc.id;

@@ -6,14 +6,15 @@ import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/news_details.dart';
 
 class NewsListTile extends StatelessWidget {
-  const NewsListTile({super.key, required this.news});
+  const NewsListTile({super.key, required this.news, required this.id});
 
   final DocumentSnapshot news;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Navigator.push(
           context,

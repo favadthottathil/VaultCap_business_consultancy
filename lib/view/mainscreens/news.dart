@@ -64,14 +64,16 @@ class News extends StatelessWidget {
                       style: AppStyle.poppinsBold27,
                     ),
                     ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: news.length,
-                      itemBuilder: (context, index) => Padding(
-                        padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
-                        child: NewsListTile(news: news[index]),
-                      ),
-                    )
+                        shrinkWrap: true,
+                        primary: false,
+                        itemCount: news.length,
+                        itemBuilder: (context, index) {
+                          var id = news[index].id;
+                         return Padding(
+                            padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
+                            child: NewsListTile(news: news[index],id: id),
+                          );
+                        })
                   ],
                 ),
               ),

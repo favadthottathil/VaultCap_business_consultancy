@@ -1,17 +1,18 @@
 import 'dart:developer';
-
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import 'package:taxverse/controller/providers/register_phone_provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
 import 'package:taxverse/utils/utils.dart';
 import 'package:taxverse/view/widgets/frosted_glass.dart';
 
+// ignore: must_be_immutable
 class RegisterWithPhone extends StatefulWidget {
   const RegisterWithPhone({super.key});
 
@@ -35,7 +36,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
     e164Key: "",
   );
 
-  void registerWithPhoneNumber(AuthProvider provider) async {
+  void registerWithPhoneNumber(AuthProvider provider, BuildContext context) async {
     String phone = phoneController.text.trim();
 
     log(phone);
@@ -137,8 +138,8 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                                     context: context,
                                     countryListTheme: CountryListThemeData(
                                       bottomSheetHeight: size.height * 0.5,
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(30),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(25.sp),
                                       ),
                                       searchTextStyle: GoogleFonts.poppins(
                                         fontWeight: FontWeight.w700,
@@ -148,10 +149,10 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                                       ),
                                     ),
                                     onSelect: (value) {
-                                      // setState(() {
-                                      //   country = value;
-                                      // });
-                                      provider.setValueToCountry(country, value);
+                                      setState(() {
+                                        country = value;
+                                      });
+                                      // provider.setValueToCountry(country, value);
                                     },
                                   );
                                 },
@@ -188,7 +189,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                       const SizedBox(height: 20),
                       InkWell(
                         onTap: () {
-                          registerWithPhoneNumber(authprovider);
+                          registerWithPhoneNumber(authprovider, context);
                         },
                         child: SizedBox(
                           width: double.infinity,

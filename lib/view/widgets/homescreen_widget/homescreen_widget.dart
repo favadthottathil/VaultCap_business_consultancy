@@ -4,9 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/view/appoinmetshedule.dart';
 import 'package:taxverse/view/chat_interface.dart';
-import 'package:taxverse/view/gst_registraion/gst_1.dart';
 import 'package:taxverse/view/mainscreens/checkapplication_status.dart';
 import 'package:taxverse/view/unavailablescreen.dart';
 

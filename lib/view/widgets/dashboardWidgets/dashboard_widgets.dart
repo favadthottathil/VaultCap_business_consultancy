@@ -38,7 +38,9 @@ Padding showgstInfoToClient(Size size, gstNumber, DashBoardProvider provider, gs
                           FileDownloader.downloadFile(
                             url: '$gstdoc',
                             // name: 'gstdocument',
-                            onDownloadError: (errorMessage) {},
+                            onDownloadError: (errorMessage) {
+                              log(errorMessage);
+                            },
                             onProgress: (fileName, progress) {
                               provider.setProgressValue(progress);
                             },
