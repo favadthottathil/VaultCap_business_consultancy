@@ -97,6 +97,6 @@ dependencies {
 //    firebase auth
     implementation("com.google.firebase:firebase-appcheck-playintegrity")
 
-    classpath 'com.google.gms:google-services'
+    // classpath 'com.google.gms:google-services'
     
 }

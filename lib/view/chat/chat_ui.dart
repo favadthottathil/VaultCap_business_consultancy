@@ -139,7 +139,7 @@ class ChatRoom extends StatelessWidget {
                       }
 
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const SpinKitCircle(
+                        return const SpinKitCircle( 
                           color: Colors.black,
                         );
                       }
