@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/controller/providers/auth_provider.dart';
-import 'package:taxverse/view/dashboard_list.dart';
-import 'package:taxverse/view/mainscreens/home_screen.dart';
-import 'package:taxverse/view/mainscreens/news.dart';
-import 'package:taxverse/view/mainscreens/user_account.dart';
-import 'package:taxverse/view/sign_option.dart';
+import 'package:taxverse/view/authentication/provider/auth_provider.dart';
+import 'package:taxverse/view/gst_registraion/dashboard/dashboard_list.dart';
+import 'package:taxverse/view/mainscreens/homescreen/home_screen.dart';
+import 'package:taxverse/view/mainscreens/news_screen/news.dart';
+import 'package:taxverse/view/mainscreens/useraccount/user_account.dart';
+import 'package:taxverse/view/authentication/sign_option.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key, required this.guest});

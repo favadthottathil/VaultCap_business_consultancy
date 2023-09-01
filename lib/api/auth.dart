@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/controller/providers/auth_provider.dart';
+import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 import 'package:taxverse/utils/client_id.dart';
 import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/utils/utils.dart';
@@ -65,6 +65,8 @@ class AuthSignUp {
       'place': '',
       'Isverified': '',
       'userProfileImage': '',
+      'isMessage': false,
+
     });
 
     // Retrieve the auto-generatied document Id

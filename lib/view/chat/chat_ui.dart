@@ -11,9 +11,9 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/controller/providers/chatroom_provider.dart';
+import 'package:taxverse/view/chat/chat_provider/chatroom_provider.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
-import 'package:taxverse/view/widgets/chat_widgets.dart';
+import 'package:taxverse/view/chat/chat_widget/chat_widgets.dart';
 
 // ignore: must_be_immutable
 class ChatRoom extends StatelessWidget {
@@ -150,7 +150,8 @@ class ChatRoom extends StatelessWidget {
                               .where(
                                 'Email',
                                 isEqualTo: curentUserEmail,
-                              )
+
+                              ).limit(1)
                               .snapshots(),
                           builder: (context, snapshot1) {
                             final clients = snapshot1.data?.docs;

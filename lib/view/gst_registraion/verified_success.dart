@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/controller/providers/verification_provider.dart';
-import 'package:taxverse/view/appoinmetshedule.dart';
+import 'package:taxverse/view/Appoinments/provider/verification_provider.dart';
+import 'package:taxverse/view/Appoinments/appoinmetshedule.dart';
 
 class VerifiedSuccess extends StatelessWidget {
   const VerifiedSuccess({super.key});

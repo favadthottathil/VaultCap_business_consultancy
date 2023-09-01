@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/view/gst_registraion/accept_application.dart';
-import 'package:taxverse/view/gst_registraion/gst_1.dart';
+import 'package:taxverse/view/gst_registraion/gst_screen_1/gst_1.dart';
 import 'package:taxverse/view/gst_registraion/verification_faille.dart';
 import 'package:taxverse/view/gst_registraion/verified_success.dart';
 
