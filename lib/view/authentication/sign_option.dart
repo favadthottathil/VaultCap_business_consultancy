@@ -139,7 +139,7 @@ class SignOption extends StatelessWidget {
                 onTap: () => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BottomNav(guest: true),
+                      builder: (context) => const BottomNav(isGuest: true),
                     ),
                     (route) => false),
                 child: Container(

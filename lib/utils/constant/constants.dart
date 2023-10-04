@@ -15,6 +15,8 @@ const whiteColor = Colors.white;
 
 const blackColor = Colors.black;
 
+const blackColor54 = Colors.black54;
+
 var greyColor = blackColor.withOpacity(0.1);
 
 class AppStyle {
@@ -124,3 +126,11 @@ class AppStyle {
 String saveTokenToDatabase = '';
 
 String userNameForGstField = '';
+
+// var phoneOtp;
+
+// var veriId;
+
+class OtpConst {
+  static DateTime? verificationStartTime;
+}

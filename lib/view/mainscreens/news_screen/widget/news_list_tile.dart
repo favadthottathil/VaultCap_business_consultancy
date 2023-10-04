@@ -1,15 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:intl/intl.dart';
+import 'package:taxverse/model/financial_news.dart';
 import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/view/mainscreens/news_screen/widget/news_details.dart';
 
 class NewsListTile extends StatelessWidget {
-  const NewsListTile({super.key, required this.news, required this.id});
+  const NewsListTile({
+    super.key,
+    required this.news,
+    //  required this.id
+  });
 
-  final DocumentSnapshot news;
-  final String id;
+  final FinancialNews news;
+  // final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,7 @@ class NewsListTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: CachedNetworkImage(
-                    imageUrl: news['image'],
+                    imageUrl: news.imageUrl ?? errorImage,
                     placeholder: (context, url) => const Center(
                       child: SpinKitThreeBounce(
                         color: blackColor,
@@ -63,18 +69,18 @@ class NewsListTile extends StatelessWidget {
                   Flexible(
                     flex: 1,
                     child: Text(
-                      news['newsHeading'],
+                      news.title,
                       overflow: TextOverflow.clip,
                       style: AppStyle.poppinsBold16,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Flexible(
-                    child: Text(
-                      news['description'],
-                      overflow: TextOverflow.fade,
-                      style: AppStyle.poppinsBold12,
-                    ),
+                  SizedBox(height: size.height * 0.001),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(showDate(timestamp: news.publishedAt), style: AppStyle.poppinsBold12),
+                      Text(showDate(timestamp: news.publishedAt, time: true)),
+                    ],
                   )
                 ],
               ),
@@ -83,5 +89,18 @@ class NewsListTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String showDate({required String timestamp, bool time = false}) {
+    DateTime dateTime = DateTime.parse(timestamp).toLocal();
+
+    String formattedDate = DateFormat('dd-MMM-yyyy').format(dateTime);
+    String formattedTime = DateFormat('hh:mm a').format(dateTime);
+
+    if (time) {
+      return formattedTime;
+    }
+
+    return formattedDate;
   }
 }

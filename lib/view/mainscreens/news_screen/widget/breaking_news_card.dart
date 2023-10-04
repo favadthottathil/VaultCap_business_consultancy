@@ -1,12 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:taxverse/model/financial_news.dart';
 import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/view/mainscreens/news_screen/widget/news_details.dart';
 
-class BreakingNewsCard extends StatelessWidget {
+class BreakingNewsCard extends StatefulWidget {
   const BreakingNewsCard({super.key, required this.news});
 
-  final DocumentSnapshot news;
+  final FinancialNews news;
+
+  @override
+  State<BreakingNewsCard> createState() => _BreakingNewsCardState();
+}
+
+class _BreakingNewsCardState extends State<BreakingNewsCard> {
+
+  @override
+  void initState() {
+    
+    super.initState();
+
+    
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +33,7 @@ class BreakingNewsCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DetailsScreen(news: news),
+              builder: (context) => DetailsScreen(news: widget.news),
             ));
       },
       child: Container(
@@ -25,7 +42,8 @@ class BreakingNewsCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           image: DecorationImage(
-            image: NetworkImage(news['image']),
+            
+            image: NetworkImage(widget.news.imageUrl ?? errorImage),
             fit: BoxFit.cover,
           ),
         ),
@@ -39,16 +57,17 @@ class BreakingNewsCard extends StatelessWidget {
           ),
           padding: EdgeInsets.all(size.height * 0.04),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                news['newsHeading'],
-                style: AppStyle.poppinsBoldWhite18,
+                widget.news.title,
+                maxLines: 6,
+                style: AppStyle.poppinsBoldWhite12,
               ),
               const SizedBox(height: 8),
               Text(
-                news['auther'],
+                widget.news.author,
                 style: AppStyle.poppinsRegulargrey14,
               )
             ],

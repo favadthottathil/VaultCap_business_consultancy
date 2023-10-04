@@ -6,7 +6,6 @@ import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/constant/sizedbox.dart';
 import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 import 'package:taxverse/view/authentication/sign_up/widget/signup_widgets.dart';
-import 'widget/signup_widgets.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

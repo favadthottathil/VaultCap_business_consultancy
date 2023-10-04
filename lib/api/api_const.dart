@@ -10,7 +10,7 @@ FirebaseStorage firebaseStorage = FirebaseStorage.instance;
 
 var currentUserName = '';
 
-final curentUserEmail = firebaseAuth.currentUser!.email;
+final curentUserEmail = firebaseAuth.currentUser?.email ?? '';
 
 String? clientUserName;
 

@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:taxverse/utils/shared_preference/store_otp_information.dart';
+import 'package:taxverse/view/authentication/otp_auth/widgets/add_email_bottomsheet.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/authentication/otp_auth/otp_screen.dart';
 import 'package:taxverse/utils/utils.dart';
@@ -31,12 +33,14 @@ class AuthProvider extends ChangeNotifier {
   Future<void> logOut(BuildContext context) async {
     await _fb.signOut();
 
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SignOption(),
-        ),
-        (route) => false);
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SignOption(),
+          ),
+          (route) => false);
+    }
   }
 
   Future<String> signIn(String email, String password, BuildContext context) async {
@@ -55,7 +59,7 @@ class AuthProvider extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const BottomNav(guest: false),
+            builder: (context) => const BottomNav(isGuest: false),
           ),
           (route) => false);
 
@@ -84,7 +88,7 @@ class AuthProvider extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const BottomNav(guest: false),
+            builder: (context) => const BottomNav(isGuest: false),
           ),
           (route) => false);
 
@@ -132,7 +136,8 @@ class AuthProvider extends ChangeNotifier {
       }
 
       codeSent(verificationId, forceResendingToken) {
-        
+        // veriId = verificationId;
+        OtpSharedPreferece.storeVerificatinId(verificationId);
         _isLoading = false;
         notifyListeners();
 
@@ -180,6 +185,16 @@ class AuthProvider extends ChangeNotifier {
 
       if (user != null) {
         _uid = user.uid;
+
+        final String? email = user.email;
+
+        if (email == null) {
+           AddEmailBottomsheet().bottomSheet(context: context, user: user);
+
+          // if (email.isNotEmpty) {
+          //   await user.updateEmail(email);
+          // }
+        }
 
         onSuccess();
       }

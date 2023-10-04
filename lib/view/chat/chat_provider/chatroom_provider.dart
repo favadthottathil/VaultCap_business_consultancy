@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -9,18 +8,18 @@ import 'package:taxverse/api/api_const.dart';
 
 class ChatRoomProvider extends ChangeNotifier {
   String imageUrl = '';
-
   bool _showEmoji = false;
 
   bool get showEmoji => _showEmoji;
 
-  showEmojiState() {
+  // Toggle the emoji state and notify listeners
+  void showEmojiState() {
     _showEmoji = !_showEmoji;
-
     notifyListeners();
   }
 
-  isMessageTrue() async {
+  // Update the 'isMessage' field in the Firestore
+  Future<void> isMessageTrue() async {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('ClientDetails')
         .where(
@@ -38,14 +37,12 @@ class ChatRoomProvider extends ChangeNotifier {
     }
   }
 
+  // Send a text message to Firestore
   void sendMessage(String message) {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     firestore.collection('chats').add({
-      'participants': [
-        'admin',
-        curentUserEmail
-      ],
+      'participants': ['admin', curentUserEmail],
       'text': message,
       'time': time,
       'sender': 'admin',
@@ -54,14 +51,12 @@ class ChatRoomProvider extends ChangeNotifier {
     });
   }
 
+  // Send an image message to Firestore
   void sendImage() {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     firestore.collection('chats').add({
-      'participants': [
-        'admin',
-        curentUserEmail
-      ],
+      'participants': ['admin', curentUserEmail],
       'text': '',
       'time': time,
       'sender': 'admin',
@@ -70,6 +65,7 @@ class ChatRoomProvider extends ChangeNotifier {
     });
   }
 
+  // Pick an image from the camera and upload it to Firebase Storage
   Future<void> pickFromCamera() async {
     ImagePicker imagePicker = ImagePicker();
 
@@ -95,6 +91,7 @@ class ChatRoomProvider extends ChangeNotifier {
     }
   }
 
+  // Pick an image from the gallery and upload it to Firebase Storage
   Future<void> pickFromGallery() async {
     ImagePicker imagePicker = ImagePicker();
 
@@ -120,7 +117,8 @@ class ChatRoomProvider extends ChangeNotifier {
     }
   }
 
-  updateMessageReadStatus(String messageID) {
+  // Update the 'read' status of a message in Firestore
+  void updateMessageReadStatus(String messageID) {
     firestore.collection('chats').doc(messageID).update({
       'read': 'read'
     });

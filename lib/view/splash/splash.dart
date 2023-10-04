@@ -3,15 +3,26 @@ import 'package:sizer/sizer.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
 import 'widget/splash_widget.dart';
 
-// ignore: must_be_immutable
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   Splash({super.key});
 
-  NotificationServices notificationServices = NotificationServices();
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  final NotificationServices notificationServices = NotificationServices();
+
+  @override
+  void initState() {
+    super.initState();
+    // FinancialNewsService().fetchFinancialNews();
+  }
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+
     return SafeArea(
       child: Scaffold(
         body: SplashContainer(mediaQuery: mediaQuery),
@@ -22,9 +33,9 @@ class Splash extends StatelessWidget {
 
 class SplashContainer extends StatelessWidget {
   const SplashContainer({
-    super.key,
+    Key? key,
     required this.mediaQuery,
-  });
+  }) : super(key: key);
 
   final MediaQueryData mediaQuery;
 
@@ -33,22 +44,20 @@ class SplashContainer extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // SizedBox(height: .h),
+          // Your app's logo and image
           SizedBox(
             height: 40.h,
             child: SplashWidgets.stackLogoAndImage(mediaQuery),
           ),
           SizedBox(height: 2.h),
+          // Text containers for your splash screen
           SplashWidgets.splashTextContainer(mediaQuery),
-          SizedBox(
-            height: 3.h,
-          ),
+          SizedBox(height: 3.h),
           SplashWidgets.splashTextContainer2(mediaQuery),
-          SizedBox(
-            height: 4.h,
-          ),
+          SizedBox(height: 4.h),
+          // Container for getting started button
           GetStartedContainer(mediaQuery: mediaQuery),
-          SizedBox(height: 2.h)
+          SizedBox(height: 2.h),
         ],
       ),
     );

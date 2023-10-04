@@ -1,8 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/api/messaging_api.dart';
 import 'package:taxverse/utils/constant/constants.dart';
@@ -11,19 +10,16 @@ import 'package:taxverse/utils/date_util.dart';
 
 class MessageCard extends StatelessWidget {
   const MessageCard({
-    super.key,
+    Key? key,
     required this.message,
     required this.isSender,
     required this.updateRead,
     required this.docId,
-  });
+  }) : super(key: key);
 
   final Object? message;
-
   final bool isSender;
-
   final void Function(String) updateRead;
-
   final String docId;
 
   @override
@@ -33,7 +29,6 @@ class MessageCard extends StatelessWidget {
     }
 
     return Align(
-      // alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
       child: isSender
           ? Align(
               alignment: Alignment.centerRight,
@@ -46,7 +41,6 @@ class MessageCard extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(right: 10, top: 20, left: 40),
                         decoration: BoxDecoration(
-                          // color: Colors.blue.shade100,
                           border: Border.all(color: blackColor),
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
@@ -62,7 +56,6 @@ class MessageCard extends StatelessWidget {
                                 (message as Map<String, dynamic>)['image'] == ''
                                     ? Text(
                                         (message as Map<String, dynamic>)['text'],
-                                        // 'jdjjdfs',
                                         style: AppStyle.poppinsBold16,
                                       )
                                     : ClipRRect(
@@ -121,7 +114,6 @@ class MessageCard extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
                         margin: const EdgeInsets.only(left: 20, top: 20, right: 60),
                         decoration: BoxDecoration(
-                          // color: Colors.cyan.shade100,
                           border: Border.all(color: blackColor),
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(10),
@@ -175,10 +167,6 @@ class MessageCard extends StatelessWidget {
   }
 }
 
-// <<---------------------------------------------------------->>
-
-//                       Next widget
-
 _buildTickIcon(String read) {
   if (read.isNotEmpty) {
     return const Icon(
@@ -193,10 +181,6 @@ _buildTickIcon(String read) {
     );
   }
 }
-
-// <<---------------------------------------------------------->>
-
-//                       Next widget
 
 Widget chatInput({
   required TextEditingController message,
@@ -220,7 +204,6 @@ Widget chatInput({
                   IconButton(
                     onPressed: () {
                       FocusScope.of(context).unfocus();
-                      // setState(() => showEmoji = !showEmoji);
                       provider.showEmojiState();
                     },
                     icon: const Icon(
@@ -233,9 +216,6 @@ Widget chatInput({
                       controller: message,
                       onTap: () {
                         if (provider.showEmoji) {
-                          // setState(() {
-                          //   showEmoji = !showEmoji;
-                          // });
                           provider.showEmojiState();
                         }
                       },
@@ -261,7 +241,6 @@ Widget chatInput({
                   IconButton(
                     onPressed: () async {
                       await provider.pickFromCamera();
-
                       provider.sendImage();
                     },
                     icon: const Icon(
@@ -276,8 +255,6 @@ Widget chatInput({
           MaterialButton(
             onPressed: () {
               final messages = message.text.trim();
-
-              // final userName = FirebaseAuth.instance.currentUser!.displayName;
 
               if (messages.isNotEmpty) {
                 provider.sendMessage(messages);
@@ -301,7 +278,3 @@ Widget chatInput({
     }),
   );
 }
-
-// <<---------------------------------------------------------->>
-
-//                       Next widget

@@ -15,7 +15,7 @@ class CheckStatus extends StatelessWidget {
   Stream<QuerySnapshot<Map<String, dynamic>>> checkUserStatus() {
     final userEmail = FirebaseAuth.instance.currentUser!.email;
 
-    final userStatus = FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: userEmail).limit(1).snapshots();
+    final userStatus = FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: userEmail).snapshots();
 
     return userStatus;
   }

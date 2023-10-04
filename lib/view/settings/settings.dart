@@ -106,7 +106,7 @@ class Settingss extends StatelessWidget {
         backgroundColor: whiteColor,
         elevation: 0,
         leading: MaterialButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pop(context),
           child: const Icon(
             Icons.arrow_back_ios_new,
           ),

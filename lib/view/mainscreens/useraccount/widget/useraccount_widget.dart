@@ -120,7 +120,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
             Opacity(
               opacity: shrinkOffset / expandedHeight,
               child: Text(
-                user['Name'],
+                user['Name'] == '' ? 'User' : user['Name'],
                 style: AppStyle.poppinsBoldWhite20,
               ),
             ),
@@ -137,7 +137,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                 Column(
                   children: [
                     Text(
-                      'Hello ${user['Name']}',
+                      'Hello ${user['Name'] == '' ? 'User' : user['Name']}',
                       style: AppStyle.poppinsBoldWhite18,
                     ),
                     const SizedBox(
@@ -255,7 +255,7 @@ SliverChildListDelegate sliverChildListDelegate(
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            UserData(text: userdata['Name']),
+            UserData(text: userdata['Name'] == '' ? 'User' : userdata['Name']),
             Padding(
               padding: EdgeInsets.only(right: size.width * 0.08, top: size.height * 0.02),
               child: InkWell(
@@ -429,7 +429,7 @@ SliverChildListDelegate sliverChildListDelegate(
         padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
         child: const CustomDivider(),
       ),
-      SizedBox(height: size.height * 0.02),
+      SizedBox(height: size.height * 0.1),
     ],
   );
 }

@@ -29,32 +29,35 @@ class UserProfile extends StatelessWidget {
       stream: FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: userEmail).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final userdata = snapshot.data!.docs.first;
+          final userdata = snapshot.data!.docs[0];
           return Scaffold(
             backgroundColor: blackColor,
             body: SafeArea(
-              child: Material(
-                child: CustomScrollView(
-                  slivers: [
-                    SliverPersistentHeader(
-                      pinned: true,
-                      delegate: MySliverAppBar(expandedHeight: size.height * 0.23, user: userdata),
-                    ),
-                    Consumer<UserAccountProvider>(builder: (context, provider, child) {
-                      return SliverList(
-                        // delegate: sliverChildListDelegate(size, userdata, provider),
-                        delegate: sliverChildListDelegate(
-                          size,
-                          userdata,
-                          provider,
-                          nameController,
-                          phoneController,
-                          addressController,
-                          placeController,
-                        ),
-                      );
-                    })
-                  ],
+              child: SizedBox(
+                height: size.height * 0.9,
+                child: Material(
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverPersistentHeader(
+                        pinned: true,
+                        delegate: MySliverAppBar(expandedHeight: size.height * 0.23, user: userdata),
+                      ),
+                      Consumer<UserAccountProvider>(builder: (context, provider, child) {
+                        return SliverList(
+                          // delegate: sliverChildListDelegate(size, userdata, provider),
+                          delegate: sliverChildListDelegate(
+                            size,
+                            userdata,
+                            provider,
+                            nameController,
+                            phoneController,
+                            addressController,
+                            placeController,
+                          ),
+                        );
+                      })
+                    ],
+                  ),
                 ),
               ),
             ),

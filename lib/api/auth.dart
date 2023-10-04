@@ -33,6 +33,7 @@ class AuthSignUp {
           namecontroller.text.trim(),
           emailcontroller.text.trim(),
           passcontroller.text.trim(),
+          ''
         );
 
         return;
@@ -45,8 +46,8 @@ class AuthSignUp {
     }
   }
 
-  static Future addUserDetails(String name, String email, String password) async {
-    userNameForGstField = name;
+  static Future addUserDetails(String? name, String? email, String? password, String? phoneNumber ) async {
+    userNameForGstField = name ?? '';
 
     final CollectionReference clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
 
@@ -54,12 +55,12 @@ class AuthSignUp {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     final DocumentReference newClientDocRef = await clientCollection.add({
-      'Name': name,
-      'Email': email,
-      'Password': password,
+      'Name': name ?? '',
+      'Email': email ?? '',
+      'Password': password ?? '',
       'Status': 'Unavailable',
       'is_online': false,
-      'phone_number': '',
+      'phone_number': phoneNumber ?? '',
       'Address': '',
       'time': time,
       'place': '',

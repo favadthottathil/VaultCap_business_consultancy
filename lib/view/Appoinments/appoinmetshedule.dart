@@ -246,7 +246,7 @@ class _AppoinmentSheduleState extends State<AppoinmentShedule> {
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const BottomNav(guest: false),
+                                      builder: (context) => const BottomNav(isGuest: false),
                                     ),
                                     (route) => false);
                               },

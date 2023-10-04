@@ -1,13 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:taxverse/model/financial_news.dart';
 import 'package:taxverse/utils/constant/constants.dart';
+import 'package:taxverse/utils/constant/sizedbox.dart';
+import 'package:taxverse/view/mainscreens/news_screen/webview_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.news});
 
-  final DocumentSnapshot news;
+  final FinancialNews news;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,17 @@ class DetailsScreen extends StatelessWidget {
           },
           child: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebViewNews(websiteUrl: news.url),
+                    ));
+              },
+              icon: const Icon(Icons.public))
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(size.height * 0.02),
@@ -35,12 +48,12 @@ class DetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                news['newsHeading'],
+                news.title,
                 style: AppStyle.poppinsBold27,
               ),
               const SizedBox(height: 8),
               Text(
-                news['auther'],
+                news.content,
                 style: AppStyle.poppinsBold12,
               ),
               SizedBox(height: size.height * 0.03),
@@ -49,7 +62,7 @@ class DetailsScreen extends StatelessWidget {
               //   fit: BoxFit.cover,
               // ),
               CachedNetworkImage(
-                imageUrl: news['image'],
+                imageUrl: news.imageUrl ?? errorImage,
                 placeholder: (context, url) => const Center(
                   child: SpinKitCircle(
                     color: blackColor,
@@ -59,7 +72,7 @@ class DetailsScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.04),
               Text(
-                news['description'],
+                news.description,
                 style: AppStyle.poppinsBold16,
               )
             ],

@@ -208,7 +208,7 @@ class VerificationSuccessProvider extends ChangeNotifier {
                                     Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const BottomNav(guest: false),
+                                          builder: (context) => const BottomNav(isGuest: false),
                                         ),
                                         (route) => false);
                                   },

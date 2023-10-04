@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/chat/chat_ui.dart';
 
+// Create a StatelessWidget for the "Connect With Us" page.
 class ConnectWithUsPage extends StatelessWidget {
-  ConnectWithUsPage({super.key});
+  // Constructor for the ConnectWithUsPage.
+  // Use named parameters for better readability.
+  ConnectWithUsPage({Key? key}) : super(key: key);
 
-  final list = [
+  // List of services offered by the financial consultancy.
+  final List<String> services = [
     'Business Planning and Strategy: Our team of experts will work closely with you to develop a comprehensive business plan and strategy that aligns with your vision and goals.',
     'Financial Analysis and Forecasting: We provide in-depth financial analysis and forecasting to help you make informed decisions about funding, investment opportunities, and growth potential.',
     "Funding and Financing Options: We'll guide you through various funding and financing options available for startups, including venture capital, angel investors, loans, and grants.",
     "Legal and Regulatory Compliance: We'll ensure that your new business complies with all necessary legal and regulatory requirements, helping you avoid potential pitfalls and penalties.",
   ];
 
+  // Build method for the ConnectWithUsPage.
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -22,6 +27,7 @@ class ConnectWithUsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Title for the page.
               Padding(
                 padding: EdgeInsets.only(left: size.width * 0.06),
                 child: Text(
@@ -29,13 +35,16 @@ class ConnectWithUsPage extends StatelessWidget {
                   style: AppStyle.poppinsBold24,
                 ),
               ),
+              // Container for the introductory text.
               Container(
                 margin: EdgeInsets.all(size.height * 0.02),
                 padding: EdgeInsets.all(size.height * 0.01),
-                // color: greyColor,
                 height: size.height * 0.24,
                 width: size.width,
-                decoration: BoxDecoration(color: greyColor, borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(
+                  color: greyColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.only(left: size.width * 0.02),
@@ -46,6 +55,7 @@ class ConnectWithUsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              // Title for the list of services.
               Padding(
                 padding: EdgeInsets.only(left: size.width * 0.06),
                 child: Text(
@@ -53,23 +63,14 @@ class ConnectWithUsPage extends StatelessWidget {
                   style: AppStyle.poppinsBold18,
                 ),
               ),
-              const ListTileCustom(
-                text: 'Business Planning and Strategy',
-                subText: 'Our team of experts will work closely with you to develop a comprehensive business plan and strategy that aligns with your vision and goals.',
-              ),
-              const ListTileCustom(
-                text: 'Financial Analysis and Forecasting',
-                subText: 'We provide in-depth financial analysis and forecasting to help you make informed decisions about funding, investment opportunities, and growth potential.',
-              ),
-              const ListTileCustom(
-                text: 'Funding and Financing Options',
-                subText: "We'll guide you through various funding and financing options available for startups, including venture capital, angel investors, loans, and grants.",
-              ),
-              const ListTileCustom(
-                text: 'Legal and Regulatory Compliance',
-                subText: "We'll ensure that your new business complies with all necessary legal and regulatory requirements, helping you avoid potential pitfalls and penalties.",
-              ),
+              // List of services displayed using the ListTileCustom widget.
+              for (final service in services)
+                ListTileCustom(
+                  text: service.split(': ')[0], // Extract the service title.
+                  subText: service.split(': ')[1], // Extract the service description.
+                ),
               SizedBox(height: size.height * 0.02),
+              // Title for the "Contact Us" section.
               Padding(
                 padding: EdgeInsets.only(left: size.width * 0.06),
                 child: Text(
@@ -78,6 +79,7 @@ class ConnectWithUsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.02),
+              // Description for contacting the team.
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.047),
                 child: Text(
@@ -86,6 +88,7 @@ class ConnectWithUsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.02),
+              // Button to initiate a chat.
               Align(
                 alignment: Alignment.center,
                 child: ElevatedButton.icon(
@@ -105,7 +108,10 @@ class ConnectWithUsPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: size.height * 0.02, horizontal: size.width * 0.02),
+                    padding: EdgeInsets.symmetric(
+                      vertical: size.height * 0.02,
+                      horizontal: size.width * 0.02,
+                    ),
                   ),
                 ),
               ),
@@ -118,16 +124,16 @@ class ConnectWithUsPage extends StatelessWidget {
   }
 }
 
+// Create a StatelessWidget for custom ListTile items.
 class ListTileCustom extends StatelessWidget {
   const ListTileCustom({
-    super.key,
+    Key? key,
     required this.text,
     required this.subText,
-  });
+  }) : super(key: key);
 
-  final String text;
-
-  final String subText;
+  final String text;    // Title of the service.
+  final String subText; // Description of the service.
 
   @override
   Widget build(BuildContext context) {
