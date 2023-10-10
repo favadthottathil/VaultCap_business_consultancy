@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/mainscreens/useraccount/provider/useraccount_provider.dart';
 import 'package:taxverse/utils/client_id.dart';
@@ -26,7 +27,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: userEmail).snapshots(),
+      stream: FirebaseFirestore.instance.collection('ClientDetails').where('Email', isEqualTo: firebaseAuth.currentUser!.email).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final userdata = snapshot.data!.docs[0];

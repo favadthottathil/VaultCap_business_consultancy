@@ -52,17 +52,17 @@ class DetailsScreen extends StatelessWidget {
                 style: AppStyle.poppinsBold27,
               ),
               const SizedBox(height: 8),
-              Text(
-                news.content,
-                style: AppStyle.poppinsBold12,
-              ),
+              // Text(
+              //   news.content,
+              //   style: AppStyle.poppinsBold12,
+              // ),
               SizedBox(height: size.height * 0.03),
               // Image.network(
               //   news['image'],
               //   fit: BoxFit.cover,
               // ),
               CachedNetworkImage(
-                imageUrl: news.imageUrl ?? errorImage,
+                imageUrl: news.imageUrl,
                 placeholder: (context, url) => const Center(
                   child: SpinKitCircle(
                     color: blackColor,
@@ -72,7 +72,7 @@ class DetailsScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.04),
               Text(
-                news.description,
+                news.content,
                 style: AppStyle.poppinsBold16,
               )
             ],

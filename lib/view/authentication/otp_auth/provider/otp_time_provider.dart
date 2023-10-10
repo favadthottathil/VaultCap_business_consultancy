@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:taxverse/utils/utils.dart';
 
 class OtpTimeProvider extends ChangeNotifier {
-  int _secondsRemaining = 600;
+  int _secondsRemaining = 300;
 
   Timer? _timer;
 

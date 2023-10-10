@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/foundation.dart';
 
@@ -9,6 +11,7 @@ class RegisterPhoneProvider extends ChangeNotifier {
 
   setValueToCountry(Country country, Country value) {
     country = value;
+    log(country.toString());
     notifyListeners();
   }
 }

@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:taxverse/controller/shared_perference/otp_sharedprefrence.dart';
+import 'package:taxverse/utils/diologes.dart';
 import 'package:taxverse/view/authentication/otp_auth/provider/register_phone_provider.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/view/authentication/provider/auth_provider.dart';
@@ -39,9 +41,14 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
   void registerWithPhoneNumber(AuthProvider provider, BuildContext context) async {
     String phone = phoneController.text.trim();
 
+    if (phoneController.text.length < 10) {
+      Diologes.showSnackbar(context, 'Enter valid Phone number');
+      return;
+    }
+
     log(phone);
 
-    final msg = await provider.signInWithPhoneNumber('+${country.phoneCode}$phone', context);
+    final msg = await provider.signInWithPhoneNumber(phoneNumber: '+${country.phoneCode}$phone', context: context);
 
     if (msg == '') return;
 
@@ -113,6 +120,8 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                           // setState(() {
                           //   phoneController.text = value;
                           // });
+                          OtpSharedPreference().storePhoneNumberToSharedPreference('+${country.phoneCode}$value');
+                          log(value);
                           provider.setValueToPhoneController(phoneController.text, value);
                         },
                         decoration: InputDecoration(
@@ -153,6 +162,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                                         country = value;
                                       });
                                       // provider.setValueToCountry(country, value);
+                                      // log(country.toString());
                                     },
                                   );
                                 },

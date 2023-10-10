@@ -77,10 +77,10 @@ class MyApp extends StatelessWidget {
             // Main MaterialApp widget
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              splashFactory: InkRipple.splashFactory,
-            ),
+            // theme: ThemeData(
+            //   primarySwatch: Colors.blue,
+            //   splashFactory: InkRipple.splashFactory,
+            // ),
             home: Splash(), // Initial screen is Splash
 
             // home: OtpScreen(verificationId: ''),

@@ -86,19 +86,7 @@ class _NewsState extends State<News> {
               builder: (_, AsyncSnapshot<List<FinancialNews>> snapshot) {
                 if (snapshot.hasData) {
                   log('financial news success');
-                  // var news = snapshot.data;
-
-                  // if (showLoading) {
-                  //   return Center(
-                  //     child: Column(
-                  //       children: [
-                  //         const SpinKitFadingGrid(color: blackColor, size: 60),
-                  //         SizedBox(height: size.height * 0.02),
-                  //         Text('loading data...', style: AppStyle.poppinsBold12)
-                  //       ],
-                  //     ),
-                  //   );
-                  // }
+                  
 
                   return SingleChildScrollView(
                     controller: _scrollController,
@@ -150,6 +138,7 @@ class _NewsState extends State<News> {
                                   child: NewsListTile(news: news[index]),
                                 );
                               }
+                              return null;
 
                               // var id = news[index].id;
                             },

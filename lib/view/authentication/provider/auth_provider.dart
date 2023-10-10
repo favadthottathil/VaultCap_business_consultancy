@@ -1,8 +1,6 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/utils/shared_preference/store_otp_information.dart';
-import 'package:taxverse/view/authentication/otp_auth/widgets/add_email_bottomsheet.dart';
 import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/authentication/otp_auth/otp_screen.dart';
 import 'package:taxverse/utils/utils.dart';
@@ -120,7 +118,7 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<String> signInWithPhoneNumber(String phoneNumber, BuildContext context) async {
+  Future<String> signInWithPhoneNumber({required String phoneNumber, required BuildContext context, bool isResend = false}) async {
     try {
       _isLoading = true;
       notifyListeners();
@@ -137,9 +135,10 @@ class AuthProvider extends ChangeNotifier {
 
       codeSent(verificationId, forceResendingToken) {
         // veriId = verificationId;
-        OtpSharedPreferece.storeVerificatinId(verificationId);
         _isLoading = false;
         notifyListeners();
+
+        if (isResend) return;
 
         Navigator.push(
           context,
@@ -188,13 +187,21 @@ class AuthProvider extends ChangeNotifier {
 
         final String? email = user.email;
 
-        if (email == null) {
-           AddEmailBottomsheet().bottomSheet(context: context, user: user);
+        // if (email == null) {
+        //   //  AddEmailBottomsheet().bottomSheet(context: context, user: user);
 
-          // if (email.isNotEmpty) {
-          //   await user.updateEmail(email);
-          // }
-        }
+        //   // Navigator.push(
+        //   //     context,
+        //   //     MaterialPageRoute(
+        //   //       builder: (context) => EnterUsersEmail(),
+        //   //     ));
+
+        //   print('email is null');
+
+        //   // if (email.isNotEmpty) {
+        //   //   await user.updateEmail(email);
+        //   // }
+        // }
 
         onSuccess();
       }

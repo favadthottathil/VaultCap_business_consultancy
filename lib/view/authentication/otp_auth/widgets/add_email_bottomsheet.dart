@@ -13,10 +13,10 @@ import 'package:taxverse/view/authentication/otp_auth/provider/otp_time_provider
 class AddEmailBottomsheet {
   TextEditingController emailController = TextEditingController();
 
-  PersistentBottomSheetController<dynamic> bottomSheet({required BuildContext context, required User? user}) {
+  bottomSheet({required BuildContext context, required User? user}) {
     final size = MediaQuery.of(context).size;
 
-    return showBottomSheet(
+    showBottomSheet(
       context: context,
       builder: (context) {
         return SizedBox(

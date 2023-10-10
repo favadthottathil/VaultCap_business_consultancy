@@ -1,12 +1,10 @@
 import 'dart:developer';
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taxverse/api/api.dart';
 import 'package:taxverse/api/api_const.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/otp_auth/enter_email_page.dart';
 import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 import 'package:taxverse/view/gst_registraion/dashboard/dashboard_list.dart';
 import 'package:taxverse/view/mainscreens/homescreen/home_screen.dart';
@@ -34,7 +32,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
     _screens = [
       HomeScreen(),
       const DashBoardListTile(),
-      News(),
+      const News(),
       UserProfile(),
     ];
 

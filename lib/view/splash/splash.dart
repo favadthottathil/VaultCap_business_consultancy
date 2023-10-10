@@ -42,6 +42,7 @@ class SplashContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           // Your app's logo and image
