@@ -3,11 +3,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:sizer/sizer.dart';
 import 'package:taxverse/utils/constant/constants.dart';
 import 'package:taxverse/utils/utils.dart';
 import 'package:taxverse/view/widgets/frosted_glass/frosted_glass.dart';
-
 import 'package:taxverse/view/authentication/reset_password/widget/open_email.dart';
 import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 
@@ -68,22 +67,22 @@ class _ResetPasswordState extends State<ResetPassword> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20),
+                    SizedBox(height: 2.h),
                     Row(
                       children: [
                         SvgPicture.asset(
                           ImageConstant.imgArrowleft,
-                          height: 20,
-                          width: 20,
+                          height: 2.h,
+                          width: 3.h,
                         ),
-                        const SizedBox(width: 30),
+                        SizedBox(width: 10.w),
                         Text(
                           'Back',
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
                           style: GoogleFonts.poppins(
                             color: blackColor,
-                            fontSize: 20,
+                            fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -103,7 +102,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               textAlign: TextAlign.left,
                               style: GoogleFonts.poppins(
                                 color: blackColor,
-                                fontSize: 20,
+                                fontSize: 15.sp,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -116,7 +115,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               textAlign: TextAlign.left,
                               style: GoogleFonts.poppins(
                                 color: blackColor,
-                                fontSize: 14,
+                                fontSize: 10.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -129,7 +128,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               textAlign: TextAlign.left,
                               style: GoogleFonts.poppins(
                                 color: blackColor,
-                                fontSize: 14,
+                                fontSize: 10.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -142,7 +141,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               textAlign: TextAlign.left,
                               style: GoogleFonts.poppins(
                                 color: blackColor,
-                                fontSize: 14,
+                                fontSize: 10.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -155,7 +154,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               textAlign: TextAlign.left,
                               style: GoogleFonts.poppins(
                                 color: blackColor,
-                                fontSize: 16,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -174,7 +173,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                                   fillColor: blackColor.withOpacity(0.1),
                                   hintText: 'Enter Your email',
                                   hintStyle: GoogleFonts.poppins(
-                                    fontSize: 15,
+                                    fontSize: 11.sp,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5,
                                     color: const Color(0xa0000000),
@@ -183,7 +182,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          SizedBox(height: 5.h),
                           InkWell(
                             onTap: () {
                               // signIn(authprovider);
@@ -197,13 +196,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                                 color: const Color(0xff000000),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
                                   'Send Instructions',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: whiteColor,
-                                    fontSize: 20,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w700,
                                     height: 1.5,
                                   ),

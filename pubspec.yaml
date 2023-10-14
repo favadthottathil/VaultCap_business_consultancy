@@ -41,7 +41,7 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   easy_pdf_viewer: ^1.0.6
   email_validator: ^2.1.17
-  emoji_picker_flutter: ^1.6.1
+  emoji_picker_flutter:
   file_picker: null
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.0

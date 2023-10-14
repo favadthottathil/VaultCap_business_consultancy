@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
 import 'package:taxverse/view/authentication/otp_auth/register_phone.dart';
 import 'package:taxverse/view/authentication/sign_up/sign_up.dart';
 import 'package:taxverse/view/authentication/sign_in/sign_in.dart';
@@ -135,34 +134,34 @@ class SignOption extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.06),
-              GestureDetector(
-                onTap: () => Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const BottomNav(isGuest: true),
-                    ),
-                    (route) => false),
-                child: Container(
-                  width: size.width * 0.4,
-                  height: size.height * 0.04,
-                  // margin: EdgeInsets.only(top: size.height * 0.04),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: blackColor,
-                    border: Border.all(
-                      color: blackColor,
-                      width: 1,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Guest',
-                      textAlign: TextAlign.left,
-                      style: AppStyle.poppinsBoldWhite12,
-                    ),
-                  ),
-                ),
-              )
+              // GestureDetector(
+              //   onTap: () => Navigator.pushAndRemoveUntil(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const BottomNav(isGuest: true),
+              //       ),
+              //       (route) => false),
+              //   child: Container(
+              //     width: size.width * 0.4,
+              //     height: size.height * 0.04,
+              //     // margin: EdgeInsets.only(top: size.height * 0.04),
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(10),
+              //       color: blackColor,
+              //       border: Border.all(
+              //         color: blackColor,
+              //         width: 1,
+              //       ),
+              //     ),
+              //     child: Center(
+              //       child: Text(
+              //         'Guest',
+              //         textAlign: TextAlign.left,
+              //         style: AppStyle.poppinsBoldWhite12,
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),
