@@ -18,6 +18,7 @@ class EnterUsersEmail extends StatelessWidget {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   TextEditingController emailController = TextEditingController();
+  TextEditingController name = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,42 @@ class EnterUsersEmail extends StatelessWidget {
               child: Text('ENTER YOUR EMAIL ADDRESS', style: AppStyle.poppinsBold20),
             ),
             Positioned(
-              top: 100,
+              top: 110,
+              left: 20,
+              child: SizedBox(
+                width: size.height * 0.4,
+                child: TextFormField(
+                  controller: name,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: blackColor.withOpacity(0.1),
+                    hintText: 'Enter Your Name',
+                    hintStyle: GoogleFonts.poppins(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      height: 1.5,
+                      color: const Color(0xa0000000),
+                    ),
+                  ),
+                ),
+                // child: TextFormField(),
+              ),
+            ),
+            Positioned(
+              top: 190,
               left: 20,
               child: SizedBox(
                 width: size.height * 0.4,
@@ -70,7 +106,7 @@ class EnterUsersEmail extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 190,
+              top: 270,
               left: 20,
               child: Consumer<OtpTimeProvider>(
                 builder: (context, value, child) {
@@ -105,7 +141,7 @@ class EnterUsersEmail extends StatelessWidget {
 
                               if (user.email == null) return;
 
-                              AuthSignUp.addUserDetails('', emailController.text, '', user.phoneNumber ?? '');
+                              AuthSignUp.addUserDetails(name.text.trim(), emailController.text, '', user.phoneNumber ?? '');
 
                               Navigator.push(
                                   context,
@@ -144,7 +180,7 @@ class EnterUsersEmail extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 200,
+              top: 280,
               left: 280,
               child: Consumer<OtpTimeProvider>(
                 builder: (context, value, child) {
@@ -175,14 +211,10 @@ class EnterUsersEmail extends StatelessWidget {
 
   Future<void> updateMail(User user, BuildContext context) async {
     try {
-      // AuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otp);
-      // await user.reauthenticateWithCredential(credential);
       await user.updateEmail(emailController.text);
-
       log('okke');
     } catch (e) {
       log('failed to set mail $e');
-
       if (e.toString().contains('firebase_auth/email-already-in-use')) {
         Diologes.showSnackbar(context, 'User Already registred');
       }

@@ -117,9 +117,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                           fontWeight: FontWeight.bold,
                         ),
                         onChanged: (value) {
-                          // setState(() {
-                          //   phoneController.text = value;
-                          // });
+                          
                           OtpSharedPreference().storePhoneNumberToSharedPreference('+${country.phoneCode}$value');
                           log(value);
                           provider.setValueToPhoneController(phoneController.text, value);

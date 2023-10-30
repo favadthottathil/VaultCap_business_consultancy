@@ -43,17 +43,12 @@ class AuthProvider extends ChangeNotifier {
 
   Future<String> signIn(String email, String password, BuildContext context) async {
     try {
-      _isLoading = true;
-      notifyListeners();
-
       await _fb.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
 
-      // _isLoading = false;
-      // notifyListeners();
-
+      // ignore: use_build_context_synchronously
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -61,26 +56,21 @@ class AuthProvider extends ChangeNotifier {
           ),
           (route) => false);
 
-      // _isLoading = false;
-      // notifyListeners();
-
       return Future.value('');
     } on FirebaseAuthException catch (ex) {
       _isLoading = false;
       notifyListeners();
+      log(ex.toString());
       return Future.value(ex.message);
     }
   }
 
-  Future<String> signOut(String email, String password, BuildContext context) async {
+  Future<String> signUp(String email, String password, BuildContext context) async {
     try {
-      _isLoading = true;
-      notifyListeners();
+      // _isLoading = true;
+      // notifyListeners();
 
       await _fb.createUserWithEmailAndPassword(email: email.trim(), password: password.trim());
-
-      // _isLoading = false;
-      // notifyListeners();
 
       // ignore: use_build_context_synchronously
       Navigator.pushAndRemoveUntil(
@@ -184,25 +174,6 @@ class AuthProvider extends ChangeNotifier {
 
       if (user != null) {
         _uid = user.uid;
-
-        final String? email = user.email;
-
-        // if (email == null) {
-        //   //  AddEmailBottomsheet().bottomSheet(context: context, user: user);
-
-        //   // Navigator.push(
-        //   //     context,
-        //   //     MaterialPageRoute(
-        //   //       builder: (context) => EnterUsersEmail(),
-        //   //     ));
-
-        //   print('email is null');
-
-        //   // if (email.isNotEmpty) {
-        //   //   await user.updateEmail(email);
-        //   // }
-        // }
-
         onSuccess();
       }
 

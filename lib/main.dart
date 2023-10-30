@@ -5,6 +5,7 @@ import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:taxverse/view/authentication/otp_auth/enter_email_page.dart';
 import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 import 'package:taxverse/view/chat/chat_provider/chatroom_provider.dart';
 import 'package:taxverse/view/gst_registraion/dashboard/provider/dashboard_provider.dart';
@@ -17,11 +18,7 @@ import 'package:taxverse/controller/providers/toggle_provider.dart';
 import 'package:taxverse/view/mainscreens/useraccount/provider/useraccount_provider.dart';
 import 'package:taxverse/view/Appoinments/provider/verification_provider.dart';
 import 'package:taxverse/view/splash/splash.dart';
-
-import 'view/authentication/otp_auth/enter_email_page.dart';
-import 'view/authentication/otp_auth/otp_screen.dart';
 import 'view/authentication/otp_auth/provider/otp_time_provider.dart';
-import 'view/authentication/otp_auth/register_phone.dart';
 
 void main() async {
   // Initialize Flutter
@@ -77,13 +74,9 @@ class MyApp extends StatelessWidget {
             // Main MaterialApp widget
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            // theme: ThemeData(
-            //   primarySwatch: Colors.blue,
-            //   splashFactory: InkRipple.splashFactory,
-            // ),
             home: Splash(), // Initial screen is Splash
 
-            // home: OtpScreen(verificationId: ''),
+            // home: EnterUsersEmail(),
           ),
         );
       },

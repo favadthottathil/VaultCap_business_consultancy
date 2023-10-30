@@ -15,7 +15,7 @@ class DocumentUploadData {
 
 //                       Next widget
 
-gst3BackAndForward({required BuildContext context, required Future onpressed}) {
+gst3BackAndForward({required BuildContext context, required Future onpressed, required Future addToDatabase}) {
   final size = MediaQuery.of(context).size;
   final provider = context.watch<GstThirdScreenProvider>();
   return Padding(
@@ -40,6 +40,8 @@ gst3BackAndForward({required BuildContext context, required Future onpressed}) {
             transitionAnimationDuration: const Duration(milliseconds: 500),
             btnOkOnPress: () {
               onpressed;
+
+              addToDatabase;
 
               provider.setAllboolToFalse('PassportSizePhoto');
               provider.setAllboolToFalse('PANCARD');

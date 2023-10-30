@@ -41,7 +41,8 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   easy_pdf_viewer: ^1.0.6
   email_validator: ^2.1.17
-  emoji_picker_flutter:
+  emoji_picker_flutter: null
+  encrypt:
   file_picker: null
   firebase_auth: ^4.6.2
   firebase_core: ^2.13.0
@@ -88,7 +89,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "Asset/TAXVERSE LOGO-1.png"
+  image_path: "Asset/new_icon.png"
   min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the

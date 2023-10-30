@@ -6,13 +6,9 @@ import 'package:taxverse/view/authentication/provider/auth_provider.dart';
 import 'package:taxverse/view/authentication/sign_up/sign_up.dart';
 
 class SignInWidgets {
-
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
-
-
+  //                       Next widget
 
   static InkWell goToSignUp(BuildContext context) {
     return InkWell(
@@ -44,10 +40,9 @@ class SignInWidgets {
     );
   }
 
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static InkWell signInButton(
     AuthProvider authprovider,
@@ -58,6 +53,7 @@ class SignInWidgets {
   ) {
     return InkWell(
       onTap: () {
+        authprovider.setLoading = true;
         AuthSignIn.signIn(authprovider, email, pass, context);
       },
       child: Container(
@@ -79,10 +75,9 @@ class SignInWidgets {
     );
   }
 
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Text forgetPassword() {
     return Text(
@@ -94,7 +89,7 @@ class SignInWidgets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static SizedBox signInImage(MediaQueryData mediaQuery) {
     return SizedBox(
@@ -109,7 +104,7 @@ class SignInWidgets {
 
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 
   static Text signInText() {
     return Text(
@@ -119,8 +114,7 @@ class SignInWidgets {
     );
   }
 
-
   // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+  //                       Next widget
 }

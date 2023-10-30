@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:taxverse/model/financial_news.dart';
@@ -20,14 +21,14 @@ class FinancialNewsService {
 
         List<dynamic> newsList = json['articles'];
 
-        List<FinancialNews> newsData =
-            newsList.map((item) => FinancialNews.fromJson(item)).toList();
+        List<FinancialNews> newsData = newsList.map((item) => FinancialNews.fromJson(item)).toList();
 
         return newsData;
       } else {
         throw Exception("Can't get financial news");
       }
     } catch (error) {
+      log(error.toString());
       throw Exception("Error fetching financial news: $error");
     }
   }

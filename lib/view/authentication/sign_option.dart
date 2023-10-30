@@ -59,7 +59,7 @@ class SignOption extends StatelessWidget {
                           style: AppStyle.poppinsRegular16,
                         ),
                         TextSpan(
-                          text: 'Sign In',
+                          text: '  Sign In',
                           style: AppStyle.poppinsBold16,
                         )
                       ],
@@ -109,7 +109,7 @@ class SignOption extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>  const RegisterWithPhone(),
+                        builder: (context) => const RegisterWithPhone(),
                       ));
                 },
                 child: Container(
@@ -134,34 +134,7 @@ class SignOption extends StatelessWidget {
                 ),
               ),
               SizedBox(height: size.height * 0.06),
-              // GestureDetector(
-              //   onTap: () => Navigator.pushAndRemoveUntil(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => const BottomNav(isGuest: true),
-              //       ),
-              //       (route) => false),
-              //   child: Container(
-              //     width: size.width * 0.4,
-              //     height: size.height * 0.04,
-              //     // margin: EdgeInsets.only(top: size.height * 0.04),
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(10),
-              //       color: blackColor,
-              //       border: Border.all(
-              //         color: blackColor,
-              //         width: 1,
-              //       ),
-              //     ),
-              //     child: Center(
-              //       child: Text(
-              //         'Guest',
-              //         textAlign: TextAlign.left,
-              //         style: AppStyle.poppinsBoldWhite12,
-              //       ),
-              //     ),
-              //   ),
-              // )
+              
             ],
           ),
         ),

@@ -24,17 +24,12 @@ class AuthSignUp {
     BuildContext context,
   ) async {
     if (passConfirmed(passcontroller, confirmController)) {
-      final msg = await provider.signOut(emailcontroller.text, passcontroller.text, context);
+      final msg = await provider.signUp(emailcontroller.text, passcontroller.text, context);
 
       if (msg == '') {
         userName = namecontroller.text.trim();
 
-        addUserDetails(
-          namecontroller.text.trim(),
-          emailcontroller.text.trim(),
-          passcontroller.text.trim(),
-          ''
-        );
+        addUserDetails(namecontroller.text.trim(), emailcontroller.text.trim(), passcontroller.text.trim(), '');
 
         return;
       }
@@ -46,7 +41,7 @@ class AuthSignUp {
     }
   }
 
-  static Future addUserDetails(String? name, String? email, String? password, String? phoneNumber ) async {
+  static Future addUserDetails(String? name, String? email, String? password, String? phoneNumber) async {
     userNameForGstField = name ?? '';
 
     final CollectionReference clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
@@ -54,7 +49,7 @@ class AuthSignUp {
     // create new document in the 'ClientDetails' collection
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
-    final DocumentReference newClientDocRef = await clientCollection.add({
+    await clientCollection.add({
       'Name': name ?? '',
       'Email': email ?? '',
       'Password': password ?? '',
@@ -67,14 +62,13 @@ class AuthSignUp {
       'Isverified': '',
       'userProfileImage': '',
       'isMessage': false,
-
     });
 
     // Retrieve the auto-generatied document Id
 
-    String clientId = newClientDocRef.id;
+    // String clientId = newClientDocRef.id;
 
-    ClientInformation.clientId = clientId;
+    // ClientInformation.clientId = clientId;
   }
 }
 
@@ -82,8 +76,10 @@ class AuthSignIn {
   static void signIn(AuthProvider provider, String email, String pass, BuildContext context) async {
     final msg = await provider.signIn(email, pass, context);
 
+    provider.setLoading = true;
+
     if (msg == '') return;
 
-    showSnackBar(context, 'Authenfication Failed');
+    showSnackBar(context, 'Authenfication Failed $msg');
   }
 }

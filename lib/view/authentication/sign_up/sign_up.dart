@@ -34,25 +34,21 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final mediaQuery = MediaQuery.of(context);
+    final mediaQuery = MediaQuery.of(context);
 
-        final authProvider = context.watch<AuthProvider>();
+    final authProvider = context.watch<AuthProvider>();
 
-        return Scaffold(
-          body: SafeArea(
-            child: SignUpBody(
-              mediaQuery: mediaQuery,
-              namecontroller: namecontroller,
-              emailcontroller: emailcontroller,
-              passcontroller: passcontroller,
-              confirmController: confirmController,
-              authProvider: authProvider,
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      body: SafeArea(
+        child: SignUpBody(
+          mediaQuery: mediaQuery,
+          namecontroller: namecontroller,
+          emailcontroller: emailcontroller,
+          passcontroller: passcontroller,
+          confirmController: confirmController,
+          authProvider: authProvider,
+        ),
+      ),
     );
   }
 }
@@ -131,6 +127,7 @@ class SignUpBody extends StatelessWidget {
                 SizedBox(height: mediaQuery.size.height * 0.04),
                 InkWell(
                   onTap: () {
+                    authProvider.setLoading = true;
                     AuthSignUp.signUp(
                       authProvider,
                       emailcontroller,

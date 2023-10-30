@@ -45,61 +45,61 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
     super.dispose();
   }
 
-  addDetailsToDatabase(
-    String businessName,
-    String businessType,
-    String businessStartDate,
-    String panCardNumber,
-    String aadhaarCardNumber,
-    String electricityBill,
-  ) async {
-    try {
-      final userEmail = FirebaseAuth.instance.currentUser!.email;
+  // addDetailsToDatabase(
+  //   String businessName,
+  //   String businessType,
+  //   String businessStartDate,
+  //   String panCardNumber,
+  //   String aadhaarCardNumber,
+  //   String electricityBill,
+  // ) async {
+  //   try {
+  //     final userEmail = FirebaseAuth.instance.currentUser!.email;
 
-      log(userEmail!);
+  //     log(userEmail!);
 
-      Query query = firestore.collection('ClientDetails').where(
-            'Email',
-            isEqualTo: userEmail,
-          );
+  //     Query query = firestore.collection('ClientDetails').where(
+  //           'Email',
+  //           isEqualTo: userEmail,
+  //         );
 
-      Future<QuerySnapshot<Object?>> futureData = query.get();
+  //     Future<QuerySnapshot<Object?>> futureData = query.get();
 
-      QuerySnapshot<Object?> data = await futureData;
+  //     QuerySnapshot<Object?> data = await futureData;
 
-      if (data.docs.isNotEmpty) {
-        String fieldName = data.docs[0].get('Name');
+  //     if (data.docs.isNotEmpty) {
+  //       String fieldName = data.docs[0].get('Name');
 
-        clientUserName = fieldName;
-        // Use the value of the 'name' field
-        log(clientUserName!);
-      } else {
-        // Handle the case when the snapshot is empty
-        log('No documents found.');
-      }
+  //       clientUserName = fieldName;
+  //       // Use the value of the 'name' field
+  //       log(clientUserName!);
+  //     } else {
+  //       // Handle the case when the snapshot is empty
+  //       log('No documents found.');
+  //     }
 
-      final time = DateTime.now().millisecondsSinceEpoch.toString();
+  //     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
-      final DocumentReference doc = await gstClientInformaion.add({
-        'BusinessName': businessName,
-        'BusinesssType': businessType,
-        'BusinessStartDate': businessStartDate,
-        'PanCardNumber': panCardNumber,
-        'AadhaarCard': aadhaarCardNumber,
-        'BusinessRegistrationNumber': electricityBill,
-        'ServiceName': 'GST Registration',
-        'time': time,
-        'Email': userEmail,
-        'name': clientUserName,
-        'acceptbutton': false,
-      });
+  //     final DocumentReference doc = await gstClientInformaion.add({
+  //       'BusinessName': businessName,
+  //       'BusinesssType': businessType,
+  //       'BusinessStartDate': businessStartDate,
+  //       'PanCardNumber': panCardNumber,
+  //       'AadhaarCard': aadhaarCardNumber,
+  //       'BusinessRegistrationNumber': electricityBill,
+  //       'ServiceName': 'GST Registration',
+  //       'time': time,
+  //       'Email': userEmail,
+  //       'name': clientUserName,
+  //       'acceptbutton': false,
+  //     });
 
-      ClientInformation.gstId = doc.id;
-      log('doc id in screen 2 === ${ClientInformation.gstId}');
-    } catch (e) {
-      log('Error saving gst information: $e');
-    }
-  }
+  //     ClientInformation.gstId = doc.id;
+  //     log('doc id in screen 2 === ${ClientInformation.gstId}');
+  //   } catch (e) {
+  //     log('Error saving gst information: $e');
+  //   }
+  // }
 
   _navigateToThirdScreen(
     String businessName,
@@ -107,18 +107,25 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
     String businessStartDate,
   ) {
     if (_formKey.currentState!.validate()) {
-      addDetailsToDatabase(
-        businessName,
-        businessType,
-        businessStartDate,
-        panCard.text.trim(),
-        aadhaarCard.text.trim(),
-        electricityBill.text.trim(),
-      );
+      // addDetailsToDatabase(
+      //   businessName,
+      //   businessType,
+      //   businessStartDate,
+      //   panCard.text.trim(),
+      //   aadhaarCard.text.trim(),
+      //   electricityBill.text.trim(),
+      // );
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const GstThirdScreen(),
+          builder: (context) => GstThirdScreen(
+            aadhaarCard: aadhaarCard.text.trim(),
+            businessName: businessName,
+            businessStartDate: businessStartDate,
+            businessType: businessType,
+            electricityBill: electricityBill.text.trim(),
+            pancard: panCard.text.trim(),
+          ),
         ),
       );
     }

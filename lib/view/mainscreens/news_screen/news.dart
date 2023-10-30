@@ -40,6 +40,7 @@ class _NewsState extends State<News> {
     }
   }
 
+
   void _loadData() async {
     try {
       List<FinancialNews> data = await FinancialNewsService().fetchFinancialNews(currentPage);

@@ -43,9 +43,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:897644384990:android:4e33eafb33b07716e4e84f",
+        "mobilesdk_app_id": "1:897644384990:android:8dc7d4db037c4701e4e84f",
         "android_client_info": {
-          "package_name": "in.favad.Taxverse"
+          "package_name": "in.flutterverse.Taxverse"
         }
       },
       "oauth_client": [

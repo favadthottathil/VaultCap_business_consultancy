@@ -3,21 +3,10 @@ import 'package:sizer/sizer.dart';
 import 'package:taxverse/controller/notificatin_services.dart';
 import 'widget/splash_widget.dart';
 
-class Splash extends StatefulWidget {
+class Splash extends StatelessWidget {
   Splash({super.key});
 
-  @override
-  State<Splash> createState() => _SplashState();
-}
-
-class _SplashState extends State<Splash> {
   final NotificationServices notificationServices = NotificationServices();
-
-  @override
-  void initState() {
-    super.initState();
-    // FinancialNewsService().fetchFinancialNews();
-  }
 
   @override
   Widget build(BuildContext context) {
