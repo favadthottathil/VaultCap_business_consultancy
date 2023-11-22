@@ -1,10 +1,11 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
-import 'package:taxverse/view/authentication/otp_auth/otp_screen.dart';
-import 'package:taxverse/utils/utils.dart';
-import 'package:taxverse/view/authentication/sign_option.dart';
+import 'package:vaultcap/utils/utils.dart';
+import 'package:vaultcap/view/authentication/otp_auth/otp_screen.dart';
+import 'package:vaultcap/view/authentication/sign_option.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class AuthProvider extends ChangeNotifier {
   final FirebaseAuth _fb;

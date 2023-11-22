@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-
-
-
-
+import 'package:vaultcap/utils/constant/constants.dart';
 
 class Gst2textField extends StatelessWidget {
   const Gst2textField({super.key, required this.size, required this.panCard, required this.labelText, required this.hintText, this.keyBoardType});
@@ -60,7 +56,7 @@ class Gst2textField extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget
 
 class Gst2Heading extends StatelessWidget {
   const Gst2Heading({
@@ -89,4 +85,4 @@ class Gst2Heading extends StatelessWidget {
 
 // <<---------------------------------------------------------->>
 
-  //                       Next widget 
+//                       Next widget

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/model/financial_news.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/view/mainscreens/news_screen/widget/news_details.dart';
+import 'package:vaultcap/model/financial_news.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/sizedbox.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/widget/news_details.dart';
+
 
 class BreakingNewsCard extends StatefulWidget {
   const BreakingNewsCard({super.key, required this.news});
@@ -43,7 +44,7 @@ class _BreakingNewsCardState extends State<BreakingNewsCard> {
           borderRadius: BorderRadius.circular(30),
           image: DecorationImage(
             
-            image: NetworkImage(widget.news.imageUrl ?? errorImage),
+            image: NetworkImage(widget.news.imageUrl),
             fit: BoxFit.cover,
           ),
         ),

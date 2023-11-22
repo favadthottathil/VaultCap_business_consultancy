@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/controller/notificatin_services.dart';
+import 'package:vaultcap/controller/notificatin_services.dart';
+
 import 'widget/splash_widget.dart';
 
 class Splash extends StatelessWidget {

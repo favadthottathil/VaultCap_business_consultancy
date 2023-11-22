@@ -3,9 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:sizer/sizer.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/sign_in/sign_in.dart';
 
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/sign_in/sign_in.dart';
+
 
 class EmailVerification extends StatelessWidget {
   const EmailVerification({super.key});

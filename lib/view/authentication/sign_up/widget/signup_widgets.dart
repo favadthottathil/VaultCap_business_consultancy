@@ -2,9 +2,10 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/sign_in/sign_in.dart';
-import 'package:taxverse/view/widgets/frosted_glass/frosted_glass.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/sign_in/sign_in.dart';
+import 'package:vaultcap/view/widgets/frosted_glass/frosted_glass.dart';
+
 
 class SignUpWigets {
   // <<---------------------------------------------------------->>

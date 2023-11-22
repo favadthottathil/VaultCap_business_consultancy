@@ -1,15 +1,16 @@
 import 'dart:developer';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/auth.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/diologes.dart';
-import 'package:taxverse/view/authentication/otp_auth/provider/otp_time_provider.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/api/auth.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/diologes.dart';
+import 'package:vaultcap/view/authentication/otp_auth/provider/otp_time_provider.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
 
 // ignore: must_be_immutable
 class EnterUsersEmail extends StatelessWidget {
@@ -212,6 +213,7 @@ class EnterUsersEmail extends StatelessWidget {
   Future<void> updateMail(User user, BuildContext context) async {
     try {
       await user.updateEmail(emailController.text);
+      await FirebaseFirestore.instance.collection('ClientDetails').where(user.uid);
       log('okke');
     } catch (e) {
       log('failed to set mail $e');

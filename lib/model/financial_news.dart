@@ -1,4 +1,6 @@
-import 'package:taxverse/utils/constant/sizedbox.dart';
+
+
+import 'package:vaultcap/utils/constant/sizedbox.dart';
 
 class FinancialNews {
   FinancialNews({
@@ -36,19 +38,4 @@ class FinancialNews {
     publishedAt = json['publishedAt'];
     content = json['content'] ?? '';
   }
-
-  // Map<String, dynamic> toJson() {
-  //   final _data = <String, dynamic>{};
-  //   _data['uuid'] = uuid;
-  //   _data['title'] = title;
-  //   _data['description'] = description;
-  //   _data['keywords'] = keywords;
-  //   _data['snippet'] = snippet;
-  //   _data['url'] = url;
-  //   _data['image_url'] = imageUrl;
-  //   _data['language'] = language;
-  //   _data['published_at'] = publishedAt;
-  //   _data['source'] = source;
-  //   return _data;
-  // }
 }

@@ -3,12 +3,13 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/api/financial_news.dart';
-import 'package:taxverse/model/financial_news.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/news_screen/widget/breaking_news_card.dart';
-import 'package:taxverse/view/mainscreens/news_screen/widget/news_list_tile.dart';
-import 'package:taxverse/view/widgets/frosted_glass/frosted_glass.dart';
+import 'package:vaultcap/api/financial_news.dart';
+import 'package:vaultcap/model/financial_news.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/widget/breaking_news_card.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/widget/news_list_tile.dart';
+import 'package:vaultcap/view/widgets/frosted_glass/frosted_glass.dart';
+
 
 class News extends StatefulWidget {
   const News({super.key});

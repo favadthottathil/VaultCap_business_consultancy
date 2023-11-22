@@ -4,11 +4,11 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/api.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/settings/about_us/aboutus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vaultcap/api/api.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/settings/about_us/aboutus.dart';
 
 import 'widget/settings_widgets.dart';
 

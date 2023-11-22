@@ -2,10 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
-import 'package:taxverse/model/financial_news.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/view/mainscreens/news_screen/widget/news_details.dart';
+import 'package:vaultcap/model/financial_news.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/sizedbox.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/widget/news_details.dart';
+
 
 class NewsListTile extends StatelessWidget {
   const NewsListTile({
@@ -48,7 +49,7 @@ class NewsListTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: CachedNetworkImage(
-                    imageUrl: news.imageUrl ?? errorImage,
+                    imageUrl: news.imageUrl,
                     placeholder: (context, url) => const Center(
                       child: SpinKitThreeBounce(
                         color: blackColor,

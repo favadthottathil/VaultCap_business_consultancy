@@ -2,9 +2,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_3/provider/gst_3_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/gst_registraion/accept_application.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/gst_registraion/accept_application.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_3/provider/gst_3_provider.dart';
+
 
 class DocumentUploadData {
   bool showLoading = false;
@@ -15,7 +16,7 @@ class DocumentUploadData {
 
 //                       Next widget
 
-gst3BackAndForward({required BuildContext context, required Future onpressed, required Future addToDatabase}) {
+gst3BackAndForward({required BuildContext context, required Future addToDatabase}) {
   final size = MediaQuery.of(context).size;
   final provider = context.watch<GstThirdScreenProvider>();
   return Padding(
@@ -39,10 +40,8 @@ gst3BackAndForward({required BuildContext context, required Future onpressed, re
             descTextStyle: AppStyle.poppinsBold16,
             transitionAnimationDuration: const Duration(milliseconds: 500),
             btnOkOnPress: () {
-              onpressed;
-
+          
               addToDatabase;
-
               provider.setAllboolToFalse('PassportSizePhoto');
               provider.setAllboolToFalse('PANCARD');
               provider.setAllboolToFalse('AADHAARCARD');

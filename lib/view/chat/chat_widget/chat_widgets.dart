@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/api/messaging_api.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/chat/chat_provider/chatroom_provider.dart';
-import 'package:taxverse/utils/date_util.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/api/messaging_api.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/date_util.dart';
+import 'package:vaultcap/view/chat/chat_provider/chatroom_provider.dart';
+
 
 class MessageCard extends StatelessWidget {
   const MessageCard({

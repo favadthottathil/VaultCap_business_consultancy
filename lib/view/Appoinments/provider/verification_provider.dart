@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/Appoinments/widgets/timeslot.dart';
-import 'package:taxverse/view/chat/chat_ui.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/Appoinments/widgets/timeslot.dart';
+import 'package:vaultcap/view/chat/chat_ui.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class VerificationSuccessProvider extends ChangeNotifier {
   final CollectionReference appointmentsCollection = FirebaseFirestore.instance.collection('appointments');

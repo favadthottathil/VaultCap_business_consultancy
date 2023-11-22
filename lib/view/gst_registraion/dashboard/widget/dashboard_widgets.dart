@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:open_file_plus/open_file_plus.dart';
-import 'package:taxverse/view/gst_registraion/dashboard/provider/dashboard_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/gst_registraion/dashboard/provider/dashboard_provider.dart';
+
 
 Padding showgstInfoToClient(Size size, gstNumber, DashBoardProvider provider, gstdoc) {
   return Padding(

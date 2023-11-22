@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taxverse/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
@@ -16,13 +17,13 @@ class AboutUs extends StatelessWidget {
         backgroundColor: whiteColor,
         elevation: 0,
       ),
-      body: SafeArea(
+      body:  SafeArea(
           child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: const [
-              Text(
+               Text(
                 'Welcome to Taxverse!',
                 style: TextStyle(
                   fontSize: 24.0,
@@ -30,7 +31,7 @@ class AboutUs extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.0),
-              Text(
+               Text(
                 'At Taxverse, we are committed to simplifying your tax-related processes and providing comprehensive business consultancy services. Our application is designed to empower businesses like yours with efficient solutions, allowing you to focus on what truly matters – your growth and success.',
               ),
               SizedBox(height: 16.0),

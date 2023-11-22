@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/view/gst_registraion/accept_application.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_1/gst_1.dart';
-import 'package:taxverse/view/gst_registraion/verification_faille.dart';
-import 'package:taxverse/view/gst_registraion/verified_success.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/sizedbox.dart';
+import 'package:vaultcap/view/gst_registraion/accept_application.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_1/gst_1.dart';
+import 'package:vaultcap/view/gst_registraion/verification_faille.dart';
+import 'package:vaultcap/view/gst_registraion/verified_success.dart';
+
 
 class CheckStatus extends StatelessWidget {
   const CheckStatus({super.key});
@@ -62,7 +63,7 @@ class CheckStatus extends StatelessWidget {
           }
 
           if (userStatus[0]['Isverified'] == '') {
-            return const GstFirstScreen();
+            return  const GstFirstScreen();
           }
 
           if (userStatus[0]['Isverified'] == 'null') {

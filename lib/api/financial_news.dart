@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:taxverse/model/financial_news.dart';
+import 'package:vaultcap/model/financial_news.dart';
+
 
 class FinancialNewsService {
   // final apiEndPoints = 'https://api.marketaux.com/v1/news/all?countries=in&filter_entities=true&limit=10&published_after=2023-09-29T14:10&api_token=vIfQtWxgdcpiWdKUKGaD08JLjskH0eXuimKwAA0p';

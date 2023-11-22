@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:taxverse/utils/utils.dart';
+import 'package:vaultcap/utils/utils.dart';
 
 class OtpTimeProvider extends ChangeNotifier {
   int _secondsRemaining = 300;

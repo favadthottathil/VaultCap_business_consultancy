@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:taxverse/api/api_const.dart';
+import 'package:vaultcap/api/api_const.dart';
 
 class ChatRoomProvider extends ChangeNotifier {
   String imageUrl = '';
@@ -42,7 +42,10 @@ class ChatRoomProvider extends ChangeNotifier {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     firestore.collection('chats').add({
-      'participants': ['admin', curentUserEmail],
+      'participants': [
+        'admin',
+        curentUserEmail
+      ],
       'text': message,
       'time': time,
       'sender': 'admin',
@@ -56,7 +59,10 @@ class ChatRoomProvider extends ChangeNotifier {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
     firestore.collection('chats').add({
-      'participants': ['admin', curentUserEmail],
+      'participants': [
+        'admin',
+        curentUserEmail
+      ],
       'text': '',
       'time': time,
       'sender': 'admin',

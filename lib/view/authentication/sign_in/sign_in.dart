@@ -1,9 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/authentication/reset_password/reset_pass.dart';
+import 'package:vaultcap/utils/constant/sizedbox.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/authentication/reset_password/reset_pass.dart';
+
 import 'widget/sign_widgets.dart';
 import '../sign_up/widget/signup_widgets.dart';
 

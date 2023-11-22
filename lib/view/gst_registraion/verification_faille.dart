@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/view/Appoinments/provider/verification_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/Appoinments/provider/verification_provider.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class VerificationFailed extends StatelessWidget {
   const VerificationFailed({super.key});

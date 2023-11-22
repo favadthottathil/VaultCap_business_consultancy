@@ -6,13 +6,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/controller/shared_perference/otp_sharedprefrence.dart';
-import 'package:taxverse/utils/diologes.dart';
-import 'package:taxverse/view/authentication/otp_auth/provider/register_phone_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/utils/utils.dart';
-import 'package:taxverse/view/widgets/frosted_glass/frosted_glass.dart';
+import 'package:vaultcap/controller/shared_perference/otp_sharedprefrence.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/diologes.dart';
+import 'package:vaultcap/utils/utils.dart';
+import 'package:vaultcap/view/authentication/otp_auth/provider/register_phone_provider.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/widgets/frosted_glass/frosted_glass.dart';
+
 
 // ignore: must_be_immutable
 class RegisterWithPhone extends StatefulWidget {
@@ -118,7 +119,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                         ),
                         onChanged: (value) {
                           
-                          OtpSharedPreference().storePhoneNumberToSharedPreference('+${country.phoneCode}$value');
+                          // OtpSharedPreference().storePhoneNumberToSharedPreference('+${country.phoneCode}$value');
                           log(value);
                           provider.setValueToPhoneController(phoneController.text, value);
                         },
@@ -159,7 +160,7 @@ class _RegisterWithPhoneState extends State<RegisterWithPhone> {
                                       setState(() {
                                         country = value;
                                       });
-                                      // provider.setValueToCountry(country, value);
+                                      provider.setValueToCountry(country, value);
                                       // log(country.toString());
                                     },
                                   );

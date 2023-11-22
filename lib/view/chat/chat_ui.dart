@@ -9,11 +9,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/chat/chat_provider/chatroom_provider.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
-import 'package:taxverse/view/chat/chat_widget/chat_widgets.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/chat/chat_provider/chatroom_provider.dart';
+import 'package:vaultcap/view/chat/chat_widget/chat_widgets.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
 
 // ignore: must_be_immutable
 class ChatRoom extends StatelessWidget {

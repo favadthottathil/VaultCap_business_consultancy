@@ -3,13 +3,16 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/controller/encrypted_data/encrypted_data.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_3/provider/gst_3_provider.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_3/widget/gst_third_widgets.dart';
+
 import 'package:provider/provider.dart';
+import 'package:vaultcap/api/api.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/controller/encrypted_data/encrypted_data.dart';
+import 'package:vaultcap/controller/shared_perference/application_count.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_3/provider/gst_3_provider.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_3/widget/gst_third_widgets.dart';
 
 class GstThirdScreen extends StatefulWidget {
   const GstThirdScreen({
@@ -39,7 +42,19 @@ class GstThirdScreen extends StatefulWidget {
 }
 
 class _GstThirdScreenState extends State<GstThirdScreen> {
-  final CollectionReference gstClientInformaion = FirebaseFirestore.instance.collection('ClientGstInfo');
+  @override
+  void initState() {
+    super.initState();
+    // ApplicationCounts().setApplicationCount(1);
+  }
+
+  // setGstApplicationCount() async {
+  //   var count = await ApplicationCounts().getApplicationCount();
+
+  //   if (count == 0) {
+  //     ApplicationCounts().setApplicationCount(1);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +84,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           DocumentUpload(
-                            name: 'Add your Passport Size photo',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's PassportSizePhoto", 'PassportSizePhoto');
                             },
@@ -77,7 +92,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           ),
                           SizedBox(height: size.height * 0.02),
                           DocumentUpload(
-                            name: 'Upload PANCARD',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's PANCARD", 'PANCARD');
                             },
@@ -85,7 +100,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           ),
                           SizedBox(height: size.height * 0.02),
                           DocumentUpload(
-                            name: 'Upload AADHAARCARD',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's AADHAARCARD", 'AADHAARCARD');
                             },
@@ -93,7 +108,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           ),
                           SizedBox(height: size.height * 0.02),
                           DocumentUpload(
-                            name: 'Upload Electricity bill',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's Electricity bill", 'Electricity bill');
                             },
@@ -101,7 +116,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           ),
                           SizedBox(height: size.height * 0.02),
                           DocumentUpload(
-                            name: 'Upload RENT AGREEMENT',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's RENT AGREEMENT", 'RENT AGREEMENT');
                             },
@@ -109,7 +124,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           ),
                           SizedBox(height: size.height * 0.02),
                           DocumentUpload(
-                            name: 'Upload BUILDING TAX RECEIPT',
+                            name: 'give dummy data',
                             ontap: () {
                               provider.pickFile("$userDisplayName's BUILDING TAX RECEIPT", 'BUILDING TAX RECEIPT');
                             },
@@ -118,16 +133,16 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
                           SizedBox(height: mediaQuery.size.height * 0.03),
                           if (provider.gstDocumentCount == 6)
                             gst3BackAndForward(
-                                context: context,
-                                onpressed: provider.addUserVerified(),
-                                addToDatabase: addDetailsToDatabase(
-                                  widget.businessName,
-                                  widget.businessType,
-                                  widget.businessStartDate,
-                                  widget.pancard,
-                                  widget.aadhaarCard,
-                                  widget.electricityBill,
-                                ))
+                              context: context,
+                              addToDatabase: addDetailsToDatabase(
+                                widget.businessName,
+                                widget.businessType,
+                                widget.businessStartDate,
+                                widget.pancard,
+                                widget.aadhaarCard,
+                                widget.electricityBill,
+                              ).then((_) => provider.addUserVerified()),
+                            )
                           else
                             Text(
                               'upload all documents to continue.....',
@@ -146,7 +161,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
     );
   }
 
-  addDetailsToDatabase(
+ Future<void> addDetailsToDatabase(
     String businessName,
     String businessType,
     String businessStartDate,
@@ -156,7 +171,6 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
   ) async {
     try {
       final userEmail = FirebaseAuth.instance.currentUser!.email;
-
 
       Query query = firestore.collection('ClientDetails').where(
             'Email',
@@ -178,24 +192,58 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
         log('No documents found.');
       }
 
-      final time = DateTime.now().millisecondsSinceEpoch.toString();
+      var time = DateTime.now().millisecondsSinceEpoch.toString();
 
-      final DocumentReference doc = await gstClientInformaion.add({
-        'BusinessName': EncryptData.enencryptData(businessName, userEmail!),
-        'BusinesssType': EncryptData.enencryptData(businessType, userEmail),
-        'BusinessStartDate': EncryptData.enencryptData(businessStartDate, userEmail),
-        'PanCardNumber': EncryptData.enencryptData(panCardNumber, userEmail),
-        'AadhaarCard': EncryptData.enencryptData(aadhaarCardNumber, userEmail),
-        'electricityBill': EncryptData.enencryptData(electricityBill, userEmail),
+      final key = EncryptData().generateKey();
+
+      businessName = EncryptData().encryptedData(businessName, key);
+      log(businessName);
+      businessType = EncryptData().encryptedData(businessType, key);
+      log(businessType);
+      businessStartDate = EncryptData().encryptedData(businessStartDate, key);
+
+      panCardNumber = EncryptData().encryptedData(panCardNumber, key);
+
+      aadhaarCardNumber = EncryptData().encryptedData(aadhaarCardNumber, key);
+
+      electricityBill = EncryptData().encryptedData(electricityBill, key);
+
+      time = EncryptData().encryptedData(time, key);
+
+      final userMail = EncryptData().encryptedData(userEmail!, key);
+
+      clientUserName = EncryptData().encryptedData(clientUserName!, key);
+
+      // Create a reference to the GstClientInfo collection.
+      final CollectionReference gstClientInfoCollection = firestore.collection('GstClientInfo');
+
+      // Create a document reference for the  document.
+      final DocumentReference gstClientDocument = gstClientInfoCollection.doc();
+
+      // Get gst count from UserDatabase
+
+      final count = await APIs.getGstCountFromUserData();
+
+      await gstClientDocument.set({
+        'BusinessName': businessName,
+        'BusinesssType': businessType,
+        'BusinessStartDate': businessStartDate,
+        'PanCardNumber': panCardNumber,
+        'AadhaarCard': aadhaarCardNumber,
+        'electricityBill': electricityBill,
         'ServiceName': 'GST Registration',
-        'time': EncryptData.enencryptData(time, userEmail),
-        'Email': EncryptData.enencryptData(userEmail, userEmail),
-        'name': EncryptData.enencryptData(clientUserName!, userEmail),
+        'time': time,
+        'Email': userMail,
+        'name': clientUserName,
         'acceptbutton': false,
+        'Application_count': count,
       });
 
-      ClientInformation.gstId = doc.id;
-      log('doc id in screen 2 === ${ClientInformation.gstId}');
+      // Update gst Count in User Database
+
+      await APIs.updateGstCountFromUserData(count);
+      final countd = await APIs.getGstCountFromUserData();
+      print(countd);
     } catch (e) {
       log('Error saving gst information: $e');
     }

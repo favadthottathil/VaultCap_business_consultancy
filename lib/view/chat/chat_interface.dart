@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/chat/chat_ui.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/chat/chat_ui.dart';
+
 
 // Create a StatelessWidget for the "Connect With Us" page.
 class ConnectWithUsPage extends StatelessWidget {
