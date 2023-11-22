@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+
 
 class UserData extends StatelessWidget {
   const UserData({

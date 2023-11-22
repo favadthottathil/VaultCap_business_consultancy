@@ -10,39 +10,10 @@ class NotificationServices {
 
   void requestNotificationPermission() async {
     await messaging.requestPermission();
-    // NotificationSettings settings = await messaging.requestPermission(
-    //   alert: true,
-    //   announcement: true,
-    //   badge: true,
-    //   carPlay: true,
-    //   criticalAlert: true,
-    //   provisional: true,
-    //   sound: true,
-    // );
-
-    // if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    //   print('user granded permission');
-    // } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-    //   print('user granted provisional permissin');
-    // } else {
-    //   print('user denied permission');
-    // }
+  
   }
 
-  // void initLocalNotifications(BuildContext context, RemoteMessage message) async {
-  //   var androidInitializationSettings = const AndroidInitializationSettings('@mipmap/ic_launcher');
-  //   var iosInitializationSettings = const DarwinInitializationSettings();
-
-  //   var initializationSetting = InitializationSettings(
-  //     android: androidInitializationSettings,
-  //     iOS: iosInitializationSettings,
-  //   );
-
-  //   await flutterLocalNotificationsPlugin.initialize(
-  //     initializationSetting,
-  //     onDidReceiveNotificationResponse: (payload) {},
-  //   );
-  // }
+ 
 
   Future<void> showNotification(RemoteMessage message) async {
     if (message.notification != null && message.notification!.title != null) {

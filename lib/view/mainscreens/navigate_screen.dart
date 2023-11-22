@@ -2,15 +2,16 @@ import 'dart:developer';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/api.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/gst_registraion/dashboard/dashboard_list.dart';
-import 'package:taxverse/view/mainscreens/homescreen/home_screen.dart';
-import 'package:taxverse/view/mainscreens/news_screen/news.dart';
-import 'package:taxverse/view/mainscreens/useraccount/user_account.dart';
-import 'package:taxverse/view/authentication/sign_option.dart';
+import 'package:vaultcap/api/api.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/authentication/sign_option.dart';
+import 'package:vaultcap/view/gst_registraion/dashboard/dashboard_list.dart';
+import 'package:vaultcap/view/mainscreens/homescreen/home_screen.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/news.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/user_account.dart';
+
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key, required this.isGuest}) : super(key: key);
@@ -43,7 +44,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
 
   // Initialize APIs and handle app lifecycle state changes
   void _initializeAPIs() {
-    APIs.getDocumetID().then((value) {
+    APIs.getDocumetID().then((_) {
       WidgetsBinding.instance.addObserver(this);
       APIs.updateActiveStatus(true);
     });
@@ -66,6 +67,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
     // Set loading to false after the frame is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<AuthProvider>(context, listen: false).setLoading = false;
+      
     });
 
     return StreamBuilder(

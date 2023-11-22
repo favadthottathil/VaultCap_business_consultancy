@@ -3,9 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/controller/providers/toggle_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
+
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vaultcap/controller/providers/toggle_provider.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
 
 toggleCustom() {
   return Consumer<ToggleProvider>(builder: (context, provider, child) {

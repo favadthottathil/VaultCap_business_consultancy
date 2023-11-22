@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/otp_auth/register_phone.dart';
-import 'package:taxverse/view/authentication/sign_up/sign_up.dart';
-import 'package:taxverse/view/authentication/sign_in/sign_in.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/otp_auth/register_phone.dart';
+import 'package:vaultcap/view/authentication/sign_in/sign_in.dart';
+import 'package:vaultcap/view/authentication/sign_up/sign_up.dart';
+
 
 class SignOption extends StatelessWidget {
   const SignOption({super.key});

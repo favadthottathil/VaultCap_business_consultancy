@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:taxverse/api/auth.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/authentication/sign_up/sign_up.dart';
+import 'package:vaultcap/api/auth.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/authentication/sign_up/sign_up.dart';
+
 
 class SignInWidgets {
   // <<---------------------------------------------------------->>

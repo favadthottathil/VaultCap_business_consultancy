@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/utils/utils.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/constant/sizedbox.dart';
+import 'package:vaultcap/utils/utils.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
 
 class AuthSignUp {
   static passConfirmed(TextEditingController passcontroller, TextEditingController confirmController) {
@@ -44,31 +47,31 @@ class AuthSignUp {
   static Future addUserDetails(String? name, String? email, String? password, String? phoneNumber) async {
     userNameForGstField = name ?? '';
 
-    final CollectionReference clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
+    final  clientCollection = FirebaseFirestore.instance.collection('ClientDetails');
 
     // create new document in the 'ClientDetails' collection
     final time = DateTime.now().millisecondsSinceEpoch.toString();
 
+    if (user == null) {
+      log('user is null');
+      return;
+    }
+
     await clientCollection.add({
+      'id': user!.uid,
       'Name': name ?? '',
       'Email': email ?? '',
-      'Password': password ?? '',
       'Status': 'Unavailable',
       'is_online': false,
       'phone_number': phoneNumber ?? '',
       'Address': '',
+      'gst_count': 1,
       'time': time,
       'place': '',
       'Isverified': '',
       'userProfileImage': '',
       'isMessage': false,
     });
-
-    // Retrieve the auto-generatied document Id
-
-    // String clientId = newClientDocRef.id;
-
-    // ClientInformation.clientId = clientId;
   }
 }
 

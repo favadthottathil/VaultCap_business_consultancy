@@ -1,6 +1,6 @@
 {
-    "name": "taxverse",
-    "short_name": "taxverse",
+    "name": "vaultcap",
+    "short_name": "vaultcap",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

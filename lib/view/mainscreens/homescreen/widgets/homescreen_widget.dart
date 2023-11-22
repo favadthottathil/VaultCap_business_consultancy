@@ -1,12 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/api.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/chat/chat_interface.dart';
-import 'package:taxverse/view/mainscreens/checkapplication_status.dart';
-import 'package:taxverse/view/widgets/un_available_screen/unavailablescreen.dart';
+import 'package:vaultcap/api/api.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/chat/chat_interface.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_1/gst_1.dart';
+import 'package:vaultcap/view/mainscreens/checkapplication_status.dart';
+import 'package:vaultcap/view/widgets/un_available_screen/unavailablescreen.dart';
 
 List imgLIst1 = [
   'Asset/gst-returns.jpg',

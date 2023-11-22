@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/messaging_api.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/controller/notificatin_services.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/view/mainscreens/homescreen/provider/homescreen_provider.dart';
-import 'package:taxverse/view/mainscreens/homescreen/widgets/homescreen_widget.dart';
+import 'package:vaultcap/api/messaging_api.dart';
+import 'package:vaultcap/controller/notificatin_services.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/mainscreens/homescreen/provider/homescreen_provider.dart';
+import 'package:vaultcap/view/mainscreens/homescreen/widgets/homescreen_widget.dart';
+
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {

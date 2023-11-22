@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:taxverse/model/financial_news.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/constant/sizedbox.dart';
-import 'package:taxverse/view/mainscreens/news_screen/webview_screen.dart';
+import 'package:vaultcap/model/financial_news.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/news_screen/webview_screen.dart';
+
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.news});

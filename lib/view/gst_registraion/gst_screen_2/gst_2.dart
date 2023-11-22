@@ -1,12 +1,9 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_3/gst_3.dart';
-import 'package:taxverse/view/gst_registraion/gst_screen_2/widgets/gst_second_widgets.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_2/widgets/gst_second_widgets.dart';
+import 'package:vaultcap/view/gst_registraion/gst_screen_3/gst_3.dart';
+
 
 class GstSecondScreen extends StatefulWidget {
   const GstSecondScreen({
@@ -44,77 +41,12 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
     // electricityBill.dispose();
     super.dispose();
   }
-
-  // addDetailsToDatabase(
-  //   String businessName,
-  //   String businessType,
-  //   String businessStartDate,
-  //   String panCardNumber,
-  //   String aadhaarCardNumber,
-  //   String electricityBill,
-  // ) async {
-  //   try {
-  //     final userEmail = FirebaseAuth.instance.currentUser!.email;
-
-  //     log(userEmail!);
-
-  //     Query query = firestore.collection('ClientDetails').where(
-  //           'Email',
-  //           isEqualTo: userEmail,
-  //         );
-
-  //     Future<QuerySnapshot<Object?>> futureData = query.get();
-
-  //     QuerySnapshot<Object?> data = await futureData;
-
-  //     if (data.docs.isNotEmpty) {
-  //       String fieldName = data.docs[0].get('Name');
-
-  //       clientUserName = fieldName;
-  //       // Use the value of the 'name' field
-  //       log(clientUserName!);
-  //     } else {
-  //       // Handle the case when the snapshot is empty
-  //       log('No documents found.');
-  //     }
-
-  //     final time = DateTime.now().millisecondsSinceEpoch.toString();
-
-  //     final DocumentReference doc = await gstClientInformaion.add({
-  //       'BusinessName': businessName,
-  //       'BusinesssType': businessType,
-  //       'BusinessStartDate': businessStartDate,
-  //       'PanCardNumber': panCardNumber,
-  //       'AadhaarCard': aadhaarCardNumber,
-  //       'BusinessRegistrationNumber': electricityBill,
-  //       'ServiceName': 'GST Registration',
-  //       'time': time,
-  //       'Email': userEmail,
-  //       'name': clientUserName,
-  //       'acceptbutton': false,
-  //     });
-
-  //     ClientInformation.gstId = doc.id;
-  //     log('doc id in screen 2 === ${ClientInformation.gstId}');
-  //   } catch (e) {
-  //     log('Error saving gst information: $e');
-  //   }
-  // }
-
   _navigateToThirdScreen(
     String businessName,
     String businessType,
     String businessStartDate,
   ) {
     if (_formKey.currentState!.validate()) {
-      // addDetailsToDatabase(
-      //   businessName,
-      //   businessType,
-      //   businessStartDate,
-      //   panCard.text.trim(),
-      //   aadhaarCard.text.trim(),
-      //   electricityBill.text.trim(),
-      // );
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -164,20 +96,20 @@ class _GstSecondScreenState extends State<GstSecondScreen> {
                               Gst2textField(
                                 size: size,
                                 panCard: panCard,
-                                labelText: 'Enter your PANCARD Number',
+                                labelText: 'give dummy data',
                                 hintText: 'eg:HFYU3262H',
                               ),
                               Gst2textField(
                                 size: size,
                                 panCard: aadhaarCard,
-                                labelText: 'Enter your AADHAAR Number',
+                                labelText: 'give dummy data',
                                 hintText: 'eg: 8756 5435 7634',
                                 keyBoardType: TextInputType.number,
                               ),
                               Gst2textField(
                                 size: size,
                                 panCard: electricityBill,
-                                labelText: 'Enter Firm Eelectricity bill',
+                                labelText: 'give dummy data',
                                 hintText: '',
                               ),
                               SizedBox(height: size.height * 0.06),

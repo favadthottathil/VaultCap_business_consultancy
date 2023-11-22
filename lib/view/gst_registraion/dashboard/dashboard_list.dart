@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/api/api.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/gst_registraion/dashboard/dashboard.dart';
+import 'package:vaultcap/api/api.dart';
+import 'package:vaultcap/controller/decrypt/decrypt_data.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/gst_registraion/dashboard/dashboard.dart';
 
 class DashBoardListTile extends StatelessWidget {
   const DashBoardListTile({super.key});
@@ -51,7 +52,7 @@ class DashBoardListTile extends StatelessWidget {
                                                 style: AppStyle.poppinsBold16,
                                               ),
                                               Text(
-                                                'Business Name:   ${data[index]['BusinessName']}',
+                                                'Business Name:   ${decrypedData(data[index]['BusinessName'], generateKey())}',
                                                 style: AppStyle.poppinsBold16,
                                               ),
                                             ],

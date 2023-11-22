@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class SplashWidgets {
   // Widget to display a description of the application.

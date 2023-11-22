@@ -2,9 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/Appoinments/widgets/timeslot.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/Appoinments/widgets/timeslot.dart';
+
 
 class TimeSlotAppoinment extends StatefulWidget {
   const TimeSlotAppoinment({Key? key}) : super(key: key);

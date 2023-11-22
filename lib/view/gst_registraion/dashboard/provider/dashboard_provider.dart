@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taxverse/view/widgets/check_permission.dart';
+import 'package:vaultcap/view/widgets/check_permission.dart';
+
 
 class DashBoardProvider extends ChangeNotifier {
   bool isPermission = false;

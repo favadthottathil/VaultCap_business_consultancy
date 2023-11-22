@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/useraccount/provider/useraccount_provider.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/mainscreens/useraccount/widget/useraccount_widget.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/provider/useraccount_provider.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/widget/useraccount_widget.dart';
+
 
 // ignore: must_be_immutable
 class UserProfile extends StatelessWidget {

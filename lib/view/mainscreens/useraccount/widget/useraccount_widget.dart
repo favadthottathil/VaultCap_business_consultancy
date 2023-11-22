@@ -9,12 +9,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/useraccount/provider/useraccount_provider.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/settings/settings.dart';
-import 'package:taxverse/view/mainscreens/useraccount/widget/user_details.dart';
-import 'package:taxverse/view/mainscreens/useraccount/widget/user_edit.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/provider/useraccount_provider.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/widget/user_details.dart';
+import 'package:vaultcap/view/mainscreens/useraccount/widget/user_edit.dart';
+import 'package:vaultcap/view/settings/settings.dart';
 
 class MySliverAppBar extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
@@ -180,6 +181,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                   child: InkWell(
                     onTap: () {
                       pickFile();
+                      
                     },
                     child: IgnorePointer(
                       child: SvgPicture.asset(
@@ -241,17 +243,18 @@ SliverChildListDelegate sliverChildListDelegate(
       const SizedBox(
         height: 120,
       ),
-      Padding(
-        padding: EdgeInsets.only(left: size.width * 0.05),
-        child: UserDetialsHead(
-          name: 'Name',
-          fontsize: 15,
-          top: size.height * 0.02,
-          fontWeight: FontWeight.w400,
-          color: blackColor,
+      if (firebaseAuth.currentUser!.email!.isNotEmpty)
+        Padding(
+          padding: EdgeInsets.only(left: size.width * 0.05),
+          child: UserDetialsHead(
+            name: 'Name',
+            fontsize: 15,
+            top: size.height * 0.02,
+            fontWeight: FontWeight.w400,
+            color: blackColor,
+          ),
         ),
-      ),
-      if (provider.userEdit['Name']?.showEdit == false)
+      if (provider.userEdit['Name']?.showEdit == false && firebaseAuth.currentUser!.email!.isNotEmpty)
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -278,10 +281,11 @@ SliverChildListDelegate sliverChildListDelegate(
           filedName: 'Name',
           userExisitingData: userdata['Name'],
         ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
-        child: const CustomDivider(),
-      ),
+      if (firebaseAuth.currentUser!.email!.isNotEmpty)
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+          child: const CustomDivider(),
+        ),
       SizedBox(height: size.height * 0.02),
       Padding(
         padding: EdgeInsets.only(left: size.width * 0.05),
@@ -302,17 +306,18 @@ SliverChildListDelegate sliverChildListDelegate(
         child: const CustomDivider(),
       ),
       SizedBox(height: size.height * 0.02),
-      Padding(
-        padding: EdgeInsets.only(left: size.width * 0.05),
-        child: UserDetialsHead(
-          name: 'phone number',
-          fontsize: 15,
-          top: size.height * 0.02,
-          fontWeight: FontWeight.w400,
-          color: blackColor,
+      if (firebaseAuth.currentUser!.phoneNumber!.isNotEmpty)
+        Padding(
+          padding: EdgeInsets.only(left: size.width * 0.05),
+          child: UserDetialsHead(
+            name: 'phone number',
+            fontsize: 15,
+            top: size.height * 0.02,
+            fontWeight: FontWeight.w400,
+            color: blackColor,
+          ),
         ),
-      ),
-      if (provider.userEdit['phoneNumber']?.showEdit == false)
+      if (provider.userEdit['phoneNumber']?.showEdit == false && firebaseAuth.currentUser!.phoneNumber!.isNotEmpty)
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -341,10 +346,11 @@ SliverChildListDelegate sliverChildListDelegate(
           mapName: 'phoneNumber',
           userExisitingData: userdata['phone_number'] ?? '',
         ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
-        child: const CustomDivider(),
-      ),
+      if (firebaseAuth.currentUser!.phoneNumber!.isNotEmpty)
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+          child: const CustomDivider(),
+        ),
       SizedBox(height: size.height * 0.02),
       Padding(
         padding: EdgeInsets.only(left: size.width * 0.05),

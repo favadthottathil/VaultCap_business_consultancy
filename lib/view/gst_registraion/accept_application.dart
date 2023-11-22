@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class WaitingScreen extends StatelessWidget {
   const WaitingScreen({super.key});

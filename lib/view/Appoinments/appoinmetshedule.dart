@@ -1,19 +1,18 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
-import 'package:taxverse/api/api_const.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/chat/chat_ui.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
-import 'package:taxverse/view/Appoinments/widgets/time_slot.dart';
+import 'package:vaultcap/api/api_const.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/view/Appoinments/widgets/time_slot.dart';
+import 'package:vaultcap/view/chat/chat_ui.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+
 
 class AppoinmentShedule extends StatefulWidget {
   const AppoinmentShedule({super.key});
@@ -187,8 +186,8 @@ class _AppoinmentSheduleState extends State<AppoinmentShedule> {
               SizedBox(height: 2.h),
               Padding(
                 padding: EdgeInsets.only(left: 20.w),
-                child: Wrap(
-                  children: [
+                child:  Wrap(
+                  children:  const [
                     TimeSlotAppoinment(),
                   ],
                 ),
@@ -284,12 +283,7 @@ class _AppoinmentSheduleState extends State<AppoinmentShedule> {
                   },
                 );
 
-                // Navigator.pushAndRemoveUntil(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => const HomeScreen(),
-                //     ),
-                //     (route) => false);
+               
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: Size(80.w, 6.h), // Set the desired height and width here

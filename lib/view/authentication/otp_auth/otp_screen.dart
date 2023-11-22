@@ -6,16 +6,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import 'package:taxverse/controller/shared_perference/otp_sharedprefrence.dart';
-import 'package:taxverse/utils/client_id.dart';
-import 'package:taxverse/view/authentication/otp_auth/enter_email_page.dart';
-import 'package:taxverse/view/authentication/otp_auth/provider/otpscreen_provider.dart';
-import 'package:taxverse/utils/constant/constants.dart';
-import 'package:taxverse/view/authentication/provider/auth_provider.dart';
-import 'package:taxverse/utils/utils.dart';
-import 'package:taxverse/view/mainscreens/navigate_screen.dart';
-import 'package:taxverse/view/widgets/frosted_glass/frosted_glass.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+import 'package:vaultcap/controller/shared_perference/otp_sharedprefrence.dart';
+import 'package:vaultcap/utils/client_id.dart';
+import 'package:vaultcap/utils/constant/constants.dart';
+import 'package:vaultcap/utils/utils.dart';
+import 'package:vaultcap/view/authentication/otp_auth/enter_email_page.dart';
+import 'package:vaultcap/view/authentication/otp_auth/provider/otpscreen_provider.dart';
+import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
+import 'package:vaultcap/view/mainscreens/navigate_screen.dart';
+import 'package:vaultcap/view/widgets/frosted_glass/frosted_glass.dart';
 import 'provider/otp_time_provider.dart';
 
 class OtpScreen extends StatefulWidget {
