@@ -5,7 +5,6 @@ import 'package:vaultcap/utils/constant/constants.dart';
 import 'package:vaultcap/view/authentication/provider/auth_provider.dart';
 import 'package:vaultcap/view/authentication/sign_up/sign_up.dart';
 
-
 class SignInWidgets {
   // <<---------------------------------------------------------->>
 
@@ -94,7 +93,6 @@ class SignInWidgets {
 
   static SizedBox signInImage(MediaQueryData mediaQuery) {
     return SizedBox(
-      width: mediaQuery.size.width * 0.57,
       height: mediaQuery.size.height * 0.22,
       child: Image.asset(
         'Asset/sign_in.png',

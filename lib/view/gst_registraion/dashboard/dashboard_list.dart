@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
@@ -93,6 +95,10 @@ class DashBoardListTile extends StatelessWidget {
                 ),
               ),
             );
+          } else if (snapshot.hasError) {
+            log(snapshot.error.toString());
+
+            return Center(child: Text(snapshot.error.toString(), style: AppStyle.poppinsBold16Green));
           } else {
             return const Center(child: SpinKitThreeBounce(color: blackColor));
           }

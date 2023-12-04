@@ -142,9 +142,9 @@ class Dashboard extends StatelessWidget {
                             Step(
                               title: Text('Application Status', style: AppStyle.poppinsBold12),
                               content: temp >= 2 && temp <= 2
-                                  ? verified == 'true'
+                                  ? verified == 'accepted'
                                       ? Text('Application Accepted', style: AppStyle.poppinsBoldGreen12)
-                                      : verified == 'false'
+                                      : verified == 'notAccepted'
                                           ? Text('Application Rejected', style: AppStyle.poppinsBoldGreen12)
                                           : Text('updating status....', style: AppStyle.poppinsBoldGreen12)
                                   : const SizedBox(),

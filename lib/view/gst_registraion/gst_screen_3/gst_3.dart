@@ -161,7 +161,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
     );
   }
 
- Future<void> addDetailsToDatabase(
+  Future<void> addDetailsToDatabase(
     String businessName,
     String businessType,
     String businessStartDate,
@@ -208,7 +208,7 @@ class _GstThirdScreenState extends State<GstThirdScreen> {
 
       electricityBill = EncryptData().encryptedData(electricityBill, key);
 
-      time = EncryptData().encryptedData(time, key);
+      // time = EncryptData().encryptedData(time, key);
 
       final userMail = EncryptData().encryptedData(userEmail!, key);
 

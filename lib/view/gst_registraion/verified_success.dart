@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:vaultcap/api/api_const.dart';
 import 'package:vaultcap/utils/constant/constants.dart';
 import 'package:vaultcap/view/Appoinments/appoinmetshedule.dart';
 import 'package:vaultcap/view/Appoinments/provider/verification_provider.dart';
-
+import 'package:vaultcap/view/gst_registraion/gst_screen_1/gst_1.dart';
 
 class VerifiedSuccess extends StatelessWidget {
   const VerifiedSuccess({super.key});
@@ -82,10 +85,47 @@ class VerifiedSuccess extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: InkWell(
+                onTap: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GstFirstScreen(),
+                      ));
+
+                  final QuerySnapshot<Object?> querySnapshot = await accessUserDatabase(curentUserEmail);
+
+                  await querySnapshot.docs.first.reference.update({
+                    'Isverified': '',
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: mediaQuery.size.height * 0.05),
+                  child: Text(
+                    'Skip',
+                    style: AppStyle.poppinsBold20,
+                  ),
+                ),
+              ),
             )
           ],
         );
       }),
     );
+  }
+
+  Future<QuerySnapshot<Object?>> accessUserDatabase(String userEmail) async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('ClientDetails')
+        .where(
+          'Email',
+          isEqualTo: userEmail,
+        )
+        .get();
+
+    return querySnapshot;
   }
 }

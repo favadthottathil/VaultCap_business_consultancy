@@ -60,11 +60,17 @@ class APIs {
 
     final key = EncryptData().generateKey();
 
+    print(EncryptData().encryptedData(userEmail!, key));
+
     return FirebaseFirestore.instance
         .collection('GstClientInfo')
         .where(
           'Email',
-          isEqualTo: EncryptData().encryptedData(userEmail!, key),
+          isEqualTo: EncryptData().encryptedData(userEmail, key),
+        )
+        .orderBy(
+          'time',
+          descending: false,
         )
         .snapshots();
   }

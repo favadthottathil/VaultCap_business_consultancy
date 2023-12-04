@@ -12,7 +12,6 @@ import 'package:vaultcap/view/mainscreens/homescreen/home_screen.dart';
 import 'package:vaultcap/view/mainscreens/news_screen/news.dart';
 import 'package:vaultcap/view/mainscreens/useraccount/user_account.dart';
 
-
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key, required this.isGuest}) : super(key: key);
 
@@ -29,6 +28,9 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+
+    _initializeAPIs();
+
     // Initialize screens
     _screens = [
       HomeScreen(),
@@ -67,7 +69,6 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
     // Set loading to false after the frame is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<AuthProvider>(context, listen: false).setLoading = false;
-      
     });
 
     return StreamBuilder(
@@ -80,7 +81,7 @@ class _BottomNavState extends State<BottomNav> with WidgetsBindingObserver {
         //  else if (firebaseAuth.currentUser!.email == "" || firebaseAuth.currentUser!.email == null) {
         //   return const EnterUsersEmail();
         // }
-         else {
+        else {
           // User authenticated or guest, show the bottom navigation bar
           log(' useremail  ${firebaseAuth.currentUser!.email}');
           // _initializeAPIs();

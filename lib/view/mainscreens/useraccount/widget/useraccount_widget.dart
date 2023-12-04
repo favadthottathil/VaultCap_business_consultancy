@@ -181,7 +181,6 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                   child: InkWell(
                     onTap: () {
                       pickFile();
-                      
                     },
                     child: IgnorePointer(
                       child: SvgPicture.asset(
@@ -324,15 +323,6 @@ SliverChildListDelegate sliverChildListDelegate(
             UserData(
               text: userdata['phone_number'] == '' ? 'Add phone Number' : userdata['phone_number'],
             ),
-            Padding(
-              padding: EdgeInsets.only(right: size.width * 0.08, top: size.height * 0.02),
-              child: InkWell(
-                onTap: () {
-                  provider.setShowEditTruephone();
-                },
-                child: const Icon(Icons.edit),
-              ),
-            )
           ],
         ),
       if (provider.userEdit['phoneNumber']?.showEdit == true)
